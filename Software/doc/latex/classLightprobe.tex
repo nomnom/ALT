@@ -1,0 +1,304 @@
+\hypertarget{classLightprobe}{\subsection{\-Lightprobe \-Class \-Reference}
+\label{classLightprobe}\index{\-Lightprobe@{\-Lightprobe}}
+}
+
+
+\-Our light probe model.  
+
+
+
+
+{\ttfamily \#include $<$lightprobe.\-h$>$}
+
+\subsubsection*{\-Data \-Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structLightprobe_1_1params}{params}
+\begin{DoxyCompactList}\small\item\em \-Configuration of the light probe. \end{DoxyCompactList}\item 
+struct \hyperlink{structLightprobe_1_1samplingParams}{sampling\-Params}
+\begin{DoxyCompactList}\small\item\em \-Configures sampling. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classLightprobe_af35628975adf15e7baa3276bc07dee67}{\-Lightprobe} (\hyperlink{classSource}{\-Source} $\ast$, \hyperlink{structLightprobe_1_1params}{params} c, \hyperlink{structLightprobe_1_1samplingParams}{sampling\-Params} sampling)
+\item 
+\hyperlink{classLightprobe_a79eaa4f155d473b11d0d8542dd19b9ea}{\-Lightprobe} (\hyperlink{classSource}{\-Source} $\ast$, string config\-File, \hyperlink{structLightprobe_1_1samplingParams}{sampling\-Params} sampling)
+\item 
+\hyperlink{classLightprobe_af7fb7a3f8c3b27f6c79452a27689a2ce}{\-Lightprobe} (\hyperlink{classSource}{\-Source} $\ast$, \hyperlink{structLightprobe_1_1params}{params} c, \hyperlink{structLightprobe_1_1samplingParams}{sampling\-Params} sampling, \hyperlink{utils_8h_aac426d8086789d4d7e318436071c9754}{directions} \hyperlink{classLightprobe_ad3aa93672a623bfb704576c466a7769e}{sampling\-Dirs})
+\item 
+\hyperlink{classLightprobe_ae9b07c8d066a0e11fd507abbea58c9f1}{$\sim$\-Lightprobe} ()
+\item 
+\hyperlink{structLightprobe_1_1params}{params} \hyperlink{classLightprobe_aeae57bb50a4a34a0b4493edc7105aa14}{get\-Config} ()
+\item 
+\hyperlink{structLightprobe_1_1samplingParams}{sampling\-Params} \hyperlink{classLightprobe_af3318a51889cd0eb6be10db8a687e35a}{get\-Sampling\-Config} ()
+\item 
+\hyperlink{classSource}{\-Source} $\ast$ \hyperlink{classLightprobe_a51a1d2400e449cf562711edfb156a007}{get\-Source} ()
+\item 
+void \hyperlink{classLightprobe_ad0b80ec6a606302dbe8824531efe51ea}{acquire} ()
+\item 
+imglib\-::\-Image$<$ float $>$ \& \hyperlink{classLightprobe_ad088c4138632e186fadf2113877f3ee7}{get\-Image} ()
+\item 
+bool \hyperlink{classLightprobe_a3a02a401ef6e2128facb9402778b21e8}{has\-New\-Data} ()
+\item 
+void \hyperlink{classLightprobe_a54bc0e1006b77cd3dd13b1683a6ada5c}{set\-Rotation\-Y} (double rad)
+\item 
+void \hyperlink{classLightprobe_ae5622bdea250c1257a798c0f3a3928f5}{precalculate\-Direction\-Pixel\-Data} ()
+\item 
+void \hyperlink{classLightprobe_a912f27392e9da6a585e164a5d0666db2}{precalculate\-Sampling\-Directions} ()
+\item 
+void \hyperlink{classLightprobe_a39ea15d783af5027e86fbbfcbb58c64f}{precalculate\-Sampling\-Structure} ()
+\item 
+void \hyperlink{classLightprobe_a9d52017afe1d496f4ec4d7f30c080e6c}{precalculate\-Sampling\-Cones} ()
+\item 
+void \hyperlink{classLightprobe_aeb2723f1e8a00106f4c6b1f43fe52e2a}{precalculate\-Sampling\-Nearest\-Neighbors} ()
+\item 
+void \hyperlink{classLightprobe_a57d6dca11f80a9c901bf4a43e19c3fc0}{precalculate\-Sampling\-All\-Pixels} ()
+\item 
+vector$<$ \hyperlink{structrgb}{rgb} $>$ \hyperlink{classLightprobe_aaeb0935fae39511dce1701534eb2b3bd}{get\-Impact} ()
+\item 
+vector$<$ \hyperlink{structrgb}{rgb} $>$ \hyperlink{classLightprobe_a173c0c970cc98f140f64ada3b50aec35}{get\-Impact} (imglib\-::\-Image$<$ float $>$ \&img)
+\item 
+\-Vector3d \hyperlink{classLightprobe_adb355d76902749ca80366548c58de258}{get\-Direction\-From\-Pixel} (\-Vector2i pos)
+\item 
+\-Vector3d \hyperlink{classLightprobe_a67cef2ec8ecd3b915901e8ae6735f52b}{get\-Direction\-From\-Pixel\-Debevec} (\-Vector2i pos)
+\end{DoxyCompactItemize}
+\subsubsection*{\-Data \-Fields}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ \-Vector2i $>$ \hyperlink{classLightprobe_a47e0a0ac6509b630c45b26ea50c3bc6a}{all\-Pixels}
+\item 
+\hyperlink{utils_8h_aac426d8086789d4d7e318436071c9754}{directions} \hyperlink{classLightprobe_a95e255a27e98a2c0b2d4df167365ccdd}{all\-Dirs}
+\item 
+\hyperlink{utils_8h_aac426d8086789d4d7e318436071c9754}{directions} \hyperlink{classLightprobe_ad3aa93672a623bfb704576c466a7769e}{sampling\-Dirs}
+\item 
+vector$<$ \hyperlink{structdirCone}{dir\-Cone} $>$ \hyperlink{classLightprobe_a3bf62d3debaba3f19e2587d9e22ce204}{sampling\-Cones}
+\item 
+vector$<$ bool $>$ \hyperlink{classLightprobe_a9f5c4447d145b52e5fe27d8bd6cdcfca}{used\-Directions}
+\end{DoxyCompactItemize}
+\subsubsection*{\-Private \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classLightprobe_a7e2724a719ccd14779aaeb7225b0acc3}{init} ()
+\end{DoxyCompactItemize}
+\subsubsection*{\-Private \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structLightprobe_1_1params}{params} \hyperlink{classLightprobe_a2a75a5ac0b6fd74f9b6007e6f4bee079}{config}
+\item 
+\hyperlink{structLightprobe_1_1samplingParams}{sampling\-Params} \hyperlink{classLightprobe_a8b0f2510b3c39b154ef72d571f46c16b}{sampling\-Config}
+\item 
+\hyperlink{classSource}{\-Source} $\ast$ \hyperlink{classLightprobe_af923276096b3466a64bdda7bd76ed036}{source}
+\item 
+imglib\-::\-Image$<$ float $>$ \hyperlink{classLightprobe_aab72db6ab7c231959a7c5943ca8fc97f}{mask\-Image}
+\item 
+double \hyperlink{classLightprobe_a44b795e2f349dd13489799890bd86c9a}{plane\-Shift}
+\end{DoxyCompactItemize}
+
+
+\subsubsection{\-Detailed \-Description}
+\-Our light probe model. 
+
+\subsubsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{classLightprobe_af35628975adf15e7baa3276bc07dee67}{\index{\-Lightprobe@{\-Lightprobe}!\-Lightprobe@{\-Lightprobe}}
+\index{\-Lightprobe@{\-Lightprobe}!Lightprobe@{\-Lightprobe}}
+\paragraph[{\-Lightprobe}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Lightprobe\-::\-Lightprobe} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Source} $\ast$}]{s, }
+\item[{{\bf params}}]{c, }
+\item[{{\bf sampling\-Params}}]{sampling}
+\end{DoxyParamCaption}
+)}}\label{classLightprobe_af35628975adf15e7baa3276bc07dee67}
+\-Set up light probe model from a given model config and sampling config. \hypertarget{classLightprobe_a79eaa4f155d473b11d0d8542dd19b9ea}{\index{\-Lightprobe@{\-Lightprobe}!\-Lightprobe@{\-Lightprobe}}
+\index{\-Lightprobe@{\-Lightprobe}!Lightprobe@{\-Lightprobe}}
+\paragraph[{\-Lightprobe}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Lightprobe\-::\-Lightprobe} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Source} $\ast$}]{s, }
+\item[{string}]{config\-File, }
+\item[{{\bf sampling\-Params}}]{sampling}
+\end{DoxyParamCaption}
+)}}\label{classLightprobe_a79eaa4f155d473b11d0d8542dd19b9ea}
+\-Set up light probe model using a given sampling configuration. \-Loads model config from file. \hypertarget{classLightprobe_af7fb7a3f8c3b27f6c79452a27689a2ce}{\index{\-Lightprobe@{\-Lightprobe}!\-Lightprobe@{\-Lightprobe}}
+\index{\-Lightprobe@{\-Lightprobe}!Lightprobe@{\-Lightprobe}}
+\paragraph[{\-Lightprobe}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Lightprobe\-::\-Lightprobe} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Source} $\ast$}]{s, }
+\item[{{\bf params}}]{c, }
+\item[{{\bf sampling\-Params}}]{sampling, }
+\item[{{\bf directions}}]{sampling\-Dirs}
+\end{DoxyParamCaption}
+)}}\label{classLightprobe_af7fb7a3f8c3b27f6c79452a27689a2ce}
+\-Set up light probe model using a given sampling configuration and sampling directions. \-Loads model config from file. \hypertarget{classLightprobe_ae9b07c8d066a0e11fd507abbea58c9f1}{\index{\-Lightprobe@{\-Lightprobe}!$\sim$\-Lightprobe@{$\sim$\-Lightprobe}}
+\index{$\sim$\-Lightprobe@{$\sim$\-Lightprobe}!Lightprobe@{\-Lightprobe}}
+\paragraph[{$\sim$\-Lightprobe}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Lightprobe\-::$\sim$\-Lightprobe} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classLightprobe_ae9b07c8d066a0e11fd507abbea58c9f1}
+
+
+\subsubsection{\-Member \-Function \-Documentation}
+\hypertarget{classLightprobe_ad0b80ec6a606302dbe8824531efe51ea}{\index{\-Lightprobe@{\-Lightprobe}!acquire@{acquire}}
+\index{acquire@{acquire}!Lightprobe@{\-Lightprobe}}
+\paragraph[{acquire}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Lightprobe\-::acquire} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classLightprobe_ad0b80ec6a606302dbe8824531efe51ea}
+\hypertarget{classLightprobe_aeae57bb50a4a34a0b4493edc7105aa14}{\index{\-Lightprobe@{\-Lightprobe}!get\-Config@{get\-Config}}
+\index{get\-Config@{get\-Config}!Lightprobe@{\-Lightprobe}}
+\paragraph[{get\-Config}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Lightprobe\-::params} {\bf \-Lightprobe\-::get\-Config} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classLightprobe_aeae57bb50a4a34a0b4493edc7105aa14}
+\hypertarget{classLightprobe_adb355d76902749ca80366548c58de258}{\index{\-Lightprobe@{\-Lightprobe}!get\-Direction\-From\-Pixel@{get\-Direction\-From\-Pixel}}
+\index{get\-Direction\-From\-Pixel@{get\-Direction\-From\-Pixel}!Lightprobe@{\-Lightprobe}}
+\paragraph[{get\-Direction\-From\-Pixel}]{\setlength{\rightskip}{0pt plus 5cm}\-Vector3d {\bf \-Lightprobe\-::get\-Direction\-From\-Pixel} (
+\begin{DoxyParamCaption}
+\item[{\-Vector2i}]{pos}
+\end{DoxyParamCaption}
+)}}\label{classLightprobe_adb355d76902749ca80366548c58de258}
+\-Our light probe model. \-Calculates the reflected light direction from pixel coordinates. \hypertarget{classLightprobe_a67cef2ec8ecd3b915901e8ae6735f52b}{\index{\-Lightprobe@{\-Lightprobe}!get\-Direction\-From\-Pixel\-Debevec@{get\-Direction\-From\-Pixel\-Debevec}}
+\index{get\-Direction\-From\-Pixel\-Debevec@{get\-Direction\-From\-Pixel\-Debevec}!Lightprobe@{\-Lightprobe}}
+\paragraph[{get\-Direction\-From\-Pixel\-Debevec}]{\setlength{\rightskip}{0pt plus 5cm}\-Vector3d {\bf \-Lightprobe\-::get\-Direction\-From\-Pixel\-Debevec} (
+\begin{DoxyParamCaption}
+\item[{\-Vector2i}]{pos}
+\end{DoxyParamCaption}
+)}}\label{classLightprobe_a67cef2ec8ecd3b915901e8ae6735f52b}
+\-Light probe model that use the \-Debevec parametrisation. \hypertarget{classLightprobe_ad088c4138632e186fadf2113877f3ee7}{\index{\-Lightprobe@{\-Lightprobe}!get\-Image@{get\-Image}}
+\index{get\-Image@{get\-Image}!Lightprobe@{\-Lightprobe}}
+\paragraph[{get\-Image}]{\setlength{\rightskip}{0pt plus 5cm}imglib\-::\-Image$<$ float $>$ \& {\bf \-Lightprobe\-::get\-Image} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classLightprobe_ad088c4138632e186fadf2113877f3ee7}
+\hypertarget{classLightprobe_aaeb0935fae39511dce1701534eb2b3bd}{\index{\-Lightprobe@{\-Lightprobe}!get\-Impact@{get\-Impact}}
+\index{get\-Impact@{get\-Impact}!Lightprobe@{\-Lightprobe}}
+\paragraph[{get\-Impact}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ {\bf rgb} $>$ {\bf \-Lightprobe\-::get\-Impact} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classLightprobe_aaeb0935fae39511dce1701534eb2b3bd}
+\-Calculates the impact of a lamp\-: \-Acquires an image from the source, performs downsampling and returns the sampled values. \hypertarget{classLightprobe_a173c0c970cc98f140f64ada3b50aec35}{\index{\-Lightprobe@{\-Lightprobe}!get\-Impact@{get\-Impact}}
+\index{get\-Impact@{get\-Impact}!Lightprobe@{\-Lightprobe}}
+\paragraph[{get\-Impact}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ {\bf rgb} $>$ {\bf \-Lightprobe\-::get\-Impact} (
+\begin{DoxyParamCaption}
+\item[{imglib\-::\-Image$<$ float $>$ \&}]{img}
+\end{DoxyParamCaption}
+)}}\label{classLightprobe_a173c0c970cc98f140f64ada3b50aec35}
+\-Samples a light probe image. \hypertarget{classLightprobe_af3318a51889cd0eb6be10db8a687e35a}{\index{\-Lightprobe@{\-Lightprobe}!get\-Sampling\-Config@{get\-Sampling\-Config}}
+\index{get\-Sampling\-Config@{get\-Sampling\-Config}!Lightprobe@{\-Lightprobe}}
+\paragraph[{get\-Sampling\-Config}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Lightprobe\-::sampling\-Params} {\bf \-Lightprobe\-::get\-Sampling\-Config} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classLightprobe_af3318a51889cd0eb6be10db8a687e35a}
+\hypertarget{classLightprobe_a51a1d2400e449cf562711edfb156a007}{\index{\-Lightprobe@{\-Lightprobe}!get\-Source@{get\-Source}}
+\index{get\-Source@{get\-Source}!Lightprobe@{\-Lightprobe}}
+\paragraph[{get\-Source}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Source} $\ast$ {\bf \-Lightprobe\-::get\-Source} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classLightprobe_a51a1d2400e449cf562711edfb156a007}
+\hypertarget{classLightprobe_a3a02a401ef6e2128facb9402778b21e8}{\index{\-Lightprobe@{\-Lightprobe}!has\-New\-Data@{has\-New\-Data}}
+\index{has\-New\-Data@{has\-New\-Data}!Lightprobe@{\-Lightprobe}}
+\paragraph[{has\-New\-Data}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Lightprobe\-::has\-New\-Data} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classLightprobe_a3a02a401ef6e2128facb9402778b21e8}
+\hypertarget{classLightprobe_a7e2724a719ccd14779aaeb7225b0acc3}{\index{\-Lightprobe@{\-Lightprobe}!init@{init}}
+\index{init@{init}!Lightprobe@{\-Lightprobe}}
+\paragraph[{init}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Lightprobe\-::init} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classLightprobe_a7e2724a719ccd14779aaeb7225b0acc3}
+\-Initializes the light probe model. \hypertarget{classLightprobe_ae5622bdea250c1257a798c0f3a3928f5}{\index{\-Lightprobe@{\-Lightprobe}!precalculate\-Direction\-Pixel\-Data@{precalculate\-Direction\-Pixel\-Data}}
+\index{precalculate\-Direction\-Pixel\-Data@{precalculate\-Direction\-Pixel\-Data}!Lightprobe@{\-Lightprobe}}
+\paragraph[{precalculate\-Direction\-Pixel\-Data}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Lightprobe\-::precalculate\-Direction\-Pixel\-Data} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classLightprobe_ae5622bdea250c1257a798c0f3a3928f5}
+\-Precalculates the direction of reflected light for all available, unmasked pixels within the sampling range. \hypertarget{classLightprobe_a57d6dca11f80a9c901bf4a43e19c3fc0}{\index{\-Lightprobe@{\-Lightprobe}!precalculate\-Sampling\-All\-Pixels@{precalculate\-Sampling\-All\-Pixels}}
+\index{precalculate\-Sampling\-All\-Pixels@{precalculate\-Sampling\-All\-Pixels}!Lightprobe@{\-Lightprobe}}
+\paragraph[{precalculate\-Sampling\-All\-Pixels}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Lightprobe\-::precalculate\-Sampling\-All\-Pixels} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classLightprobe_a57d6dca11f80a9c901bf4a43e19c3fc0}
+\-Generates sampling structure for all-\/pixel sampling (every pixel becomes one direction). \hypertarget{classLightprobe_a9d52017afe1d496f4ec4d7f30c080e6c}{\index{\-Lightprobe@{\-Lightprobe}!precalculate\-Sampling\-Cones@{precalculate\-Sampling\-Cones}}
+\index{precalculate\-Sampling\-Cones@{precalculate\-Sampling\-Cones}!Lightprobe@{\-Lightprobe}}
+\paragraph[{precalculate\-Sampling\-Cones}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Lightprobe\-::precalculate\-Sampling\-Cones} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classLightprobe_a9d52017afe1d496f4ec4d7f30c080e6c}
+\-Generate sampling data structure for \-Gaussian sampling. \hypertarget{classLightprobe_a912f27392e9da6a585e164a5d0666db2}{\index{\-Lightprobe@{\-Lightprobe}!precalculate\-Sampling\-Directions@{precalculate\-Sampling\-Directions}}
+\index{precalculate\-Sampling\-Directions@{precalculate\-Sampling\-Directions}!Lightprobe@{\-Lightprobe}}
+\paragraph[{precalculate\-Sampling\-Directions}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Lightprobe\-::precalculate\-Sampling\-Directions} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classLightprobe_a912f27392e9da6a585e164a5d0666db2}
+\-Precalculates the sampling directions. \hypertarget{classLightprobe_aeb2723f1e8a00106f4c6b1f43fe52e2a}{\index{\-Lightprobe@{\-Lightprobe}!precalculate\-Sampling\-Nearest\-Neighbors@{precalculate\-Sampling\-Nearest\-Neighbors}}
+\index{precalculate\-Sampling\-Nearest\-Neighbors@{precalculate\-Sampling\-Nearest\-Neighbors}!Lightprobe@{\-Lightprobe}}
+\paragraph[{precalculate\-Sampling\-Nearest\-Neighbors}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Lightprobe\-::precalculate\-Sampling\-Nearest\-Neighbors} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classLightprobe_aeb2723f1e8a00106f4c6b1f43fe52e2a}
+\-Generates sampling datastructure for nearest-\/neighbor sampling. \hypertarget{classLightprobe_a39ea15d783af5027e86fbbfcbb58c64f}{\index{\-Lightprobe@{\-Lightprobe}!precalculate\-Sampling\-Structure@{precalculate\-Sampling\-Structure}}
+\index{precalculate\-Sampling\-Structure@{precalculate\-Sampling\-Structure}!Lightprobe@{\-Lightprobe}}
+\paragraph[{precalculate\-Sampling\-Structure}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Lightprobe\-::precalculate\-Sampling\-Structure} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classLightprobe_a39ea15d783af5027e86fbbfcbb58c64f}
+\-Generates the sampling data structure. \hypertarget{classLightprobe_a54bc0e1006b77cd3dd13b1683a6ada5c}{\index{\-Lightprobe@{\-Lightprobe}!set\-Rotation\-Y@{set\-Rotation\-Y}}
+\index{set\-Rotation\-Y@{set\-Rotation\-Y}!Lightprobe@{\-Lightprobe}}
+\paragraph[{set\-Rotation\-Y}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Lightprobe\-::set\-Rotation\-Y} (
+\begin{DoxyParamCaption}
+\item[{double}]{rad}
+\end{DoxyParamCaption}
+)}}\label{classLightprobe_a54bc0e1006b77cd3dd13b1683a6ada5c}
+\-Set new value for rotation around y axis (on planar plane) and recalculate sampling datastructures 
+
+\subsubsection{\-Field \-Documentation}
+\hypertarget{classLightprobe_a95e255a27e98a2c0b2d4df167365ccdd}{\index{\-Lightprobe@{\-Lightprobe}!all\-Dirs@{all\-Dirs}}
+\index{all\-Dirs@{all\-Dirs}!Lightprobe@{\-Lightprobe}}
+\paragraph[{all\-Dirs}]{\setlength{\rightskip}{0pt plus 5cm}{\bf directions} {\bf \-Lightprobe\-::all\-Dirs}}}\label{classLightprobe_a95e255a27e98a2c0b2d4df167365ccdd}
+\hypertarget{classLightprobe_a47e0a0ac6509b630c45b26ea50c3bc6a}{\index{\-Lightprobe@{\-Lightprobe}!all\-Pixels@{all\-Pixels}}
+\index{all\-Pixels@{all\-Pixels}!Lightprobe@{\-Lightprobe}}
+\paragraph[{all\-Pixels}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$\-Vector2i$>$ {\bf \-Lightprobe\-::all\-Pixels}}}\label{classLightprobe_a47e0a0ac6509b630c45b26ea50c3bc6a}
+\hypertarget{classLightprobe_a2a75a5ac0b6fd74f9b6007e6f4bee079}{\index{\-Lightprobe@{\-Lightprobe}!config@{config}}
+\index{config@{config}!Lightprobe@{\-Lightprobe}}
+\paragraph[{config}]{\setlength{\rightskip}{0pt plus 5cm}{\bf params} {\bf \-Lightprobe\-::config}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classLightprobe_a2a75a5ac0b6fd74f9b6007e6f4bee079}
+\hypertarget{classLightprobe_aab72db6ab7c231959a7c5943ca8fc97f}{\index{\-Lightprobe@{\-Lightprobe}!mask\-Image@{mask\-Image}}
+\index{mask\-Image@{mask\-Image}!Lightprobe@{\-Lightprobe}}
+\paragraph[{mask\-Image}]{\setlength{\rightskip}{0pt plus 5cm}imglib\-::\-Image$<$float$>$ {\bf \-Lightprobe\-::mask\-Image}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classLightprobe_aab72db6ab7c231959a7c5943ca8fc97f}
+\hypertarget{classLightprobe_a44b795e2f349dd13489799890bd86c9a}{\index{\-Lightprobe@{\-Lightprobe}!plane\-Shift@{plane\-Shift}}
+\index{plane\-Shift@{plane\-Shift}!Lightprobe@{\-Lightprobe}}
+\paragraph[{plane\-Shift}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf \-Lightprobe\-::plane\-Shift}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classLightprobe_a44b795e2f349dd13489799890bd86c9a}
+\hypertarget{classLightprobe_a3bf62d3debaba3f19e2587d9e22ce204}{\index{\-Lightprobe@{\-Lightprobe}!sampling\-Cones@{sampling\-Cones}}
+\index{sampling\-Cones@{sampling\-Cones}!Lightprobe@{\-Lightprobe}}
+\paragraph[{sampling\-Cones}]{\setlength{\rightskip}{0pt plus 5cm}vector$<${\bf dir\-Cone}$>$ {\bf \-Lightprobe\-::sampling\-Cones}}}\label{classLightprobe_a3bf62d3debaba3f19e2587d9e22ce204}
+\hypertarget{classLightprobe_a8b0f2510b3c39b154ef72d571f46c16b}{\index{\-Lightprobe@{\-Lightprobe}!sampling\-Config@{sampling\-Config}}
+\index{sampling\-Config@{sampling\-Config}!Lightprobe@{\-Lightprobe}}
+\paragraph[{sampling\-Config}]{\setlength{\rightskip}{0pt plus 5cm}{\bf sampling\-Params} {\bf \-Lightprobe\-::sampling\-Config}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classLightprobe_a8b0f2510b3c39b154ef72d571f46c16b}
+\hypertarget{classLightprobe_ad3aa93672a623bfb704576c466a7769e}{\index{\-Lightprobe@{\-Lightprobe}!sampling\-Dirs@{sampling\-Dirs}}
+\index{sampling\-Dirs@{sampling\-Dirs}!Lightprobe@{\-Lightprobe}}
+\paragraph[{sampling\-Dirs}]{\setlength{\rightskip}{0pt plus 5cm}{\bf directions} {\bf \-Lightprobe\-::sampling\-Dirs}}}\label{classLightprobe_ad3aa93672a623bfb704576c466a7769e}
+\hypertarget{classLightprobe_af923276096b3466a64bdda7bd76ed036}{\index{\-Lightprobe@{\-Lightprobe}!source@{source}}
+\index{source@{source}!Lightprobe@{\-Lightprobe}}
+\paragraph[{source}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Source}$\ast$ {\bf \-Lightprobe\-::source}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classLightprobe_af923276096b3466a64bdda7bd76ed036}
+\hypertarget{classLightprobe_a9f5c4447d145b52e5fe27d8bd6cdcfca}{\index{\-Lightprobe@{\-Lightprobe}!used\-Directions@{used\-Directions}}
+\index{used\-Directions@{used\-Directions}!Lightprobe@{\-Lightprobe}}
+\paragraph[{used\-Directions}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$bool$>$ {\bf \-Lightprobe\-::used\-Directions}}}\label{classLightprobe_a9f5c4447d145b52e5fe27d8bd6cdcfca}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+src/\hyperlink{lightprobe_8h}{lightprobe.\-h}\item 
+src/\hyperlink{lightprobe_8cpp}{lightprobe.\-cpp}\end{DoxyCompactItemize}

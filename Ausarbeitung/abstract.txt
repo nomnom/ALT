@@ -1,0 +1,11 @@
+In the following work we present a system for capturing ambient light in a real scene and recreating it in a room equipped with computer-controlled lamps.
+We capture incident light in one point of a scene with a simple light probe consisting of a camera and a reflective sphere.
+The acquired environment map is then transferred to a room where an approximated lighting condition is recreated with multiple LED lamps. 
+To achieve this, we first measure the impact each lamp has on the illumination with a light probe and acquire one image per lamp.
+A linear combination of these images produces a new environment map, which we can recreate inside the room by setting the intensities of the lamps.
+We employ Quadratic Programming to find the linear combination that approximates a given environment map best.
+We speed up the optimization process by downsampling the light probe data, which reduces the dimension of our problem.
+Our method is fast enough for real-time light transfer and works with all types of linear controlled illuminants.
+In order to evaluate our method, we designed and constructed an omnidirectional lighting system that can spatially illuminate a room in full-color.
+We first explore several different configurations of our lighting system, our sampling and our optimization algorithm.
+We then demonstrate our method's capabilities by capturing static and dynamic ambient light in one location and transferring it into a room.

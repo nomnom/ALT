@@ -1,0 +1,195 @@
+
+\chapter{Background}
+
+This chapter introduces some basic topics necessary to understand this work. 
+We start with a description of the \emph{ambient light} of natural environments.
+After discussing natural light we talk about artificial lighting and the challenges and benefits of modern LED technology.
+We introduce the concepts of \emph{environment maps}, \emph{distant light} and \emph{light probes}.
+We also explain how \emph{Image-based Relighting} exploits the linearity of light and describe the \emph{Inverse Relighting} problem on which we based our method.
+
+\section{Ambient Light}
+
+%% Introduction to ambient light: where does it come from, how does it act
+%ambient light: how is it composed?
+Our environment is brightly lit by many different kinds of light sources. The most powerful and influential source of them all is the sun.
+Sunlight is an integral part of our lives and affects us day by day. It defines how we structure our day, when we are awake and when we are asleep. 
+Our body has strongly adapted to the continuously changing illumination and we even use it to synchronize our internal biological clock, the circadian rhythm  \cite{ellis2013auto}.
+
+% sun angle and illumination
+% change over day, year
+Sunlight is very dynamic.
+As the earth rotates around its axis, the sun travels along an arc over the sky. 
+The axis also tilts over the course of a year and causes the sun to rise much higher in summer than in winter.
+The lower the suns position, the lower is the light intensity because the path through the atmosphere is much longer and more light is scattered away.
+
+%rayleigh and color temperature
+While traveling through the atmosphere, light with a short wavelength is scattered more than light with a longer wavelength.
+This changes the color of the sunlight depending on the incident angle: With low angles more blue light is scattered away and the color shifts towards red.
+
+The varying sunlight illuminates our nature and produces complex ambient illuminations with different color pallets and light distributions
+ which cannot be captured in a photograph or reproduced by a standard display.
+ 
+\section{Room Lighting}
+
+Traditional illuminants like halogen, fluorescent and incandescent lamps are designed to simulate sunlight.
+The have a similar spectrum and are most commonly placed on the ceiling to illuminate the room from above.
+Compared to sunlight, room lighting is very static: The user can turn it on or off and in some cases control the intensity with a dimmer switch.
+
+Light-emitting diode (LEDs) technology has been greatly improved over the last few years and is on the verge to change the way we think about room lighting.
+LEDs posses several advantages over traditional illuminants: 
+They have a higher efficacy, produce less heat, are much smaller and more flexible to handle.
+Because they have extremely high switching speeds, their light output can be precisely and linearly controlled  with pulse-width modulation \cite{muthu2002red}.
+They also emit monochromatic light with a nearly constant wavelength. 
+By combining multiple primary colors we can build digitally controlled full-color lamps.
+
+Unfortunately, LEDs have an inherent flaw: They are very sensitive to heat and require good heat dissipation \cite{ellis2013auto}.
+Their lifespan is related to their inner temperature and decreases rapidly when they overheat. 
+This makes it difficult to build small high output illuminants which the consumer market desires. 
+They are however the ideal component for building large area light sources because heat can be spread out more easily for dissipation.
+Small LEDs are also cheaper to produce as the yield in production is much higher.
+
+These properties of LEDs have lead to new types of light sources that differ from traditional lamps.
+The high life-span means that they do not necessarily have to be replaced and can be embedded directly into the walls or furniture.
+Hundreds of thousands of small LEDs can be spread out on large areas, aggregated in flat panels or linear strips, and provide the ambient light.
+
+
+\section{Naming Conventions}
+\label{sec:naming}
+This section introduces the naming conventions and assumptions that are used throughout this work. 
+
+First of all: We always work in radiometric space. Our cameras and images record relative radiance.
+An image is represented as a vectors of scalar values. It has three color channels which are concatenated inside the vector. 
+Matrices are denoted by capital letters, vectors and scalars are lowercase.
+Vectors are written in bold.
+
+The following table shows the notations we use.
+    \begin{table}[H]
+     \begin{tabular}{c|l}
+        \toprule 
+        Notation & Description\\
+        \midrule
+        $\vect{i}_{sum} = a\vect{i}_1 + b\vect{i}_2$  & linear combination of two images \\
+        $A\vect{x}=\vect{b}$ & matrix-vector multiplication \\
+        $A^T$ & transposed matrix or vector \\
+        $|\vect{x}|$ & number of elements in a vector or list \\
+        $||\vect{x}||$ & $L_2$-norm $\sqrt{x_1^2 + x_2^2 + ... }$ \\
+        \bottomrule
+     \end{tabular}
+    \end{table}
+
+
+\section{Light Probe}
+\label{sec:lightprobe}
+
+ Environment maps are often used in computer graphics as a simple model for global illumination.
+ They described the incident radiance $L_d$ in a point $I$, parametrized over the light direction. 
+ If the light is distant and directed, the incident light is the same in all points of scene.
+ 
+ 
+  
+ \begin{figure}[H]
+    \centering\includegraphics[height=0.4\linewidth]{../../resources/envmap.png}
+
+  \captionof{figure}[Environment maps]{Environment maps (a) describe the incident radiance $L_d$ in the point $I$ of a scene.}
+  \label{fig:envmapping}
+ \end{figure}
+
+ 
+ Environment maps can be used to render specular objects with the reflection mapping technique \cite{blinn1976texture}, 
+ where the direction of reflected light is defined by the orientation of the object's surface.
+ This principle can also be used to acquire environment maps of real scenes:
+ Light probe images \cite{debevec1998rendering} are photographs of specular objects that allow us to capture light from almost all directions using a single image.
+ Any specular convex object can be used as a probe object.
+ Spheres are most commonly used for this because their geometry is simple and defined by a single parameter, the radius.
+ Spherical probe objects are also readily available, for example in the form of steel ball bearings or metalized glass spheres. 
+ The latter one is cheaper but has a less precise geometry and is more fragile.
+
+ 
+  \begin{figure}[h]
+   
+  \captionsetup[subfigure]{labelformat=empty}
+    \subfloat[]{ \includegraphics[height=0.4\linewidth]{../../resources/lp_image.png} }
+    \hfill
+    \subfloat[]{\includegraphics[width=0.5\linewidth]{../../resources/sphere_mapping.svg} }
+    
+   \caption[Recording light probe images]{A light probe image (left) and how we record it (right): A camera ($C$) captures the light from all directions via reflection on
+    a mirrored sphere ($S$). Some directions are occluded by the camera ($O_C$) or lie in the shadow of the sphere ($O_S$).  }
+    
+   \label{fig:sphere_mapping}
+  \end{figure}
+ 
+ A single image taken from a mirrored sphere captures light from almost all directions.
+ Figure \ref{fig:sphere_mapping} shows a light probe image (left) and how it was recorded (right).
+  A small cone shaped region $O_S$ lies in the shadow of the sphere $S$, while some other directions $O_C$ are occluded by the camera and other parts of the mechanical setup.
+ The occlusions can be reduced by increasing the ratio of distance $\overline{CS}$ and sphere diameter, but do not vanish completely.
+ Note that light directions are not imaged uniformly and the lower hemisphere is recorded with a much lower resolution. 
+ If we place the sphere close to the floor, we can constrain the incident directions to the upper hemisphere and increase the effective resolution.
+
+ With this technique, we can record an omnidirectional view of a scene using a single camera. 
+
+\section{Linear Light}
+\label{sec:linearlight}
+
+ 
+ Light transport is linear in the light sources: The light from multiple sources add together to illuminate a scene.
+ We can observe the light of each source individually and apply the super-position principle to derive new combinations of scene lighting.
+ 
+  \begin{figure}[H]
+   \center
+   \includegraphics[width=\linewidth]{../../resources/linearlight.png}
+   \caption[Linear light example]{Light transport is linear in the light sources. The super-position principle can be applied to photographs of a scene (images from \cite{HAEBERLI}) }
+   \label{fig:linearlight}
+  \end{figure}
+ 
+\subsection{Image-based Relighting}
+\label{sec:relighting}
+
+ \emph{Image-based Relighting} \cite{choudhury2007survey} employs the linear properties of light in a clever way:
+ A simple weighted sum of differently illuminated photographs can be used to render the scene with a novel illumination.
+ 
+ \begin{equation}
+  \label{eq:relightsum}
+  \vect{i}_{new} = \sum_{d} w_d \vect{i}_d
+\end{equation}
+ 
+ A set of basis image $\vect{i}_d$ are taken of an object or scene with a fixed camera, each with a different illumination.
+ Evaluation of the weighted sum results in a new image $\vect{i}_{new}$.
+ The weights $w_d$ modulate the intensity of the light in the basis images. Note that the weights must be positive to be physically correct.
+ If a lot of images with different illuminations are taken, then one can \emph{relight} a scene with a given environment map.
+ Relighting is especially interesting for rendering objects since the complexity of the rendering process is independent from the complexity of the object geometry.
+ The renderings are also physically correct and reproduce even complex effects like scattering, refractions and caustics easily \cite{choudhury2007survey}.
+ 
+ 
+ The key problem is finding the weights $w_d$ that produce the best approximation of the novel illumination.
+ 
+ In \emph{Explicit Relighting}, the scene is illuminated with well-defined point sources, for example by using a light stage \cite{debevec2002lighting}.
+ The weights can be calculated by sampling the novel environment map at the location that corresponds to the position of the point source.
+
+ \emph{Implicit Relighting} on the other hand can work with any type of light source \cite{choudhury2007survey}.
+ The incident light is captured with a \emph{probe object} in addition to the basis images.
+ In this case, the weights are calculated by solving the \emph{Inverse Relighting problem}
+ \begin{equation}
+  \label{eq:invproblem}
+   \sum_{d} w_d \vect{p}_d \stackrel{!}{=} \vect{p}_{target} 
+ \end{equation}
+ where $\vect{p}_d$ are the images of the probe object and $\vect{p}_{target}$ is the probe image under the novel illumination.
+ 
+  The inverse problem can be written in matrix form as 
+ \begin{equation}
+  \label{eq:invproblem_matrix}
+    P\vect{w}  \stackrel{!}{=} \vect{p}_{target}
+  \end{equation}
+   where the matrix $P$ contains all the images $\vect{p}_d$ as columns, and the vector $\vect{w}$ contains all the weights $w_d$.
+   Equation (\ref{eq:invproblem_matrix}) has no exact solution because the matrix is not necessarily invertible.
+   We can however calculate an approximate solution by converting it into a minimization problem.
+   By minimizing the differences between both sides of the equation, we can solve for the weights that produce the smallest error.
+   This requires a distance measure for images. If we use the squared $L_2$ norm, we can formulate the linear least squares problem
+ 
+ \begin{equation}
+   \label{eq:minproblem}
+   \argmin_{\vect{w}} ||P\vect{w} - \vect{p}_{target}||^2
+  \end{equation}
+   
+   which can be solved fast and reliably with convex optimization techniques.  
+   
+   

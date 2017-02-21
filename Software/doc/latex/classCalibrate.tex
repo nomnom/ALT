@@ -1,0 +1,123 @@
+\hypertarget{classCalibrate}{\subsection{\-Calibrate \-Class \-Reference}
+\label{classCalibrate}\index{\-Calibrate@{\-Calibrate}}
+}
+
+
+\-The \-Calibration \-Loop.  
+
+
+
+
+{\ttfamily \#include $<$calibrate.\-h$>$}
+
+\subsubsection*{\-Data \-Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structCalibrate_1_1params}{params}
+\begin{DoxyCompactList}\small\item\em \-Configuration of \hyperlink{classCalibrate}{\-Calibrate} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classCalibrate_a9f1cb2fb9e76db3a4de6cc6a41f8225e}{\-Calibrate} (\hyperlink{classLightprobe}{\-Lightprobe} $\ast$p, \hyperlink{classLamps}{\-Lamps} $\ast$l, \hyperlink{structCalibrate_1_1params}{params} c)
+\item 
+\hyperlink{classCalibrate_ad1f6a92216d8cf4d49f1743f1e8d8cba}{\-Calibrate} (\hyperlink{classLightprobe}{\-Lightprobe} $\ast$p, \hyperlink{classLamps}{\-Lamps} $\ast$l, string path, double rate)
+\item 
+\hyperlink{classCalibrate_aa4cf6065d18ea089c23ba5de42f4da35}{$\sim$\-Calibrate} ()
+\item 
+\hyperlink{structCalibrate_1_1params}{params} \hyperlink{classCalibrate_a2050ebc8df9ad784c02b781a0634d7ca}{get\-Config} ()
+\item 
+void \hyperlink{classCalibrate_a4b635bcad3bf540a43fe01b47e54ad08}{run\-Capture\-Impacts} ()
+\item 
+void \hyperlink{classCalibrate_a9cce7906e90041efded1c24e6f5e14eb}{run\-Calibrate\-Lamps} ()
+\end{DoxyCompactItemize}
+\subsubsection*{\-Private \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structCalibrate_1_1params}{params} \hyperlink{classCalibrate_ab03f352d65f3ad6ae97d4706066b0ea2}{config}
+\item 
+\hyperlink{classLightprobe}{\-Lightprobe} $\ast$ \hyperlink{classCalibrate_a67a7afddb9f985155355c8d6705d4e63}{probe}
+\item 
+\hyperlink{classLamps}{\-Lamps} $\ast$ \hyperlink{classCalibrate_ad21c76042bc2ea7b864c049d5f3ef531}{lamps}
+\end{DoxyCompactItemize}
+
+
+\subsubsection{\-Detailed \-Description}
+\-The \-Calibration \-Loop. 
+
+\begin{DoxyAuthor}{\-Author}
+\-Manuel \-Jerger $<$\href{mailto:nom@nomnom.de}{\tt nom@nomnom.\-de}$>$ \-The \-Calibration \-Loop for use with the webcam probe. \-Can also measure the response curve of our lighting system. 
+\end{DoxyAuthor}
+
+
+\subsubsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{classCalibrate_a9f1cb2fb9e76db3a4de6cc6a41f8225e}{\index{\-Calibrate@{\-Calibrate}!\-Calibrate@{\-Calibrate}}
+\index{\-Calibrate@{\-Calibrate}!Calibrate@{\-Calibrate}}
+\paragraph[{\-Calibrate}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Calibrate\-::\-Calibrate} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Lightprobe} $\ast$}]{p, }
+\item[{{\bf \-Lamps} $\ast$}]{l, }
+\item[{{\bf params}}]{c}
+\end{DoxyParamCaption}
+)}}\label{classCalibrate_a9f1cb2fb9e76db3a4de6cc6a41f8225e}
+\begin{DoxyAuthor}{\-Author}
+\-Manuel \-Jerger $<$\href{mailto:nom@nomnom.de}{\tt nom@nomnom.\-de}$>$
+\end{DoxyAuthor}
+\-The \-Calibration \-Loop for use with the webcam probe. \-Can also measure the response curve of our lighting system. \hypertarget{classCalibrate_ad1f6a92216d8cf4d49f1743f1e8d8cba}{\index{\-Calibrate@{\-Calibrate}!\-Calibrate@{\-Calibrate}}
+\index{\-Calibrate@{\-Calibrate}!Calibrate@{\-Calibrate}}
+\paragraph[{\-Calibrate}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Calibrate\-::\-Calibrate} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Lightprobe} $\ast$}]{p, }
+\item[{{\bf \-Lamps} $\ast$}]{l, }
+\item[{string}]{path, }
+\item[{double}]{rate}
+\end{DoxyParamCaption}
+)}}\label{classCalibrate_ad1f6a92216d8cf4d49f1743f1e8d8cba}
+\hypertarget{classCalibrate_aa4cf6065d18ea089c23ba5de42f4da35}{\index{\-Calibrate@{\-Calibrate}!$\sim$\-Calibrate@{$\sim$\-Calibrate}}
+\index{$\sim$\-Calibrate@{$\sim$\-Calibrate}!Calibrate@{\-Calibrate}}
+\paragraph[{$\sim$\-Calibrate}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Calibrate\-::$\sim$\-Calibrate} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classCalibrate_aa4cf6065d18ea089c23ba5de42f4da35}
+
+
+\subsubsection{\-Member \-Function \-Documentation}
+\hypertarget{classCalibrate_a2050ebc8df9ad784c02b781a0634d7ca}{\index{\-Calibrate@{\-Calibrate}!get\-Config@{get\-Config}}
+\index{get\-Config@{get\-Config}!Calibrate@{\-Calibrate}}
+\paragraph[{get\-Config}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Calibrate\-::params} {\bf \-Calibrate\-::get\-Config} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classCalibrate_a2050ebc8df9ad784c02b781a0634d7ca}
+\hypertarget{classCalibrate_a9cce7906e90041efded1c24e6f5e14eb}{\index{\-Calibrate@{\-Calibrate}!run\-Calibrate\-Lamps@{run\-Calibrate\-Lamps}}
+\index{run\-Calibrate\-Lamps@{run\-Calibrate\-Lamps}!Calibrate@{\-Calibrate}}
+\paragraph[{run\-Calibrate\-Lamps}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Calibrate\-::run\-Calibrate\-Lamps} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classCalibrate_a9cce7906e90041efded1c24e6f5e14eb}
+\-Run the \-Lamp-\/\-Calibration and calculate \-L\-E\-D response using an image source and prerecorded images. \hypertarget{classCalibrate_a4b635bcad3bf540a43fe01b47e54ad08}{\index{\-Calibrate@{\-Calibrate}!run\-Capture\-Impacts@{run\-Capture\-Impacts}}
+\index{run\-Capture\-Impacts@{run\-Capture\-Impacts}!Calibrate@{\-Calibrate}}
+\paragraph[{run\-Capture\-Impacts}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Calibrate\-::run\-Capture\-Impacts} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classCalibrate_a4b635bcad3bf540a43fe01b47e54ad08}
+\-Run the calibration loop using the webcam. 
+
+\subsubsection{\-Field \-Documentation}
+\hypertarget{classCalibrate_ab03f352d65f3ad6ae97d4706066b0ea2}{\index{\-Calibrate@{\-Calibrate}!config@{config}}
+\index{config@{config}!Calibrate@{\-Calibrate}}
+\paragraph[{config}]{\setlength{\rightskip}{0pt plus 5cm}{\bf params} {\bf \-Calibrate\-::config}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classCalibrate_ab03f352d65f3ad6ae97d4706066b0ea2}
+\hypertarget{classCalibrate_ad21c76042bc2ea7b864c049d5f3ef531}{\index{\-Calibrate@{\-Calibrate}!lamps@{lamps}}
+\index{lamps@{lamps}!Calibrate@{\-Calibrate}}
+\paragraph[{lamps}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Lamps}$\ast$ {\bf \-Calibrate\-::lamps}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classCalibrate_ad21c76042bc2ea7b864c049d5f3ef531}
+\hypertarget{classCalibrate_a67a7afddb9f985155355c8d6705d4e63}{\index{\-Calibrate@{\-Calibrate}!probe@{probe}}
+\index{probe@{probe}!Calibrate@{\-Calibrate}}
+\paragraph[{probe}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Lightprobe}$\ast$ {\bf \-Calibrate\-::probe}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classCalibrate_a67a7afddb9f985155355c8d6705d4e63}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+src/\hyperlink{calibrate_8h}{calibrate.\-h}\item 
+src/\hyperlink{calibrate_8cpp}{calibrate.\-cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,254 @@
+\hypertarget{classLamps}{\subsection{\-Lamps \-Class \-Reference}
+\label{classLamps}\index{\-Lamps@{\-Lamps}}
+}
+
+
+\-A monochrome lamp.  
+
+
+
+
+{\ttfamily \#include $<$lamps.\-h$>$}
+
+\-Inheritance diagram for \-Lamps\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classLamps}
+\end{center}
+\end{figure}
+\subsubsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classLamps_a92824856cfa181b0632a17ab3a1129d2}{\-Lamps} ()
+\item 
+\hyperlink{classLamps_ac5d9774c29ce1712efcbb45152277181}{$\sim$\-Lamps} ()
+\item 
+virtual int \hyperlink{classLamps_a34fab22fb2de278133ef3ef2293e5597}{get\-Num\-Lamps} ()
+\item 
+virtual void \hyperlink{classLamps_a7d4b61ad0b436402fe57bd649f873ee2}{set\-Value} (int, double)
+\item 
+virtual double \hyperlink{classLamps_a5759248dcf78231270ed88d3e24c83cc}{get\-Value} (int)
+\item 
+virtual void \hyperlink{classLamps_a658b32441ac2d59f61289e79fde12e3e}{set\-All} (double)
+\item 
+void \hyperlink{classLamps_a561aec75120eb6e76106659132a10632}{start} ()
+\item 
+void \hyperlink{classLamps_adea5e864f8b721933e445b619bc5caec}{stop} ()
+\item 
+virtual bool \hyperlink{classLamps_ad5805156c0984402c05df3256482b30c}{do\-Step} (double delta\-\_\-t)
+\item 
+virtual void \hyperlink{classLamps_a0d6ba649f7ca8883aaabc1dcc4e604c8}{set\-Fade\-Speed} (double speed)
+\item 
+virtual void \hyperlink{classLamps_a18cb9afa3dd13d877d8c48b1fc804a2d}{set\-Update\-Rate} (double rate)
+\item 
+virtual bool \hyperlink{classLamps_aad615bf90ffa5f5d52d409a354a1942a}{is\-Ready} ()=0
+\item 
+virtual bool \hyperlink{classLamps_a9e5db6658a005b574d6344dab747bf4a}{send} ()=0
+\end{DoxyCompactItemize}
+\subsubsection*{\-Static \-Protected \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void $\ast$ \hyperlink{classLamps_ad6e04b6f320d75eacdcd45327bf8c80d}{start\-\_\-thread} (void $\ast$ptr)
+\end{DoxyCompactItemize}
+\subsubsection*{\-Protected \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{classLamps_a15b2fd60f5998f51d7b5e50e35c84329}{running}
+\item 
+int \hyperlink{classLamps_a64146e584dfa86281df86a37dd7cb772}{num\-Lamps}
+\item 
+vector$<$ double $>$ \hyperlink{classLamps_a12d0843f4f358ebd577089cb6c049076}{lamp\-Values}
+\item 
+vector$<$ double $>$ \hyperlink{classLamps_adc85fec25af923333458426f44504515}{previous\-Lamp\-Values}
+\item 
+vector$<$ double $>$ \hyperlink{classLamps_abf9da54471c9e73c99f955d75c7db949}{lamp\-Target\-Values}
+\item 
+double \hyperlink{classLamps_a77275168d36347133dec42259e88a1d4}{fade\-Speed}
+\item 
+double \hyperlink{classLamps_a31c7fbbc4d462b6b109f0c990e0e310f}{update\-Rate}
+\end{DoxyCompactItemize}
+
+
+\subsubsection{\-Detailed \-Description}
+\-A monochrome lamp. 
+
+\subsubsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{classLamps_a92824856cfa181b0632a17ab3a1129d2}{\index{\-Lamps@{\-Lamps}!\-Lamps@{\-Lamps}}
+\index{\-Lamps@{\-Lamps}!Lamps@{\-Lamps}}
+\paragraph[{\-Lamps}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Lamps\-::\-Lamps} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classLamps_a92824856cfa181b0632a17ab3a1129d2}
+\begin{DoxyAuthor}{\-Author}
+\-Manuel \-Jerger $<$\href{mailto:nom@nomnom.de}{\tt nom@nomnom.\-de}$>$
+\end{DoxyAuthor}
+\-This abstract class represents a group of lamps of identical type (controlled by the same hardware). \-A lamp is monochrome and takes a rational value from 0..1 , where 1.\-0 is the maximum brightness and 0 turns the lamp off. \-It provides virtuals for setting lamp values, driving the hardware, automatic fading. \-It provides threaded updating. \hypertarget{classLamps_ac5d9774c29ce1712efcbb45152277181}{\index{\-Lamps@{\-Lamps}!$\sim$\-Lamps@{$\sim$\-Lamps}}
+\index{$\sim$\-Lamps@{$\sim$\-Lamps}!Lamps@{\-Lamps}}
+\paragraph[{$\sim$\-Lamps}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Lamps\-::$\sim$\-Lamps} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classLamps_ac5d9774c29ce1712efcbb45152277181}
+
+
+\subsubsection{\-Member \-Function \-Documentation}
+\hypertarget{classLamps_ad5805156c0984402c05df3256482b30c}{\index{\-Lamps@{\-Lamps}!do\-Step@{do\-Step}}
+\index{do\-Step@{do\-Step}!Lamps@{\-Lamps}}
+\paragraph[{do\-Step}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Lamps\-::do\-Step} (
+\begin{DoxyParamCaption}
+\item[{double}]{delta\-\_\-t}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}\label{classLamps_ad5805156c0984402c05df3256482b30c}
+\-Does one fading step (if fadespeed $>$ 0) and calls \hyperlink{classLamps_a9e5db6658a005b574d6344dab747bf4a}{send()} at the end. 
+
+\-Reimplemented in \hyperlink{classLampPool_ab1ac3fbb0bf05504e21a84ed5856703e}{\-Lamp\-Pool}.
+
+\hypertarget{classLamps_a34fab22fb2de278133ef3ef2293e5597}{\index{\-Lamps@{\-Lamps}!get\-Num\-Lamps@{get\-Num\-Lamps}}
+\index{get\-Num\-Lamps@{get\-Num\-Lamps}!Lamps@{\-Lamps}}
+\paragraph[{get\-Num\-Lamps}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf \-Lamps\-::get\-Num\-Lamps} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}\label{classLamps_a34fab22fb2de278133ef3ef2293e5597}
+
+
+\-Reimplemented in \hyperlink{classLampPool_a841fa821a574fce5706529ef342a7801}{\-Lamp\-Pool}.
+
+\hypertarget{classLamps_a5759248dcf78231270ed88d3e24c83cc}{\index{\-Lamps@{\-Lamps}!get\-Value@{get\-Value}}
+\index{get\-Value@{get\-Value}!Lamps@{\-Lamps}}
+\paragraph[{get\-Value}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf \-Lamps\-::get\-Value} (
+\begin{DoxyParamCaption}
+\item[{int}]{lamp\-I\-D}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}\label{classLamps_a5759248dcf78231270ed88d3e24c83cc}
+\-Return the current brightness of a single lamp. 
+
+\-Reimplemented in \hyperlink{classLampPool_acf6877e3883a9804ca1cefab5f6617da}{\-Lamp\-Pool}.
+
+\hypertarget{classLamps_aad615bf90ffa5f5d52d409a354a1942a}{\index{\-Lamps@{\-Lamps}!is\-Ready@{is\-Ready}}
+\index{is\-Ready@{is\-Ready}!Lamps@{\-Lamps}}
+\paragraph[{is\-Ready}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool {\bf \-Lamps\-::is\-Ready} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}pure virtual\mbox{]}}}}\label{classLamps_aad615bf90ffa5f5d52d409a354a1942a}
+
+
+\-Implemented in \hyperlink{classSticks_a6fc1fb933fbe6ce05ba88ef83322a0f1}{\-Sticks}, \hyperlink{classLampPool_a6fff0dbb172914a107f4f99563306f49}{\-Lamp\-Pool}, and \hyperlink{classVirtualLamps_ad1e55b2045b9bf34bc085fc79f47ef90}{\-Virtual\-Lamps}.
+
+\hypertarget{classLamps_a9e5db6658a005b574d6344dab747bf4a}{\index{\-Lamps@{\-Lamps}!send@{send}}
+\index{send@{send}!Lamps@{\-Lamps}}
+\paragraph[{send}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool {\bf \-Lamps\-::send} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}pure virtual\mbox{]}}}}\label{classLamps_a9e5db6658a005b574d6344dab747bf4a}
+
+
+\-Implemented in \hyperlink{classSticks_aa19dfda62c22c44cd4bda1e3abe3f0af}{\-Sticks}, \hyperlink{classLampPool_a9df2536dce2e008da580c36ee69058c0}{\-Lamp\-Pool}, and \hyperlink{classVirtualLamps_a0b1e1847c16c5283ad95c29f9142bbc9}{\-Virtual\-Lamps}.
+
+\hypertarget{classLamps_a658b32441ac2d59f61289e79fde12e3e}{\index{\-Lamps@{\-Lamps}!set\-All@{set\-All}}
+\index{set\-All@{set\-All}!Lamps@{\-Lamps}}
+\paragraph[{set\-All}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Lamps\-::set\-All} (
+\begin{DoxyParamCaption}
+\item[{double}]{brightness}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}\label{classLamps_a658b32441ac2d59f61289e79fde12e3e}
+\-Set all lamps to the specified brightness. 
+
+\-Reimplemented in \hyperlink{classLampPool_a6581aee51439dd08c8217d59a661afa3}{\-Lamp\-Pool}.
+
+\hypertarget{classLamps_a0d6ba649f7ca8883aaabc1dcc4e604c8}{\index{\-Lamps@{\-Lamps}!set\-Fade\-Speed@{set\-Fade\-Speed}}
+\index{set\-Fade\-Speed@{set\-Fade\-Speed}!Lamps@{\-Lamps}}
+\paragraph[{set\-Fade\-Speed}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Lamps\-::set\-Fade\-Speed} (
+\begin{DoxyParamCaption}
+\item[{double}]{speed}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}\label{classLamps_a0d6ba649f7ca8883aaabc1dcc4e604c8}
+
+
+\-Reimplemented in \hyperlink{classLampPool_a2b41e1640e50b736dafe8ceb69fe5bd5}{\-Lamp\-Pool}.
+
+\hypertarget{classLamps_a18cb9afa3dd13d877d8c48b1fc804a2d}{\index{\-Lamps@{\-Lamps}!set\-Update\-Rate@{set\-Update\-Rate}}
+\index{set\-Update\-Rate@{set\-Update\-Rate}!Lamps@{\-Lamps}}
+\paragraph[{set\-Update\-Rate}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Lamps\-::set\-Update\-Rate} (
+\begin{DoxyParamCaption}
+\item[{double}]{rate}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}\label{classLamps_a18cb9afa3dd13d877d8c48b1fc804a2d}
+
+
+\-Reimplemented in \hyperlink{classLampPool_a0a904aa58951e12a3df7f39cb3c8f857}{\-Lamp\-Pool}.
+
+\hypertarget{classLamps_a7d4b61ad0b436402fe57bd649f873ee2}{\index{\-Lamps@{\-Lamps}!set\-Value@{set\-Value}}
+\index{set\-Value@{set\-Value}!Lamps@{\-Lamps}}
+\paragraph[{set\-Value}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Lamps\-::set\-Value} (
+\begin{DoxyParamCaption}
+\item[{int}]{lamp\-I\-D, }
+\item[{double}]{brightness}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}\label{classLamps_a7d4b61ad0b436402fe57bd649f873ee2}
+\-Sets the brightness of a lamp. \-If fading is enabled, it sets the target fade-\/to value. 
+
+\-Reimplemented in \hyperlink{classLampPool_a1017c816b9d8690690812c83692cfe49}{\-Lamp\-Pool}.
+
+\hypertarget{classLamps_a561aec75120eb6e76106659132a10632}{\index{\-Lamps@{\-Lamps}!start@{start}}
+\index{start@{start}!Lamps@{\-Lamps}}
+\paragraph[{start}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Lamps\-::start} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classLamps_a561aec75120eb6e76106659132a10632}
+\-Starts fading thread for automatic updating and fading. 
+
+\-Reimplemented in \hyperlink{classLampPool_a93ec860020146d2d8e5779035b3a9b46}{\-Lamp\-Pool}.
+
+\hypertarget{classLamps_ad6e04b6f320d75eacdcd45327bf8c80d}{\index{\-Lamps@{\-Lamps}!start\-\_\-thread@{start\-\_\-thread}}
+\index{start\-\_\-thread@{start\-\_\-thread}!Lamps@{\-Lamps}}
+\paragraph[{start\-\_\-thread}]{\setlength{\rightskip}{0pt plus 5cm}void $\ast$ {\bf \-Lamps\-::start\-\_\-thread} (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{ptr}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, protected\mbox{]}}}}\label{classLamps_ad6e04b6f320d75eacdcd45327bf8c80d}
+\-The updating thread. \hypertarget{classLamps_adea5e864f8b721933e445b619bc5caec}{\index{\-Lamps@{\-Lamps}!stop@{stop}}
+\index{stop@{stop}!Lamps@{\-Lamps}}
+\paragraph[{stop}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Lamps\-::stop} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classLamps_adea5e864f8b721933e445b619bc5caec}
+\-Stops automatic updating. 
+
+\-Reimplemented in \hyperlink{classLampPool_a0fd3756c9d927cc1d3dfec08228e1961}{\-Lamp\-Pool}.
+
+
+
+\subsubsection{\-Field \-Documentation}
+\hypertarget{classLamps_a77275168d36347133dec42259e88a1d4}{\index{\-Lamps@{\-Lamps}!fade\-Speed@{fade\-Speed}}
+\index{fade\-Speed@{fade\-Speed}!Lamps@{\-Lamps}}
+\paragraph[{fade\-Speed}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf \-Lamps\-::fade\-Speed}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{classLamps_a77275168d36347133dec42259e88a1d4}
+\hypertarget{classLamps_abf9da54471c9e73c99f955d75c7db949}{\index{\-Lamps@{\-Lamps}!lamp\-Target\-Values@{lamp\-Target\-Values}}
+\index{lamp\-Target\-Values@{lamp\-Target\-Values}!Lamps@{\-Lamps}}
+\paragraph[{lamp\-Target\-Values}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$double$>$ {\bf \-Lamps\-::lamp\-Target\-Values}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{classLamps_abf9da54471c9e73c99f955d75c7db949}
+\hypertarget{classLamps_a12d0843f4f358ebd577089cb6c049076}{\index{\-Lamps@{\-Lamps}!lamp\-Values@{lamp\-Values}}
+\index{lamp\-Values@{lamp\-Values}!Lamps@{\-Lamps}}
+\paragraph[{lamp\-Values}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$double$>$ {\bf \-Lamps\-::lamp\-Values}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{classLamps_a12d0843f4f358ebd577089cb6c049076}
+\hypertarget{classLamps_a64146e584dfa86281df86a37dd7cb772}{\index{\-Lamps@{\-Lamps}!num\-Lamps@{num\-Lamps}}
+\index{num\-Lamps@{num\-Lamps}!Lamps@{\-Lamps}}
+\paragraph[{num\-Lamps}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf \-Lamps\-::num\-Lamps}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{classLamps_a64146e584dfa86281df86a37dd7cb772}
+\hypertarget{classLamps_adc85fec25af923333458426f44504515}{\index{\-Lamps@{\-Lamps}!previous\-Lamp\-Values@{previous\-Lamp\-Values}}
+\index{previous\-Lamp\-Values@{previous\-Lamp\-Values}!Lamps@{\-Lamps}}
+\paragraph[{previous\-Lamp\-Values}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$double$>$ {\bf \-Lamps\-::previous\-Lamp\-Values}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{classLamps_adc85fec25af923333458426f44504515}
+\hypertarget{classLamps_a15b2fd60f5998f51d7b5e50e35c84329}{\index{\-Lamps@{\-Lamps}!running@{running}}
+\index{running@{running}!Lamps@{\-Lamps}}
+\paragraph[{running}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Lamps\-::running}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{classLamps_a15b2fd60f5998f51d7b5e50e35c84329}
+\hypertarget{classLamps_a31c7fbbc4d462b6b109f0c990e0e310f}{\index{\-Lamps@{\-Lamps}!update\-Rate@{update\-Rate}}
+\index{update\-Rate@{update\-Rate}!Lamps@{\-Lamps}}
+\paragraph[{update\-Rate}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf \-Lamps\-::update\-Rate}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{classLamps_a31c7fbbc4d462b6b109f0c990e0e310f}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+src/\hyperlink{lamps_8h}{lamps.\-h}\item 
+src/\hyperlink{lamps_8cpp}{lamps.\-cpp}\end{DoxyCompactItemize}

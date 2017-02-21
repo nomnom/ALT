@@ -1,0 +1,338 @@
+\hypertarget{utils_8cpp}{\subsection{src/utils.cpp \-File \-Reference}
+\label{utils_8cpp}\index{src/utils.\-cpp@{src/utils.\-cpp}}
+}
+{\ttfamily \#include \char`\"{}utils.\-h\char`\"{}}\*
+{\ttfamily \#include $<$getopt.\-h$>$}\*
+\subsubsection*{\-Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{utils_8cpp_aea081df85db0cbf8310f4542db85a4cc}{\-M\-\_\-\-S\-Q\-R\-T2\-P\-I}~2.\-50662827463100050241
+\end{DoxyCompactItemize}
+\subsubsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+imglib\-::\-Image$<$ float $>$ \& \hyperlink{utils_8cpp_af70a156db2679c4f4c918393d5a013c6}{img\-Add} (imglib\-::\-Image$<$ float $>$ \&\-A, imglib\-::\-Image$<$ float $>$ \&\-B)
+\item 
+imglib\-::\-Image$<$ float $>$ \& \hyperlink{utils_8cpp_a7ba19ee1f4d56d1f4a6d98a6f620011e}{img\-Sub} (imglib\-::\-Image$<$ float $>$ \&\-A, imglib\-::\-Image$<$ float $>$ \&\-B)
+\item 
+imglib\-::\-Image$<$ float $>$ \& \hyperlink{utils_8cpp_af98ef3f5f3468c645f0a2106b50ac5bf}{img\-Add} (imglib\-::\-Image$<$ float $>$ \&\-A, \hyperlink{structrgb}{rgb} color)
+\item 
+imglib\-::\-Image$<$ float $>$ \& \hyperlink{utils_8cpp_a29c4f6b55dfafdcedeb7ebd7309716e4}{img\-Mul} (imglib\-::\-Image$<$ float $>$ \&\-A, float scalar)
+\item 
+float \hyperlink{utils_8cpp_ab3cf80dd119e5575fc54ebb1e41c36bd}{img\-Max} (imglib\-::\-Image$<$ float $>$ \&\-A)
+\item 
+float \hyperlink{utils_8cpp_a6d0a4da646579ef4f2ba1c2863873ef1}{img\-Min} (imglib\-::\-Image$<$ float $>$ \&\-A)
+\item 
+imglib\-::\-Image$<$ float $>$ \& \hyperlink{utils_8cpp_a55ba5b124ad940e5205aa63c646e1b36}{img\-Scale} (imglib\-::\-Image$<$ float $>$ \&\-A)
+\item 
+\hyperlink{structrgb}{rgb} \hyperlink{utils_8cpp_af055f18e7f3b08318ff949e6498ea0a9}{sample\-Gauss7} (imglib\-::\-Image$<$ float $>$ image, int xpos, int ypos)
+\item 
+double \hyperlink{utils_8cpp_a0dd39d56e3eda8d0ad575663bb0518bd}{normal\-Distribution} (double sigma, double mu, double x)
+\item 
+\hyperlink{structrgb}{rgb} \hyperlink{utils_8cpp_add8a5da556bccd6767b3b5b73625ff82}{map\-Gamma} (\hyperlink{structrgb}{rgb} value, double gain, double lambda)
+\item 
+double \hyperlink{utils_8cpp_acc3b81d5055f0e53011a09648d99cfd7}{map\-Linear} (double val, double wp, double bp)
+\item 
+\hyperlink{structrgb}{rgb} \hyperlink{utils_8cpp_aa07cc396e9f5909789bd7cd7585b4524}{map\-Linear} (\hyperlink{structrgb}{rgb} val, \hyperlink{structrgb}{rgb} wp, \hyperlink{structrgb}{rgb} bp)
+\item 
+\hyperlink{structrgb}{rgb} \hyperlink{utils_8cpp_aee4a0c84d71d303e5b0bfd9d45165cac}{rgb2srgb} (\hyperlink{structrgb}{rgb} linear)
+\item 
+double \hyperlink{utils_8cpp_a4b083da617f2c75fcc9420a725966d2d}{rgb2srgb\-\_\-component} (double value)
+\item 
+\-Vector3d \hyperlink{utils_8cpp_a5563c3ab02be36251e5f22d9ab41cd4b}{rgb2xy\-Y} (\hyperlink{structrgb}{rgb} val)
+\item 
+\hyperlink{structrgb}{rgb} \hyperlink{utils_8cpp_a0b4e2045baebfc2cec92224a94a06ab6}{srgb2rgb} (\hyperlink{structrgb}{rgb} s\-R\-G\-B)
+\item 
+double \hyperlink{utils_8cpp_a59ce04a4fb0e230afec6ba18357d019f}{srgb2rgb\-\_\-component} (double value)
+\item 
+double \hyperlink{utils_8cpp_ad97f7e15d40bc6ac70ec74122c8a38e3}{clamp} (double val)
+\item 
+\hyperlink{structrgb}{rgb} \hyperlink{utils_8cpp_a9f2c03a21b65ea931f510e959d9f3415}{clamp} (\hyperlink{structrgb}{rgb} val)
+\item 
+\hyperlink{structcircle}{circle} \hyperlink{utils_8cpp_acbb9d469878f84c33acaeae386ddfd9f}{get\-Circum\-Circle} (\-Vector2d p1, \-Vector2d p2, \-Vector2d p3)
+\item 
+\hyperlink{utils_8h_aac426d8086789d4d7e318436071c9754}{directions} \hyperlink{utils_8cpp_a0f01d4dd6fcb7ac2fc637cb0a23fb223}{sample\-Hemisphere} (int num\-Samples\-H, int num\-Samples\-A)
+\item 
+\hyperlink{utils_8h_aac426d8086789d4d7e318436071c9754}{directions} \hyperlink{utils_8cpp_a84f8b3bda17602bfef1e85642f09dfee}{sample\-Sphere} (int num\-Samples\-H, int num\-Samples\-A, double horizon\-Angle)
+\item 
+\hyperlink{utils_8h_aac426d8086789d4d7e318436071c9754}{directions} \hyperlink{utils_8cpp_a0599be5dae7949307a0cd655c91a387f}{sample\-Uniform} (int num\-Samples, double horizon\-Angle)
+\item 
+\hyperlink{utils_8h_aac426d8086789d4d7e318436071c9754}{directions} \hyperlink{utils_8cpp_a068192d5b12e3783208b366ef34d5819}{samples\-From\-File} (string path, int num\-Vecs, double horizon\-Angle)
+\item 
+\hyperlink{utils_8h_aac426d8086789d4d7e318436071c9754}{directions} \hyperlink{utils_8cpp_a582b9db722bd12c926c83f9132ce3461}{load\-Vectors3d} (string path, int num\-Vecs)
+\item 
+int \hyperlink{utils_8cpp_a297ff2af49e66ded17e4976fae1e264b}{find\-Nearest\-Neighbor} (\-Vector3d vec, \hyperlink{utils_8h_aac426d8086789d4d7e318436071c9754}{directions} candidates)
+\item 
+\-Vector2d \hyperlink{utils_8cpp_aaae4788a2dbbc57cb7b2b8e268096356}{cartesian2spherical} (\-Vector3d cartesian)
+\item 
+\-Vector3d \hyperlink{utils_8cpp_a6368cacaed2f592553255144271a1fdc}{spherical2cartesian} (\-Vector2d spherical)
+\item 
+double \hyperlink{utils_8cpp_a5b226634db92c5ac9f3ec41c42c93857}{angle} (\-Vector2d p1, \-Vector2d p2)
+\end{DoxyCompactItemize}
+\subsubsection*{\-Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{utils_8cpp_a1bdcfae3209cbd96db35a2ae356fa15e}{verbosity} = 0
+\item 
+const int \hyperlink{utils_8cpp_a37fe98ff5bf08aab194cc5c88b0a0f7d}{gf7} \mbox{[}7\mbox{]}\mbox{[}7\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsubsection{\-Define \-Documentation}
+\hypertarget{utils_8cpp_aea081df85db0cbf8310f4542db85a4cc}{\index{utils.\-cpp@{utils.\-cpp}!\-M\-\_\-\-S\-Q\-R\-T2\-P\-I@{\-M\-\_\-\-S\-Q\-R\-T2\-P\-I}}
+\index{\-M\-\_\-\-S\-Q\-R\-T2\-P\-I@{\-M\-\_\-\-S\-Q\-R\-T2\-P\-I}!utils.cpp@{utils.\-cpp}}
+\paragraph[{\-M\-\_\-\-S\-Q\-R\-T2\-P\-I}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-M\-\_\-\-S\-Q\-R\-T2\-P\-I}~2.\-50662827463100050241}}\label{utils_8cpp_aea081df85db0cbf8310f4542db85a4cc}
+
+
+\subsubsection{\-Function \-Documentation}
+\hypertarget{utils_8cpp_a5b226634db92c5ac9f3ec41c42c93857}{\index{utils.\-cpp@{utils.\-cpp}!angle@{angle}}
+\index{angle@{angle}!utils.cpp@{utils.\-cpp}}
+\paragraph[{angle}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf angle} (
+\begin{DoxyParamCaption}
+\item[{\-Vector2d}]{p1, }
+\item[{\-Vector2d}]{p2}
+\end{DoxyParamCaption}
+)}}\label{utils_8cpp_a5b226634db92c5ac9f3ec41c42c93857}
+\hypertarget{utils_8cpp_aaae4788a2dbbc57cb7b2b8e268096356}{\index{utils.\-cpp@{utils.\-cpp}!cartesian2spherical@{cartesian2spherical}}
+\index{cartesian2spherical@{cartesian2spherical}!utils.cpp@{utils.\-cpp}}
+\paragraph[{cartesian2spherical}]{\setlength{\rightskip}{0pt plus 5cm}\-Vector2d {\bf cartesian2spherical} (
+\begin{DoxyParamCaption}
+\item[{\-Vector3d}]{cartesian}
+\end{DoxyParamCaption}
+)}}\label{utils_8cpp_aaae4788a2dbbc57cb7b2b8e268096356}
+\hypertarget{utils_8cpp_ad97f7e15d40bc6ac70ec74122c8a38e3}{\index{utils.\-cpp@{utils.\-cpp}!clamp@{clamp}}
+\index{clamp@{clamp}!utils.cpp@{utils.\-cpp}}
+\paragraph[{clamp}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf clamp} (
+\begin{DoxyParamCaption}
+\item[{double}]{val}
+\end{DoxyParamCaption}
+)}}\label{utils_8cpp_ad97f7e15d40bc6ac70ec74122c8a38e3}
+\hypertarget{utils_8cpp_a9f2c03a21b65ea931f510e959d9f3415}{\index{utils.\-cpp@{utils.\-cpp}!clamp@{clamp}}
+\index{clamp@{clamp}!utils.cpp@{utils.\-cpp}}
+\paragraph[{clamp}]{\setlength{\rightskip}{0pt plus 5cm}{\bf rgb} {\bf clamp} (
+\begin{DoxyParamCaption}
+\item[{{\bf rgb}}]{val}
+\end{DoxyParamCaption}
+)}}\label{utils_8cpp_a9f2c03a21b65ea931f510e959d9f3415}
+\hypertarget{utils_8cpp_a297ff2af49e66ded17e4976fae1e264b}{\index{utils.\-cpp@{utils.\-cpp}!find\-Nearest\-Neighbor@{find\-Nearest\-Neighbor}}
+\index{find\-Nearest\-Neighbor@{find\-Nearest\-Neighbor}!utils.cpp@{utils.\-cpp}}
+\paragraph[{find\-Nearest\-Neighbor}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf find\-Nearest\-Neighbor} (
+\begin{DoxyParamCaption}
+\item[{\-Vector3d}]{vec, }
+\item[{{\bf directions}}]{candidates}
+\end{DoxyParamCaption}
+)}}\label{utils_8cpp_a297ff2af49e66ded17e4976fae1e264b}
+\hypertarget{utils_8cpp_acbb9d469878f84c33acaeae386ddfd9f}{\index{utils.\-cpp@{utils.\-cpp}!get\-Circum\-Circle@{get\-Circum\-Circle}}
+\index{get\-Circum\-Circle@{get\-Circum\-Circle}!utils.cpp@{utils.\-cpp}}
+\paragraph[{get\-Circum\-Circle}]{\setlength{\rightskip}{0pt plus 5cm}{\bf circle} {\bf get\-Circum\-Circle} (
+\begin{DoxyParamCaption}
+\item[{\-Vector2d}]{p1, }
+\item[{\-Vector2d}]{p2, }
+\item[{\-Vector2d}]{p3}
+\end{DoxyParamCaption}
+)}}\label{utils_8cpp_acbb9d469878f84c33acaeae386ddfd9f}
+\hypertarget{utils_8cpp_af70a156db2679c4f4c918393d5a013c6}{\index{utils.\-cpp@{utils.\-cpp}!img\-Add@{img\-Add}}
+\index{img\-Add@{img\-Add}!utils.cpp@{utils.\-cpp}}
+\paragraph[{img\-Add}]{\setlength{\rightskip}{0pt plus 5cm}imglib\-::\-Image$<$float$>$\& {\bf img\-Add} (
+\begin{DoxyParamCaption}
+\item[{imglib\-::\-Image$<$ float $>$ \&}]{\-A, }
+\item[{imglib\-::\-Image$<$ float $>$ \&}]{\-B}
+\end{DoxyParamCaption}
+)}}\label{utils_8cpp_af70a156db2679c4f4c918393d5a013c6}
+\hypertarget{utils_8cpp_af98ef3f5f3468c645f0a2106b50ac5bf}{\index{utils.\-cpp@{utils.\-cpp}!img\-Add@{img\-Add}}
+\index{img\-Add@{img\-Add}!utils.cpp@{utils.\-cpp}}
+\paragraph[{img\-Add}]{\setlength{\rightskip}{0pt plus 5cm}imglib\-::\-Image$<$float$>$\& {\bf img\-Add} (
+\begin{DoxyParamCaption}
+\item[{imglib\-::\-Image$<$ float $>$ \&}]{\-A, }
+\item[{{\bf rgb}}]{color}
+\end{DoxyParamCaption}
+)}}\label{utils_8cpp_af98ef3f5f3468c645f0a2106b50ac5bf}
+\hypertarget{utils_8cpp_ab3cf80dd119e5575fc54ebb1e41c36bd}{\index{utils.\-cpp@{utils.\-cpp}!img\-Max@{img\-Max}}
+\index{img\-Max@{img\-Max}!utils.cpp@{utils.\-cpp}}
+\paragraph[{img\-Max}]{\setlength{\rightskip}{0pt plus 5cm}float {\bf img\-Max} (
+\begin{DoxyParamCaption}
+\item[{imglib\-::\-Image$<$ float $>$ \&}]{\-A}
+\end{DoxyParamCaption}
+)}}\label{utils_8cpp_ab3cf80dd119e5575fc54ebb1e41c36bd}
+\hypertarget{utils_8cpp_a6d0a4da646579ef4f2ba1c2863873ef1}{\index{utils.\-cpp@{utils.\-cpp}!img\-Min@{img\-Min}}
+\index{img\-Min@{img\-Min}!utils.cpp@{utils.\-cpp}}
+\paragraph[{img\-Min}]{\setlength{\rightskip}{0pt plus 5cm}float {\bf img\-Min} (
+\begin{DoxyParamCaption}
+\item[{imglib\-::\-Image$<$ float $>$ \&}]{\-A}
+\end{DoxyParamCaption}
+)}}\label{utils_8cpp_a6d0a4da646579ef4f2ba1c2863873ef1}
+\hypertarget{utils_8cpp_a29c4f6b55dfafdcedeb7ebd7309716e4}{\index{utils.\-cpp@{utils.\-cpp}!img\-Mul@{img\-Mul}}
+\index{img\-Mul@{img\-Mul}!utils.cpp@{utils.\-cpp}}
+\paragraph[{img\-Mul}]{\setlength{\rightskip}{0pt plus 5cm}imglib\-::\-Image$<$float$>$\& {\bf img\-Mul} (
+\begin{DoxyParamCaption}
+\item[{imglib\-::\-Image$<$ float $>$ \&}]{\-A, }
+\item[{float}]{scalar}
+\end{DoxyParamCaption}
+)}}\label{utils_8cpp_a29c4f6b55dfafdcedeb7ebd7309716e4}
+\hypertarget{utils_8cpp_a55ba5b124ad940e5205aa63c646e1b36}{\index{utils.\-cpp@{utils.\-cpp}!img\-Scale@{img\-Scale}}
+\index{img\-Scale@{img\-Scale}!utils.cpp@{utils.\-cpp}}
+\paragraph[{img\-Scale}]{\setlength{\rightskip}{0pt plus 5cm}imglib\-::\-Image$<$float$>$\& {\bf img\-Scale} (
+\begin{DoxyParamCaption}
+\item[{imglib\-::\-Image$<$ float $>$ \&}]{\-A}
+\end{DoxyParamCaption}
+)}}\label{utils_8cpp_a55ba5b124ad940e5205aa63c646e1b36}
+\hypertarget{utils_8cpp_a7ba19ee1f4d56d1f4a6d98a6f620011e}{\index{utils.\-cpp@{utils.\-cpp}!img\-Sub@{img\-Sub}}
+\index{img\-Sub@{img\-Sub}!utils.cpp@{utils.\-cpp}}
+\paragraph[{img\-Sub}]{\setlength{\rightskip}{0pt plus 5cm}imglib\-::\-Image$<$float$>$\& {\bf img\-Sub} (
+\begin{DoxyParamCaption}
+\item[{imglib\-::\-Image$<$ float $>$ \&}]{\-A, }
+\item[{imglib\-::\-Image$<$ float $>$ \&}]{\-B}
+\end{DoxyParamCaption}
+)}}\label{utils_8cpp_a7ba19ee1f4d56d1f4a6d98a6f620011e}
+\hypertarget{utils_8cpp_a582b9db722bd12c926c83f9132ce3461}{\index{utils.\-cpp@{utils.\-cpp}!load\-Vectors3d@{load\-Vectors3d}}
+\index{load\-Vectors3d@{load\-Vectors3d}!utils.cpp@{utils.\-cpp}}
+\paragraph[{load\-Vectors3d}]{\setlength{\rightskip}{0pt plus 5cm}{\bf directions} {\bf load\-Vectors3d} (
+\begin{DoxyParamCaption}
+\item[{string}]{path, }
+\item[{int}]{num\-Vecs}
+\end{DoxyParamCaption}
+)}}\label{utils_8cpp_a582b9db722bd12c926c83f9132ce3461}
+\hypertarget{utils_8cpp_add8a5da556bccd6767b3b5b73625ff82}{\index{utils.\-cpp@{utils.\-cpp}!map\-Gamma@{map\-Gamma}}
+\index{map\-Gamma@{map\-Gamma}!utils.cpp@{utils.\-cpp}}
+\paragraph[{map\-Gamma}]{\setlength{\rightskip}{0pt plus 5cm}{\bf rgb} {\bf map\-Gamma} (
+\begin{DoxyParamCaption}
+\item[{{\bf rgb}}]{value, }
+\item[{double}]{gain, }
+\item[{double}]{lambda}
+\end{DoxyParamCaption}
+)}}\label{utils_8cpp_add8a5da556bccd6767b3b5b73625ff82}
+\hypertarget{utils_8cpp_acc3b81d5055f0e53011a09648d99cfd7}{\index{utils.\-cpp@{utils.\-cpp}!map\-Linear@{map\-Linear}}
+\index{map\-Linear@{map\-Linear}!utils.cpp@{utils.\-cpp}}
+\paragraph[{map\-Linear}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf map\-Linear} (
+\begin{DoxyParamCaption}
+\item[{double}]{val, }
+\item[{double}]{wp, }
+\item[{double}]{bp}
+\end{DoxyParamCaption}
+)}}\label{utils_8cpp_acc3b81d5055f0e53011a09648d99cfd7}
+\hypertarget{utils_8cpp_aa07cc396e9f5909789bd7cd7585b4524}{\index{utils.\-cpp@{utils.\-cpp}!map\-Linear@{map\-Linear}}
+\index{map\-Linear@{map\-Linear}!utils.cpp@{utils.\-cpp}}
+\paragraph[{map\-Linear}]{\setlength{\rightskip}{0pt plus 5cm}{\bf rgb} {\bf map\-Linear} (
+\begin{DoxyParamCaption}
+\item[{{\bf rgb}}]{val, }
+\item[{{\bf rgb}}]{wp, }
+\item[{{\bf rgb}}]{bp}
+\end{DoxyParamCaption}
+)}}\label{utils_8cpp_aa07cc396e9f5909789bd7cd7585b4524}
+\hypertarget{utils_8cpp_a0dd39d56e3eda8d0ad575663bb0518bd}{\index{utils.\-cpp@{utils.\-cpp}!normal\-Distribution@{normal\-Distribution}}
+\index{normal\-Distribution@{normal\-Distribution}!utils.cpp@{utils.\-cpp}}
+\paragraph[{normal\-Distribution}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf normal\-Distribution} (
+\begin{DoxyParamCaption}
+\item[{double}]{sigma, }
+\item[{double}]{mu, }
+\item[{double}]{x}
+\end{DoxyParamCaption}
+)}}\label{utils_8cpp_a0dd39d56e3eda8d0ad575663bb0518bd}
+\hypertarget{utils_8cpp_aee4a0c84d71d303e5b0bfd9d45165cac}{\index{utils.\-cpp@{utils.\-cpp}!rgb2srgb@{rgb2srgb}}
+\index{rgb2srgb@{rgb2srgb}!utils.cpp@{utils.\-cpp}}
+\paragraph[{rgb2srgb}]{\setlength{\rightskip}{0pt plus 5cm}{\bf rgb} {\bf rgb2srgb} (
+\begin{DoxyParamCaption}
+\item[{{\bf rgb}}]{linear}
+\end{DoxyParamCaption}
+)}}\label{utils_8cpp_aee4a0c84d71d303e5b0bfd9d45165cac}
+\hypertarget{utils_8cpp_a4b083da617f2c75fcc9420a725966d2d}{\index{utils.\-cpp@{utils.\-cpp}!rgb2srgb\-\_\-component@{rgb2srgb\-\_\-component}}
+\index{rgb2srgb\-\_\-component@{rgb2srgb\-\_\-component}!utils.cpp@{utils.\-cpp}}
+\paragraph[{rgb2srgb\-\_\-component}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf rgb2srgb\-\_\-component} (
+\begin{DoxyParamCaption}
+\item[{double}]{value}
+\end{DoxyParamCaption}
+)}}\label{utils_8cpp_a4b083da617f2c75fcc9420a725966d2d}
+\hypertarget{utils_8cpp_a5563c3ab02be36251e5f22d9ab41cd4b}{\index{utils.\-cpp@{utils.\-cpp}!rgb2xy\-Y@{rgb2xy\-Y}}
+\index{rgb2xy\-Y@{rgb2xy\-Y}!utils.cpp@{utils.\-cpp}}
+\paragraph[{rgb2xy\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\-Vector3d {\bf rgb2xy\-Y} (
+\begin{DoxyParamCaption}
+\item[{{\bf rgb}}]{val}
+\end{DoxyParamCaption}
+)}}\label{utils_8cpp_a5563c3ab02be36251e5f22d9ab41cd4b}
+\hypertarget{utils_8cpp_af055f18e7f3b08318ff949e6498ea0a9}{\index{utils.\-cpp@{utils.\-cpp}!sample\-Gauss7@{sample\-Gauss7}}
+\index{sample\-Gauss7@{sample\-Gauss7}!utils.cpp@{utils.\-cpp}}
+\paragraph[{sample\-Gauss7}]{\setlength{\rightskip}{0pt plus 5cm}{\bf rgb} {\bf sample\-Gauss7} (
+\begin{DoxyParamCaption}
+\item[{imglib\-::\-Image$<$ float $>$}]{image, }
+\item[{int}]{xpos, }
+\item[{int}]{ypos}
+\end{DoxyParamCaption}
+)}}\label{utils_8cpp_af055f18e7f3b08318ff949e6498ea0a9}
+\hypertarget{utils_8cpp_a0f01d4dd6fcb7ac2fc637cb0a23fb223}{\index{utils.\-cpp@{utils.\-cpp}!sample\-Hemisphere@{sample\-Hemisphere}}
+\index{sample\-Hemisphere@{sample\-Hemisphere}!utils.cpp@{utils.\-cpp}}
+\paragraph[{sample\-Hemisphere}]{\setlength{\rightskip}{0pt plus 5cm}{\bf directions} {\bf sample\-Hemisphere} (
+\begin{DoxyParamCaption}
+\item[{int}]{num\-Samples\-H, }
+\item[{int}]{num\-Samples\-A}
+\end{DoxyParamCaption}
+)}}\label{utils_8cpp_a0f01d4dd6fcb7ac2fc637cb0a23fb223}
+\hypertarget{utils_8cpp_a068192d5b12e3783208b366ef34d5819}{\index{utils.\-cpp@{utils.\-cpp}!samples\-From\-File@{samples\-From\-File}}
+\index{samples\-From\-File@{samples\-From\-File}!utils.cpp@{utils.\-cpp}}
+\paragraph[{samples\-From\-File}]{\setlength{\rightskip}{0pt plus 5cm}{\bf directions} {\bf samples\-From\-File} (
+\begin{DoxyParamCaption}
+\item[{string}]{path, }
+\item[{int}]{num\-Vecs, }
+\item[{double}]{horizon\-Angle}
+\end{DoxyParamCaption}
+)}}\label{utils_8cpp_a068192d5b12e3783208b366ef34d5819}
+\hypertarget{utils_8cpp_a84f8b3bda17602bfef1e85642f09dfee}{\index{utils.\-cpp@{utils.\-cpp}!sample\-Sphere@{sample\-Sphere}}
+\index{sample\-Sphere@{sample\-Sphere}!utils.cpp@{utils.\-cpp}}
+\paragraph[{sample\-Sphere}]{\setlength{\rightskip}{0pt plus 5cm}{\bf directions} {\bf sample\-Sphere} (
+\begin{DoxyParamCaption}
+\item[{int}]{num\-Samples\-H, }
+\item[{int}]{num\-Samples\-A, }
+\item[{double}]{horizon\-Angle}
+\end{DoxyParamCaption}
+)}}\label{utils_8cpp_a84f8b3bda17602bfef1e85642f09dfee}
+\hypertarget{utils_8cpp_a0599be5dae7949307a0cd655c91a387f}{\index{utils.\-cpp@{utils.\-cpp}!sample\-Uniform@{sample\-Uniform}}
+\index{sample\-Uniform@{sample\-Uniform}!utils.cpp@{utils.\-cpp}}
+\paragraph[{sample\-Uniform}]{\setlength{\rightskip}{0pt plus 5cm}{\bf directions} {\bf sample\-Uniform} (
+\begin{DoxyParamCaption}
+\item[{int}]{num\-Samples, }
+\item[{double}]{horizon\-Angle}
+\end{DoxyParamCaption}
+)}}\label{utils_8cpp_a0599be5dae7949307a0cd655c91a387f}
+\hypertarget{utils_8cpp_a6368cacaed2f592553255144271a1fdc}{\index{utils.\-cpp@{utils.\-cpp}!spherical2cartesian@{spherical2cartesian}}
+\index{spherical2cartesian@{spherical2cartesian}!utils.cpp@{utils.\-cpp}}
+\paragraph[{spherical2cartesian}]{\setlength{\rightskip}{0pt plus 5cm}\-Vector3d {\bf spherical2cartesian} (
+\begin{DoxyParamCaption}
+\item[{\-Vector2d}]{spherical}
+\end{DoxyParamCaption}
+)}}\label{utils_8cpp_a6368cacaed2f592553255144271a1fdc}
+\hypertarget{utils_8cpp_a0b4e2045baebfc2cec92224a94a06ab6}{\index{utils.\-cpp@{utils.\-cpp}!srgb2rgb@{srgb2rgb}}
+\index{srgb2rgb@{srgb2rgb}!utils.cpp@{utils.\-cpp}}
+\paragraph[{srgb2rgb}]{\setlength{\rightskip}{0pt plus 5cm}{\bf rgb} {\bf srgb2rgb} (
+\begin{DoxyParamCaption}
+\item[{{\bf rgb}}]{s\-R\-G\-B}
+\end{DoxyParamCaption}
+)}}\label{utils_8cpp_a0b4e2045baebfc2cec92224a94a06ab6}
+\hypertarget{utils_8cpp_a59ce04a4fb0e230afec6ba18357d019f}{\index{utils.\-cpp@{utils.\-cpp}!srgb2rgb\-\_\-component@{srgb2rgb\-\_\-component}}
+\index{srgb2rgb\-\_\-component@{srgb2rgb\-\_\-component}!utils.cpp@{utils.\-cpp}}
+\paragraph[{srgb2rgb\-\_\-component}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf srgb2rgb\-\_\-component} (
+\begin{DoxyParamCaption}
+\item[{double}]{value}
+\end{DoxyParamCaption}
+)}}\label{utils_8cpp_a59ce04a4fb0e230afec6ba18357d019f}
+
+
+\subsubsection{\-Variable \-Documentation}
+\hypertarget{utils_8cpp_a37fe98ff5bf08aab194cc5c88b0a0f7d}{\index{utils.\-cpp@{utils.\-cpp}!gf7@{gf7}}
+\index{gf7@{gf7}!utils.cpp@{utils.\-cpp}}
+\paragraph[{gf7}]{\setlength{\rightskip}{0pt plus 5cm}const int {\bf gf7}\mbox{[}7\mbox{]}\mbox{[}7\mbox{]}}}\label{utils_8cpp_a37fe98ff5bf08aab194cc5c88b0a0f7d}
+{\bfseries \-Initial value\-:}
+\begin{DoxyCode}
+ { { 1, 1, 2, 2, 2, 1, 1 },
+                        { 1, 2, 2, 4, 2, 2, 1 }, 
+                        { 2, 2, 4, 8, 4, 2, 2 },
+                        { 2, 4, 8,16, 8, 4, 2 },
+                        { 2, 2, 4, 8, 4, 2, 2 }, 
+                        { 1, 2, 2, 4, 2, 2, 1 }, 
+                        { 1, 1, 2, 2, 2, 1, 1 } }
+\end{DoxyCode}
+\hypertarget{utils_8cpp_a1bdcfae3209cbd96db35a2ae356fa15e}{\index{utils.\-cpp@{utils.\-cpp}!verbosity@{verbosity}}
+\index{verbosity@{verbosity}!utils.cpp@{utils.\-cpp}}
+\paragraph[{verbosity}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf verbosity} = 0}}\label{utils_8cpp_a1bdcfae3209cbd96db35a2ae356fa15e}
+\begin{DoxyAuthor}{\-Author}
+\-Manuel \-Jerger $<$\href{mailto:nom@nomnom.de}{\tt nom@nomnom.\-de}$>$
+\end{DoxyAuthor}
+\-Utility functions and important datastructures. 

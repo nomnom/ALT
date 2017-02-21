@@ -1,0 +1,15 @@
+\chapter{Future Work}
+  We have shown that our lighting system can illuminate a room omnidirectional and reproduce the global impression of environment maps.
+  We presumed our LEDs are linear in the input data and mentioned in section \ref{sec:ledlimitations} that this is not the case. 
+  The color channels showed an interdependency and the output of the red channel depends on the output of the blue and green channel.
+  An additional calibration could alleviate this effect. 
+  We could for example measure the light color of the LEDs for all possible combinations of input data and derive a model that linearizes the response.
+  
+  We have shown our method works with indirect lighting and we can imagine an extension to direct illumination. 
+  This not only requires a lighting system capable of direct illumination, for example a room-sized light stage \cite{debevec2002lighting}, 
+  but also further investigation regarding the light probe.
+  If we want to capture direct light in addition to the indirect light, we must use a camera with a much higher dynamic range.
+  For the Calibration Probe, we can take multiple images  with different exposures and reconstruct an image with a high dynamic range (HDR) \cite{debevec2008recovering}.
+  For the Capture Probe, which has to record in real-time, we could use an expensive HDR video camera. 
+  A simpler solution was proposed by Waese \cite{waese2009real} and uses a special prism with shaded surfaces to record multiple exposures of the light probe object with a single image.
+  

@@ -1,0 +1,118 @@
+\hypertarget{classImageSource}{\subsection{\-Image\-Source \-Class \-Reference}
+\label{classImageSource}\index{\-Image\-Source@{\-Image\-Source}}
+}
+
+
+\hyperlink{classSource}{\-Source} that uses image files.  
+
+
+
+
+{\ttfamily \#include $<$imagesource.\-h$>$}
+
+\-Inheritance diagram for \-Image\-Source\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classImageSource}
+\end{center}
+\end{figure}
+\subsubsection*{\-Data \-Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structImageSource_1_1params}{params}
+\begin{DoxyCompactList}\small\item\em \-Configuration of the \hyperlink{classImageSource}{\-Image\-Source} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classImageSource_a086ebf6a4094dc52b65b991b147b6c4d}{\-Image\-Source} (\hyperlink{structImageSource_1_1params}{params} c)
+\item 
+\hyperlink{classImageSource_a6b2d501403e70bb460ac337e68ee16d7}{$\sim$\-Image\-Source} ()
+\item 
+\hyperlink{structImageSource_1_1params}{params} \hyperlink{classImageSource_a7cc846a2611cc5a90296782d922041e8}{get\-Config} ()
+\item 
+bool \hyperlink{classImageSource_ab65bd864ba3c7961479ec2ad3b1ff163}{has\-New\-Data} ()
+\item 
+void \hyperlink{classImageSource_ad969a45dd3dbda08b9a73f50ada50dfb}{acquire} ()
+\end{DoxyCompactItemize}
+\subsubsection*{\-Private \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structImageSource_1_1params}{params} \hyperlink{classImageSource_adc74dbed687c026e72ad8819d39d0dc1}{config}
+\item 
+int \hyperlink{classImageSource_a09b0df783173a472d225e0da85c24d22}{cur\-Image\-I\-D}
+\end{DoxyCompactItemize}
+
+
+\subsubsection{\-Detailed \-Description}
+\hyperlink{classSource}{\-Source} that uses image files. 
+
+\begin{DoxyAuthor}{\-Author}
+\-Manuel \-Jerger $<$\href{mailto:nom@nomnom.de}{\tt nom@nomnom.\-de}$>$
+\end{DoxyAuthor}
+\-Specialization of the source class that uses image files. \-Loads either a single image file or a whole sequence of frames from a directory. 
+
+\subsubsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{classImageSource_a086ebf6a4094dc52b65b991b147b6c4d}{\index{\-Image\-Source@{\-Image\-Source}!\-Image\-Source@{\-Image\-Source}}
+\index{\-Image\-Source@{\-Image\-Source}!ImageSource@{\-Image\-Source}}
+\paragraph[{\-Image\-Source}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Image\-Source\-::\-Image\-Source} (
+\begin{DoxyParamCaption}
+\item[{{\bf params}}]{c}
+\end{DoxyParamCaption}
+)}}\label{classImageSource_a086ebf6a4094dc52b65b991b147b6c4d}
+\begin{DoxyAuthor}{\-Author}
+\-Manuel \-Jerger $<$\href{mailto:nom@nomnom.de}{\tt nom@nomnom.\-de}$>$
+\end{DoxyAuthor}
+\-Specialization of the source class that uses image files. \-Loads either a single image file or a whole sequence of frames from a directory. \-Constructor checks if config specifies a single image (ending in .ppm) or a directory. \-It then loads the first image to check for the dimensions. \hypertarget{classImageSource_a6b2d501403e70bb460ac337e68ee16d7}{\index{\-Image\-Source@{\-Image\-Source}!$\sim$\-Image\-Source@{$\sim$\-Image\-Source}}
+\index{$\sim$\-Image\-Source@{$\sim$\-Image\-Source}!ImageSource@{\-Image\-Source}}
+\paragraph[{$\sim$\-Image\-Source}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Image\-Source\-::$\sim$\-Image\-Source} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classImageSource_a6b2d501403e70bb460ac337e68ee16d7}
+
+
+\subsubsection{\-Member \-Function \-Documentation}
+\hypertarget{classImageSource_ad969a45dd3dbda08b9a73f50ada50dfb}{\index{\-Image\-Source@{\-Image\-Source}!acquire@{acquire}}
+\index{acquire@{acquire}!ImageSource@{\-Image\-Source}}
+\paragraph[{acquire}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Image\-Source\-::acquire} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}\label{classImageSource_ad969a45dd3dbda08b9a73f50ada50dfb}
+\-Loads either a single image or a whole directory of frames. \-The latter one requires the files to be named img\-\_\-\#.ppm where \# is a number w/0 trailing zeroes. 
+
+\-Implements \hyperlink{classSource_a22e791e3c667fe6d65fa79b30ddc44da}{\-Source}.
+
+\hypertarget{classImageSource_a7cc846a2611cc5a90296782d922041e8}{\index{\-Image\-Source@{\-Image\-Source}!get\-Config@{get\-Config}}
+\index{get\-Config@{get\-Config}!ImageSource@{\-Image\-Source}}
+\paragraph[{get\-Config}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Image\-Source\-::params} {\bf \-Image\-Source\-::get\-Config} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classImageSource_a7cc846a2611cc5a90296782d922041e8}
+\hypertarget{classImageSource_ab65bd864ba3c7961479ec2ad3b1ff163}{\index{\-Image\-Source@{\-Image\-Source}!has\-New\-Data@{has\-New\-Data}}
+\index{has\-New\-Data@{has\-New\-Data}!ImageSource@{\-Image\-Source}}
+\paragraph[{has\-New\-Data}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Image\-Source\-::has\-New\-Data} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}\label{classImageSource_ab65bd864ba3c7961479ec2ad3b1ff163}
+
+
+\-Implements \hyperlink{classSource_acc6f90436f56986b5d261c2408bc1196}{\-Source}.
+
+
+
+\subsubsection{\-Field \-Documentation}
+\hypertarget{classImageSource_adc74dbed687c026e72ad8819d39d0dc1}{\index{\-Image\-Source@{\-Image\-Source}!config@{config}}
+\index{config@{config}!ImageSource@{\-Image\-Source}}
+\paragraph[{config}]{\setlength{\rightskip}{0pt plus 5cm}{\bf params} {\bf \-Image\-Source\-::config}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classImageSource_adc74dbed687c026e72ad8819d39d0dc1}
+\hypertarget{classImageSource_a09b0df783173a472d225e0da85c24d22}{\index{\-Image\-Source@{\-Image\-Source}!cur\-Image\-I\-D@{cur\-Image\-I\-D}}
+\index{cur\-Image\-I\-D@{cur\-Image\-I\-D}!ImageSource@{\-Image\-Source}}
+\paragraph[{cur\-Image\-I\-D}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf \-Image\-Source\-::cur\-Image\-I\-D}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classImageSource_a09b0df783173a472d225e0da85c24d22}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+src/\hyperlink{imagesource_8h}{imagesource.\-h}\item 
+src/\hyperlink{imagesource_8cpp}{imagesource.\-cpp}\end{DoxyCompactItemize}

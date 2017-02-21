@@ -1,0 +1,1 @@
+./alt --sticks -d /dev/ttyACM0 -f0 -n8 -s2 --testlamps --sample_file -m 50 -n 256 -i data/sampling/fliege_256.vecs -c 0.30    --x11source -x ":0" -a "30 30 270 270" --probe -l data/rooms/plab_8x40i/lightprobe.cfg -w "1 1 1" -o linear -h 0

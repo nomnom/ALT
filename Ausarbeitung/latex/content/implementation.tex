@@ -1,0 +1,166 @@
+
+
+\chapter{Implementation}
+\label{chap:implementation}
+
+ \begin{figure}[H]
+  \centering
+  \includegraphics[width=1\linewidth]{../../resources/system.png}
+  \caption[Overview of our system]{Overview of our system including the transfer- and calibration-pipeline. We first calibrate the room by capturing the illumination of each lamp with the Capture Probe.
+    The acquired images are used by the optimization process to find the lamp values that reproduce the best approximation of a target environment map given by the Capture Probe. }
+  \label{fig:overview}
+ \end{figure}
+
+ Figure \ref{fig:overview} shows an overview of the Ambient Light Transfer pipeline we devised.
+ The incident radiance in a real scene is recorded by the \emph{Capture Probe} and transferred to the viewing room. 
+ The room is illuminated by our lighting system and isolated from all other light sources.
+ Our method utilizes information about how each lamp interacts with the room. 
+ This is done in the \emph{calibration phase} where the lamps are switched on one at a time  and the incident radiance is captured by the \emph{Calibration Probe} in the center of the room.
+ In our case a lamp is defined as a monochromatic light source and we treat the LED's color channels as individual lamps.
+ 
+ The \emph{optimizer} uses the calibration images together with a target given by the \emph{Capture Probe} to find the brightness values for the lamps.
+ We employ Quadratic Programming to find a linear combination of calibration images that approximates the target best, and use the resulting weights to set the brightness of the lamps.
+ We speed up the optimization process by performing a downsampling on the light probe data, which reduces the problem size and allows us to achieve real-time speeds.
+ 
+ We implemented our system on a Linux-machine using the GNU tool-chain and C++.
+
+ 
+\section{Sampling}
+\label{sec:sampling}
+ 
+ Our method leverages the fact that indirect illumination of a room causes light patterns with a low spatial frequency.
+ We assume that effects like specular reflections are small in size compared to the diffuse reflections from large uniform colored areas.
+ We thus can perform a downsampling on the light probe images and consider only the average radiance coming from a relatively small set of uniformly distributed directions.
+ Downsampling not only reduces the size of our problem and the amount of data the optimizer has to handle, but also removes some of the image noise from the camera.
+ It has a regularization effect, too: Highlights and small shadows are averaged and the variance of the data-set is reduced.
+  
+ We select a set of sampling directions $D$, uniformly distributed in angular space.
+ Recall that directions can be expressed as vectors of fixed length and the points that correspond to a vector lie on the hull of a sphere. 
+ The uniform selection of directions in angular space is thus equal to the uniform distribution of points on the surface of a sphere. 
+ The problem of creating uniform distributions of points on a sphere is complex has been thoroughly studied in mathematics.
+ It is vital for all applications that require precise numeric integrations over the surfaces of a sphere \cite{saff1997distributing}.
+ We use uniform distributions calculated by Fliege et al. \cite{fliege1999distribution} as sampling directions and omit all directions that lie outside the sampling range.
+ 
+ We define the \emph{neighborhood} of a sampling direction $d$ as the cone of incident light that contains all directions that are closest to $d$. 
+ The distance between two directions is given by the enclosed angle.
+ The cones and neighborhoods can be visualized in image-space as the \emph{Voronoi Cells} that correspond to the points on the sphere.
+ 
+ 
+ 
+  \begin{figure}[H]
+    \subfloat[all directions]{ \includegraphics[width=0.2\linewidth]{../../resources/main/canon3.png}}
+    \hfill
+    \subfloat[33 directions]{\includegraphics[width=0.2\linewidth]{../../resources/sampling_vo64.png} }
+    \hfill
+    \subfloat[63 directions]{
+      \includegraphics[width=0.2\linewidth]{../../resources/sampling_vo121.png}
+    }
+    \hfill
+    \subfloat[128 directions   ]{
+      \includegraphics[width=0.2\linewidth]{../../resources/sampling_vo256.png}
+    }
+    
+    \caption[Nearest-neighbor sampling examples]{Neighborhoods in image space for different numbers of sampling directions. Each neighborhood displays the average radiance of the sampled directions.}\label{fig:voronoi}
+  \end{figure}
+ 
+ 
+ We sample each direction by averaging the values of the pixels contained in the neighborhood.
+ Figure \ref{fig:voronoi} shows the sampled neighborhoods for several number of sampling directions  as seen by the light probe camera.
+ The Voronoi Cells assume a hexagonal shape which becomes more uniform with more sampling directions. 
+ 
+ To find the neighbors, we use a naive approach: For each pixel, search for the closest sampling direction.
+ The high run-time complexity is acceptable because the calculations have to be carried out only once for each light probe configuration and can thus be precalculated.
+ 
+ This sampling is not optimal, especially if we select a small number of directions:
+ Neighborhoods are never of exactly the same size. Their shapes are irregular, they have hard edges and they do not overlap. 
+ Pixels that are marked as occluded are not sampled which reduces the size of nearby neighborhoods. 
+ 
+ We investigated Gaussian distributions for weighting the pixels in a neighborhood. 
+ We experimented with different parameters for variance and kernel size but were not able to find a single optimal kernel for all sampling directions because of their irregular shapes.
+ There are also other problems to consider:
+ The border regions must be handled correctly because we do not sample the whole sphere and the sampling kernels are very large compared to the surface of the sphere.
+ A Gaussian sampling is also much more expensive to evaluate than the nearest-neighbor approach because the sampling kernels overlap.
+ 
+ We decided to keep the sampling as simple as possible and use the nearest-neighbor approach. 
+ Not only is it very fast, but also independent from the number of sampling directions $|D|$  because a pixel belongs to exactly one direction and is queried only once per sampling.
+ We select $|D|$ so the Voronoi Cells are much smaller than the light spots caused by the lamps. 
+ See  section \ref{eval:sampling} for an comparison of various sizes and their influence on the quality of our results.
+ 
+
+\section{Calibration}
+\label{sec:calibration}
+
+
+ Our method employs information about how the lamps illuminate the room. 
+ In the calibration step, we place the Canon Probe in the center of the room and capture the illumination each lamp produces.
+ This step requires a very sensitive camera because our lighting system illuminates the room with indirect light, which is reflected multiple times before it reaches the sensor.
+ Our Canon camera had a color-depth of 14 bit per channel and provided enough dynamic range to capture all of the reflected light without too much noise.
+ 
+ \begin{figure}[h]
+  \subfloat{\includegraphics[width=0.25\linewidth]{../../resources/cali_1.png}}
+  \hfill
+  \subfloat{\includegraphics[width=0.25\linewidth]{../../resources/cali_2.png}}
+  \hfill
+  \subfloat{\includegraphics[width=0.25\linewidth]{../../resources/cali_3.png}}
+  \caption[Calibration images]{Three light probe images acquired in the calibration step. We treat each color of our RGB-LEDs as an individual, monochrome lamp.}
+ \end{figure}
+
+ The calibration loop is straight forward: Set a lamp to maximum brightness, record its light pattern with a light probe image and turn it off again. 
+ This is repeated for all lamps.
+ We additionally capture a dark-frame image with all lamps turned off and subtract it from the calibration data.
+ This removes the ambient light that may be present in the almost but not completely dark room, and also handles the floor-noise from the image sensor.
+ Our method does not utilize prior knowledge about the color channels of our lamps and treats them as individual, monochrome light source. 
+ The calibration step has to be repeated every time the lighting system changes or large objects inside the room are moved.
+  
+  
+\section{Optimization}
+\label{sec:optimization}
+
+  Our problem is formulated as follows: 
+  Given a target light probe image $T$ and a set of calibration images $I_l$ (one for each lamp $l$), find the weights $w_l$ so that
+  the difference $(\vect{T} - \sum_{l \in L} w_l I_l)$ is as small as possible. The weights $w_t$ correspond to the brightness of the lamp $l$.
+  The downsampling reduces the light probe images to a vector of size $3|D|$ containing the average radiance for all color channels.
+  For the sake of simplicity we hereafter assume monochromatic images. 
+  
+  We take the sum of squared differences and formulate the minimization term
+  
+  \begin{equation}
+    \label{eq:minfunc}
+     \argmin_{w} ||s\vect{t} - \sum_{l \in L} w_l \vect{i}_l||^2
+  \end{equation}
+   
+   where $\vect{i}_l$ are the downsampled calibration images and $\vect{t}$ is the downsampled target.
+   
+   The resulting weights $w_l$ define the intensity of the lamps and are constrained to a range of $[0..1]$, where 1.0 is the maximum brightness.   
+   The factor $s$ is the \emph{target scale} which relates the exposure of the target to the exposure of the calibration images.
+   A bigger value increases the overall brightness of the result, but can lead to color changes if it is too large and the target cannot be reached by the optimizer.
+   The choice of the scaling factor is not trivial and depends on the setup of the lamps and their light distribution in the room because the illumination is not completely uniform and the maximum brightness varies between sampling directions.
+   See \ref{eval:scaling} for an evaluation of the scaling factor.
+   
+   We use Quadratic Programming (QP) to minimize the term (\ref{eq:minfunc}) with respect to the weights. The solver is provided by the CVXOPT library \cite{CVXOPT}.
+   We transform our minimization term into the QP matrix form (\ref{eq:qp_matrix}) required by the solver. 
+
+      \begin{eqnarray}
+        \label{eq:qp_matrix}
+         \mbox{minimize} && \vect{w}^TQ\vect{w} + \vect{c}^T\vect{w} \nonumber \\
+         \mbox{subject to} && U\vect{w}=\vect{b}
+      \end{eqnarray}
+   
+    The vector $\vect{w}$ contains our weights $w_l$ and the Q matrix is filled with the calibration data.
+    U is the unit matrix and $\vect{b}$ contains the target data. 
+    We expanded our minimization term (\ref{eq:minfunc}), as well as the QP term (\ref{eq:qp_matrix}) and derived the values of the Q matrix by comparison of coefficients.  
+    The QP solver has to be set up only once per calibration and the vector $\vect{b}$ can be updated with the new target data in every iteration.
+    
+    The optimizer utilizes only a single CPU-core and converges fast enough for real-time applications. 
+    See section \ref{eval:runtime} for an evaluation of the run-time with respect to the number of lamps and sampling directions.
+    The optimization converges reliably. Small changes in the target produce small changes in the result and lamp values do not jump or jitter.
+    This is important for the transfer of slow varying environment maps because the created illumination should behave smoothly. 
+    
+    We defined the normalized \emph{optimization error} 
+    \begin{equation}
+     \label{eq:opterror}
+      e_o = \frac{1}{|D|s^2} ||s\vect{t} - \sum_{l \in L} w_l \vect{i}_l||^2
+    \end{equation}
+    in order to be able to compare the minimization error of different setups. 
+    This measure is independent from the number of sampling directions and corrected for the scaling factor $s$.
+

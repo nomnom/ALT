@@ -1,0 +1,187 @@
+
+\chapter{Results}
+ \label{chap:results}
+  This chapter we present our final results. We configured the lighting system with 24 Lamps and used 128 sampling directions and used a target scaling factor $s=1.0$.
+  The setup was exactly the same as described in the evaluation section \ref{chap:evaluation}.
+  
+\section{Static Scenes}
+  We transferred four static environment maps, shown in table \ref{tab:main}.
+  The first row shows the value of the lamps, the run-time $\Delta t$ in milliseconds, the optimization error $e_o$ and the result error $e_r$.
+  The second row displays the \emph{target}, which is the ambient light we want to reproduce, and the third row shows the result our method produces.
+  The fourth row shows the \emph{simulated} result which we get by evaluating the linear combination of the \emph{raw} light probe images we acquired in the calibration step.
+  The last two rows show the \emph{downsampled} light probe image of the target (fifth row) and of the simulated result (last row). 
+  
+  We can clearly see the effectiveness of a spatial illumination.
+  The global impression of the Grace environment map is reproduced faithfully: The ceiling is lit brightly with a white color and the walls are lit in a red color with lower intensity.
+  The Outdoor scene is mostly blue due to the large area of the sky, but shows a tendency towards a green color at the top, and a gray color at the bottom.
+  We can see that the dark corner in the CMY scene is not reproduced correctly due to the inter-reflections of the light inside the room.
+  In the results of the Dots scene, we can see that the blue background color near the green and magenta dots is reproduced correctly, but becomes more white near the yellow dot.
+  Our lighting system is not able to reproduce the high spatial resolution present in this scene.
+  
+  If we compare the simulated result with the result, we can see the limitations of our lighting system: 
+  The red channel of the results is missing light due to the interdependency between the color channels we explained in subsection \ref{sec:ledlimitations}. 
+    
+
+\begin{table}[H]
+\caption[Results (static scenes)]{\label{tab:main}Resulting illumination and the result error $e_r$ for static targets (24 lamps, 128 sampling directions, scaling $s=1.0$). }
+\begin{tabular}{ccccc}
+  &
+  \shortstack{ Outdoor \\ $e_r=0.055$ \\ $e_o=0.254$ \\ $\Delta t$ = 7.897ms \\ \vspace{0.2cm} \\
+    \includegraphics[height=0.06\linewidth,width=0.18\linewidth]{../../resources/main/canon3_lamps.png} }
+   &
+  \shortstack{ Grace \\ $e_r=0.070$ \\ $e_o=0.077$ \\ $\Delta t$ = 7.813ms \\ \vspace{0.2cm} \\
+    \includegraphics[height=0.06\linewidth,width=0.18\linewidth]{../../resources/main/grace_lamps.png}}
+   &
+  \shortstack{ Dots \\ $e_r=0.092$ \\ $e_o=0.181$ \\ $\Delta t$ = 7.871ms \\ \vspace{0.2cm} \\
+    \includegraphics[height=0.06\linewidth,width=0.18\linewidth]{../../resources/main/dots_lamps.png} }
+   &
+  \shortstack{ CMY \\ $e_r=0.051$ \\ $e_o=0.063$ \\ $\Delta t$ = 7.045ms \\ \vspace{0.2cm} \\
+    \includegraphics[height=0.06\linewidth,width=0.18\linewidth]{../../resources/main/cmy_lamps.png} } \\
+  
+  \shortstack{ Target \\ \vspace{0.9cm} } &
+  \includegraphics[width=0.18\linewidth]{../../resources/main/canon3.png} &
+  \includegraphics[width=0.18\linewidth]{../../resources/main/grace.png} &
+  \includegraphics[width=0.18\linewidth]{../../resources/main/dots.png} &
+  \includegraphics[width=0.18\linewidth]{../../resources/main/cmy.png} \\
+ 
+ 
+  \shortstack{ Result \\ \vspace{0.9cm} } &
+  \includegraphics[width=0.18\linewidth]{../../resources/main/canon3_result.png} &
+  \includegraphics[width=0.18\linewidth]{../../resources/main/grace_result.png} &
+  \includegraphics[width=0.18\linewidth]{../../resources/main/dots_result.png} & 
+  \includegraphics[width=0.18\linewidth]{../../resources/main/cmy_result.png}  \\
+  
+  \shortstack{ Simulation \\ \vspace{0.9cm} } &
+  
+  \includegraphics[width=0.18\linewidth]{../../resources/main/canon3_pseudo.png} &
+  \includegraphics[width=0.18\linewidth]{../../resources/main/grace_pseudo.png} &
+  \includegraphics[width=0.18\linewidth]{../../resources/main/dots_pseudo.png} &
+  \includegraphics[width=0.18\linewidth]{../../resources/main/cmy_pseudo.png} \\
+
+  \shortstack{ Target \\ (sampled) \\ \vspace{0.5cm} } &
+ 
+  \includegraphics[width=0.18\linewidth]{../../resources/main/canon3_target_cones.png} &
+  \includegraphics[width=0.18\linewidth]{../../resources/main/grace_target_cones.png} &
+  \includegraphics[width=0.18\linewidth]{../../resources/main/dots_target_cones.png} &
+  \includegraphics[width=0.18\linewidth]{../../resources/main/cmy_target_cones.png} \\
+  
+  \shortstack{ Simulation \\ (sampled) \\ \vspace{0.5cm} } & 
+  \includegraphics[width=0.18\linewidth]{../../resources/main/canon3_pseudo_cones.png} & 
+  \includegraphics[width=0.18\linewidth]{../../resources/main/grace_pseudo_cones.png} & 
+  \includegraphics[width=0.18\linewidth]{../../resources/main/dots_pseudo_cones.png} & 
+  \includegraphics[width=0.18\linewidth]{../../resources/main/cmy_pseudo_cones.png}  \\
+  
+ \end{tabular}
+\end{table}
+
+
+%\begin{landscape}
+%
+%\begin{table}[h]
+%\caption{\label{tab:main}Resulting illumination an result error $e_r$ for static targets (24 Lamps, 128 sampling directions, scaling of 1.0). }
+%\begin{tabular}{|cc|cc|cc}
+% \toprule 
+% \multicolumn{2}{c}{Original}  & \multicolumn{2}{c}{Pseudo} & Result & Values \\
+%  & $|D|=128$ & & $|D|=128$ & \\
+% \midrule
+% 
+%  \includegraphics[width=0.15\linewidth]{../../resources/main/canon3.png} &
+%  \includegraphics[width=0.15\linewidth]{../../resources/main/canon3_target_cones.png} &
+%  \includegraphics[width=0.15\linewidth]{../../resources/main/canon3_pseudo.png} &
+%  \includegraphics[width=0.15\linewidth]{../../resources/main/canon3_pseudo_cones.png} & 
+%  \includegraphics[width=0.15\linewidth]{../../resources/main/canon3_result.png} &
+%  \shortstack{ Canon \\ $e_r=xx$ \\ $e_o=xx$ \\ $\Delta t$ = rt \\
+%      \includegraphics[height=0.06\linewidth,width=0.15\linewidth]{../../resources/main/canon3_lamps.png}
+%  } \\
+%    
+% 
+%  \hline
+%  \includegraphics[width=0.15\linewidth]{../../resources/main/grace.png} &
+%  \includegraphics[width=0.15\linewidth]{../../resources/main/grace_target_cones.png} &
+%  \includegraphics[width=0.15\linewidth]{../../resources/main/grace_pseudo.png} &
+%  \includegraphics[width=0.15\linewidth]{../../resources/main/grace_pseudo_cones.png} & 
+%  \includegraphics[width=0.15\linewidth]{../../resources/main/grace_result.png} &
+%  \shortstack{ Grace \\ $e_r=xx$ \\ $e_o=xx$ \\ $\Delta t$ = rt \\
+%      \includegraphics[height=0.06\linewidth,width=0.15\linewidth]{../../resources/main/grace_lamps.png}
+%  } \\
+%  
+%  
+%  \hline
+%  \includegraphics[width=0.15\linewidth]{../../resources/main/dots.png} &
+%  \includegraphics[width=0.15\linewidth]{../../resources/main/dots_target_cones.png} &
+%  \includegraphics[width=0.15\linewidth]{../../resources/main/dots_pseudo.png} &
+%  \includegraphics[width=0.15\linewidth]{../../resources/main/dots_pseudo_cones.png} & 
+%  \includegraphics[width=0.15\linewidth]{../../resources/main/dots_result.png} & 
+%  \shortstack{ Dots \\ $e_r=xx$ \\ $e_o=xx$ \\ $\Delta t$ = rt \\
+%      \includegraphics[height=0.06\linewidth,width=0.15\linewidth]{../../resources/main/dots_lamps.png}
+%  } \\
+%  
+%  \hline
+%  \includegraphics[width=0.15\linewidth]{../../resources/main/cmy.png} &
+%  \includegraphics[width=0.15\linewidth]{../../resources/main/cmy_target_cones.png} &
+%  \includegraphics[width=0.15\linewidth]{../../resources/main/cmy_pseudo.png} &
+%  \includegraphics[width=0.15\linewidth]{../../resources/main/cmy_pseudo_cones.png} & 
+%  \includegraphics[width=0.15\linewidth]{../../resources/main/cmy_result.png} &
+%  \shortstack{ CMY \\ $e_r=xx$ \\ $e_o=xx$ \\ $\Delta t$ = rt \\
+%      \includegraphics[height=0.06\linewidth,width=0.15\linewidth]{../../resources/main/cmy_lamps.png}
+%  } \\
+%  \bottomrule
+% \end{tabular}
+%\end{table}
+%\end{landscape}
+
+\section{Dynamic Scene}
+
+ We captured a dynamic environment map with our Webcam Probe and observed the behavior of our optimizer over time.
+ The table \ref{tab:main_dynamic} shows the result for five frames.
+ We also plotted the optimization error $e_o$ and the duration of the optimization over all 88 frames, shown in figure \ref{fig:main_dynamic_plots}.
+ The results are smooth: the values of the lamps change gradually from frame to frame and do not jump or jitter.
+ The run-time is almost constant for all frames. The calculation of the first frame takes longer because the CPU cache has not yet been filled.
+ 
+ We are now confident that our method can be used for real-time Ambient Light Transfer.
+
+
+\begin{table}[H]
+ \caption[Results (dynamic scenes)]{\label{tab:main_dynamic}Results for 5 frames of the dynamic environment map. The first row shows the target and the second row the result.}
+ \begin{tabular}{ccccc}
+ \toprule
+  Frame 0 & Frame 22 & Frame 44 & Frame 66 & Frame 88 \\ 
+  \midrule
+  \multicolumn{5}{c}{Target} \\
+  \includegraphics[width=0.18\linewidth]{../../resources/main/mprobe-1.png} &
+  \includegraphics[width=0.18\linewidth]{../../resources/main/mprobe-23.png} &
+  \includegraphics[width=0.18\linewidth]{../../resources/main/mprobe-45.png} &
+  \includegraphics[width=0.18\linewidth]{../../resources/main/mprobe-67.png} &
+  \includegraphics[width=0.18\linewidth]{../../resources/main/mprobe-89.png} \\
+  
+  \multicolumn{5}{c}{Result} \\
+    
+  \includegraphics[width=0.18\linewidth]{../../resources/main/mprobe_result-1.png} &
+  \includegraphics[width=0.18\linewidth]{../../resources/main/mprobe_result-23.png} &
+  \includegraphics[width=0.18\linewidth]{../../resources/main/mprobe_result-45.png} &
+  \includegraphics[width=0.18\linewidth]{../../resources/main/mprobe_result-67.png} &
+  \includegraphics[width=0.18\linewidth]{../../resources/main/mprobe_result-89.png} \\
+  
+  
+  \includegraphics[width=0.18\linewidth]{../../resources/main/mprobe_lamps-1.png} &
+  \includegraphics[width=0.18\linewidth]{../../resources/main/mprobe_lamps-23.png} &
+  \includegraphics[width=0.18\linewidth]{../../resources/main/mprobe_lamps-45.png} &
+  \includegraphics[width=0.18\linewidth]{../../resources/main/mprobe_lamps-67.png} &
+  \includegraphics[width=0.18\linewidth]{../../resources/main/mprobe_lamps-89.png} \\
+  
+  $e_r$ = 0.0745 & $e_r$ = 0.0714 & $e_r$ = 0.0510  & $e_r$ = 0.0434 & $e_r$ = 0.0536 \\
+  
+
+ \end{tabular}
+\end{table}
+  
+
+\begin{figure}[H]
+ \caption[Results (dynamic scene plots)]{Optimization error $e_o$ and run-time for all 88 frames of the dynamic environment map.}
+ \label{fig:main_dynamic_plots}
+  \includegraphics[width=\linewidth]{../../resources/plots/mprobe_opterr_plot.svg} \\
+  \includegraphics[width=\linewidth]{../../resources/plots/mprobe_optrt_plot.svg} \\
+ 
+\end{figure}
+
+

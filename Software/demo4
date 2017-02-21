@@ -1,0 +1,1 @@
+./alt --sticks -d /dev/ttyACM0 -f0 --transfer -s 1.0 -i data/rooms/plab_8x40i -r20  --sample_file -m 50 -n 256 -i data/sampling/fliege_256.vecs -c 0.3 --imagesource -i data/objectives/mprobe_loop

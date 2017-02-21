@@ -1,0 +1,259 @@
+\chapter{Evaluation}
+\label{chap:evaluation}
+  For evaluation we set up our lighting system in a medium sized room.
+  The room was not optimal and had rather bad reflective properties: The whole ceiling was lined with metal ducts and reflectors of the original room lighting which caused strong specular reflections.
+  Several dark-blue shelves absorbed so much light that we had to drape them in white table-cloth.
+  Figure \ref{fig:plabsetup} shows the placement of the lighting system in the room.
+     
+  All experiments were conducted on a Linux machine located in the same room. 
+  It was equipped with a Core i7 920 CPU  running at 2.67 GHz and had 12GB of memory.
+  
+  
+  \begin{figure}[H]
+    \subfloat[Grace\label{fig:env_grace}]{
+      \includegraphics[width=0.15\linewidth]{../../resources/main/grace.png}
+    }
+    \hfill
+    \subfloat[Outdoor\label{fig:env_canon}]{
+      \includegraphics[width=0.15\linewidth]{../../resources/main/canon3.png}
+    }
+    \hfill
+    \subfloat[Dots\label{fig:env_dots}]{
+      \includegraphics[width=0.15\linewidth]{../../resources/main/dots.png}
+    }
+    \hfill
+    \subfloat[CMY\label{fig:env_cmy}]{
+      \includegraphics[width=0.15\linewidth]{../../resources/main/cmy.png}
+    }
+    \caption[Static targets]{The static environment maps we used for the transfer: The Grace HDR light probe from Debevec (a), an outdoor scene (b) captured with our Canon light probe and two hand-drawn extreme cases (c), (d). }{}
+    
+    \label{fig:envmaps}
+  \end{figure}
+  
+  We tested our system with the four static environment maps shown in figure \ref{fig:envmaps}. 
+  The first one (a) is a High Dynamic Range light probe taken inside the \emph{Grace} cathedral by Debevec \cite{PROBES}. 
+  The second one (b) was captured with our Canon light probe and shows a sun-lit \emph{Outdoor} scene without direct illumination.
+  We also include two hand-drawn targets \emph{Dots} (c) and \emph{CMY} (d) as extreme cases to demonstrate the limits of our omnidirectional lighting system.
+  Additionally, we recorded a dynamic environment map (88 frames) with the Webcam Probe by moving it through a colorful scene.
+  Five frames are shown in table \ref{tab:main_dynamic}.
+    
+  To measure the quality of our results we took light probe images of the produced illumination with our Canon Probe and compared them to the targets.
+  We calculate the \emph{result error} $e_r$ by taking the sum of squared differences over all color channels of the available pixels $P$ and divide it by $3|P|$.
+  Masked pixels and pixels outside our sampling range are ignored.
+  The \emph{difference error} $e_d$ is calculated the same way, but is used to compare two results.
+  \newpage
+  We will show the values of our lamps in form of a small image as follows:
+   \begin{figure}[H]
+    \label{fig:lampimage}
+    \includegraphics[width=0.4\linewidth]{../../resources/lampimage.png}
+   \end{figure}
+    
+  We split the evaluation in four parts:
+  First, we measure how our the choice of the \emph{segment sizes} (and thus the \emph{number of lamps} $|L|$) influences the result error $e_r$.
+  Second, we show how our nearest-neighbor approach performs for different \emph{number of sampling directions} $|D|$ and compare it to the limit case where the neighborhood consist of a single pixel.
+  Third, we take a look at the run-time of the optimizer and show how it is linked to the \emph{number of lamps} and \emph{number of sampling directions}. 
+  Fourth, we show how the \emph{target scaling} $s$ affects the quality of the results.
+  Based on this analysis, we select a lamp and sampling configuration that produces good results with real-time speeds.
+
+\section{Segment Size}
+ \label{eval:segsize}
+  We evaluated segment sizes of 10/20/40/60/120 LEDs, which gave us 96/48/24/16/8 RGB Lamps respectively, to see if smaller segments produce better results.
+  We also included  \emph{uniform lighting} (1 lamp) where all LEDs display the same color.
+  Note that in the case of 8 lamps the walls and ceiling cannot be illuminated independently because each stick acts as a single lamp.
+  
+  Our assumption was that increasing the number of lamps increases the quality of the result, but only up to some point because our lighting system has a limited spatial resolution.
+    
+    \npdecimalsign{.}
+    \nprounddigits{3}
+    \begin{table}[H]
+     \caption[Evaluation of lamp configurations (result error)]{\label{tab:segsize} Result error $e_r$ for several lamp configurations. No downsampling was performed.}
+     \begin{tabular}{c|n{2}{3}|n{2}{3}|n{2}{3}|n{2}{3}|n{2}{3}}
+        \toprule 
+        {|L|} & {Outdoor} & {Grace} & {Dots} & {CMY} & {Video (avg.)} \\
+        \midrule
+        \input ../../Results/tables/segsize.table
+        \bottomrule
+     \end{tabular}
+    \end{table}
+    \npnoround
+    
+  Table \ref{tab:segsize} shows the result error $e_r$ for our six different lamp configurations and all five target environment maps.
+  For the video environment map, we selected 9 frames (spaced 10 frames apart) and averaged the error.
+  We did not perform any downsampling and used all available pixels in order to be independent from sampling artifacts.
+
+  We recorded the calibration data only once for the smallest segment size. 
+  All other configurations are derived by adding up the radiance to form larger segments.
+  This avoids variations in the calibration data and keeps the results comparable.
+  
+  The table clearly shows that a spatial illumination with multiple lamps always performs better than uniform lighting.
+  It also reveals that a setup with 48 or 96 lamps produces only a marginal improvement over 24 lamps.   
+   
+     
+    \begin{table}[H]
+     \caption[Evaluation of lamp configurations (images) ]{\label{tab:grace_segsize} Results and lamp values for the Grace target created with different lamp configurations.
+      Second row: absolute difference between two successive results. Third row: the difference error $e_d$ between two successive results.  }
+     \begin{tabular}{cccccc}
+        \toprule 
+        $|L|=1$ & $|L|=8$ & $|L|=16$ & $|L|=24$ & $|L|=48$ & $|L|=96$ \\
+        \midrule
+        
+        \includegraphics[width=0.12\linewidth]{../../resources/segsize/grace_segsize_uni.png}
+        & \includegraphics[width=0.12\linewidth]{../../resources/segsize/grace_segsize_x120i.png}
+        & \includegraphics[width=0.12\linewidth]{../../resources/segsize/grace_segsize_x60i.png}
+        & \includegraphics[width=0.12\linewidth]{../../resources/segsize/grace_segsize_x40i.png}
+        & \includegraphics[width=0.12\linewidth]{../../resources/segsize/grace_segsize_x20i.png}
+        & \includegraphics[width=0.12\linewidth]{../../resources/segsize/grace_segsize_x10.png} \\
+        
+          \includegraphics[height=0.06\linewidth,width=0.12\linewidth]{../../resources/segsize/grace_segsize_uni_lamps.png}
+        & \includegraphics[height=0.06\linewidth,width=0.12\linewidth]{../../resources/segsize/grace_segsize_x120i_lamps.png}
+        & \includegraphics[height=0.06\linewidth,width=0.12\linewidth]{../../resources/segsize/grace_segsize_x60i_lamps.png}
+        & \includegraphics[height=0.06\linewidth,width=0.12\linewidth]{../../resources/segsize/grace_segsize_x40i_lamps.png}
+        & \includegraphics[height=0.06\linewidth,width=0.12\linewidth]{../../resources/segsize/grace_segsize_x20i_lamps.png}
+        & \includegraphics[height=0.06\linewidth,width=0.12\linewidth]{../../resources/segsize/grace_segsize_x10_lamps.png} \\
+        
+     \end{tabular}
+     
+      \begin{tabular}{ccccc}
+        
+         \includegraphics[width=0.12\linewidth]{../../resources/segsize/grace_segsize_x120i_interdiff.png}
+        & \includegraphics[width=0.12\linewidth]{../../resources/segsize/grace_segsize_x60i_interdiff.png}
+        & \includegraphics[width=0.12\linewidth]{../../resources/segsize/grace_segsize_x40i_interdiff.png}
+        & \includegraphics[width=0.12\linewidth]{../../resources/segsize/grace_segsize_x20i_interdiff.png}
+        & \includegraphics[width=0.12\linewidth]{../../resources/segsize/grace_segsize_x10_interdiff.png}  \\
+        \hline
+        12.82e-05 & 12.76e-05 & 8.96e-05 & 3.14e-05 & 3.20e-05 \\ 
+      \end{tabular}
+        
+    \end{table}
+    
+    The results of the Grace target are shown in more detail in table \ref{tab:grace_segsize}. 
+    The top row shows the illumination of the room and the one below shows the absolute difference between two successive results. 
+    The last row contains the error $e_d$ that corresponds to the difference images above. It is calculated exactly like $e_r$.
+    We can see that a configuration with 24, 48 and 96 lamps produces almost the exact same global result.
+    In the case of uniform lighting (1 lamp) or individually controlled sticks (8 lamps) the LEDs facing the ceiling cannot be controlled independent from those facing the walls.
+    Because our method searches for a global solution, the ceiling it lit too bright and the walls are missing light.
+        
+    If we increase the number of lamps we introduce ambiguity: Two successive lamps on a stick produce nearly the same illumination.
+    This leads to a separation of the light color and our lamps begin to emit pure light.
+    This does not affect the global impression, but it causes colorful highlights.
+    The pure colors are reflected by specular objects and stand out between the uniformly lit areas.
+    Our optimization does not "see" them because they are very small in size and get overpowered by large uniform areas when searching for a global solution.
+    
+    This is another reason why we think 24 lamps is the best choice for our lighting system.
+    
+   \newpage
+
+\section{Sampling}
+ \label{eval:sampling}
+ 
+  We tried our nearest-neighbor sampling with different number of sampling directions $|D|$.
+  For comparison, we included the limit case where a neighborhood consists of a single pixel
+  Table \ref{tab:sampling} show the result error $e_r$ for several targets. The target scaling was $s=1.0$ in all cases.
+
+  \npdecimalsign{.}
+    \nprounddigits{4}
+    \begin{table}[H]
+     \caption[Evaluation of sampling configurations]{\label{tab:sampling} Result error $e_r$ for different sampling configurations, including the limit case containing all available pixels. The lighting system was configured with 24 lamps.}
+     \begin{tabular}{c|n{2}{4}|n{2}{4}|n{2}{4}|n{2}{4}|n{2}{4}}
+        \toprule 
+        {|D|} & {Grace} & {Outdoor} & {Dots} & {CMY} & {Video (avg.)} \\
+        \midrule
+        \input ../../Results/tables/sampling.table
+        \bottomrule
+     \end{tabular}
+    \end{table}
+    \npnoround
+    
+    We can see the regularization effect of our sampling: Because we average multiple directions, shadows and highlights are removed. 
+    The downsampled environment map does not contain as much extreme values as the original. The variance is reduced and the optimizer can find a better solution.
+    This causes the result error to decrease with an increased neighborhood size.
+    
+    We decided that a sampling with 128 direction is perfectly adequate for our system. 
+
+  
+\section{Run-time}
+ \label{eval:runtime}
+
+  The run-time of our method depends on the number of lamps $|L|$ and the number of sampling directions $|D|$ used. 
+  The following table shows the duration of the optimization process in milliseconds.
+
+       
+    \npdecimalsign{.}
+    \nprounddigits{2}
+    \begin{table}[H]
+     \caption[Optimization run-times]{\label{tab:optrt}Optimization run-time for the Outdoor target in milliseconds. The other targets showed the same performance.}
+     \begin{tabular}{c|n{4}{2}n{4}{2}n{4}{2}n{4}{2}n{4}{2}|n{4}{2}}
+        \toprule 
+        {|L|} & \multicolumn{1}{r}{33} & \multicolumn{1}{r}{63} & \multicolumn{1}{r}{128} & \multicolumn{1}{r}{291} & \multicolumn{1}{r}{449} & \multicolumn{1}{r}{All}  \\
+        \midrule
+        \input ../../Results/tables/canon3_lamp-dir_rt_opt.table
+        \bottomrule
+     \end{tabular}
+    \end{table}
+    \npnoround
+    
+    The run-time is largely influenced by the number of lamps $|L|$ and the time complexity of our method lies in $O(|L|^2)$. 
+    Increasing the number sampling directions $|D|$ does not increase the run-time because the QP solver benefits from an overdetermined system.
+    
+    We can see that the configuration with 24 lamps is fast enough for real-time ambient light transfer.
+    
+
+\section{Scaling}
+ \label{eval:scaling}
+ 
+ The target scaling factor $s$ influences the brightness of the results. It defines the relation between the exposure of the Capture Probe and the exposure of the Calibration Probe.
+ The target environment map must be scaled in such a way, that its values are reachable by the optimization. 
+ If they are too large, our lamps cannot reproduce the desired brightness. As soon as the lamps reach their maximum intensity, the color can change.
+ 
+ The following tables \ref{tab:scaling_grace} and \ref{tab:scaling_dots} show the influence of the scaling factor on the result.
+ 
+ 
+   \begin{table}[H]
+     \caption[Evaluation of the scaling factor (1)]{\label{tab:scaling_grace}Optimization error $e_o$, results and lamp values for different scale factors $s$ using the Grace target.} 
+     \begin{tabular}{cccccc}
+        \multicolumn{6}{c}{\includegraphics[width=0.75\linewidth]{../../resources/plots/grace_scaling_plot.svg}} \\
+         0.5 & 0.75 & 1.0 & 1.5 & 2.0 & 3.0 \\
+         \includegraphics[width=0.1\linewidth]{../../resources/scaling/grace_scaling_0.5_result.png}
+		 & \includegraphics[width=0.1\linewidth]{../../resources/scaling/grace_scaling_0.75_result.png}
+		 & \includegraphics[width=0.1\linewidth]{../../resources/scaling/grace_scaling_1.0_result.png}
+		 & \includegraphics[width=0.1\linewidth]{../../resources/scaling/grace_scaling_1.5_result.png}
+		 & \includegraphics[width=0.1\linewidth]{../../resources/scaling/grace_scaling_2.0_result.png}
+		 & \includegraphics[width=0.1\linewidth]{../../resources/scaling/grace_scaling_3.0_result.png} \\
+		 \includegraphics[width=0.1\linewidth]{../../resources/scaling/grace_scaling_0.5_lamps.png}
+		 & \includegraphics[width=0.1\linewidth]{../../resources/scaling/grace_scaling_0.75_lamps.png}
+		 & \includegraphics[width=0.1\linewidth]{../../resources/scaling/grace_scaling_1.0_lamps.png}
+		 & \includegraphics[width=0.1\linewidth]{../../resources/scaling/grace_scaling_1.5_lamps.png}
+		 & \includegraphics[width=0.1\linewidth]{../../resources/scaling/grace_scaling_2.0_lamps.png}
+		 & \includegraphics[width=0.1\linewidth]{../../resources/scaling/grace_scaling_3.0_lamps.png} \\
+
+     \end{tabular}
+    \end{table}
+    
+   \begin{table}[H]
+     \caption[Evaluation of the scaling factor (2)]{\label{tab:scaling_dots}Optimization error $e_o$, results and lamp values for different scale factors $s$ using the Dots target.}
+     \begin{tabular}{cccccc}
+        \multicolumn{6}{c}{\includegraphics[width=0.75\linewidth]{../../resources/plots/dots_scaling_plot.svg}} \\
+         0.5 & 0.75 & 1.0 & 1.5 & 2.0 & 3.0 \\
+         \includegraphics[width=0.1\linewidth]{../../resources/scaling/dots_scaling_0.5_result.png}
+		 & \includegraphics[width=0.1\linewidth]{../../resources/scaling/dots_scaling_0.75_result.png}
+		 & \includegraphics[width=0.1\linewidth]{../../resources/scaling/dots_scaling_1.0_result.png}
+		 & \includegraphics[width=0.1\linewidth]{../../resources/scaling/dots_scaling_1.5_result.png}
+		 & \includegraphics[width=0.1\linewidth]{../../resources/scaling/dots_scaling_2.0_result.png}
+		 & \includegraphics[width=0.1\linewidth]{../../resources/scaling/dots_scaling_3.0_result.png} \\
+		 \includegraphics[width=0.1\linewidth]{../../resources/scaling/dots_scaling_0.5_lamps.png}
+		 & \includegraphics[width=0.1\linewidth]{../../resources/scaling/dots_scaling_0.75_lamps.png}
+		 & \includegraphics[width=0.1\linewidth]{../../resources/scaling/dots_scaling_1.0_lamps.png}
+		 & \includegraphics[width=0.1\linewidth]{../../resources/scaling/dots_scaling_1.5_lamps.png}
+		 & \includegraphics[width=0.1\linewidth]{../../resources/scaling/dots_scaling_2.0_lamps.png}
+		 & \includegraphics[width=0.1\linewidth]{../../resources/scaling/dots_scaling_3.0_lamps.png} \\ 
+         
+     \end{tabular}
+    \end{table}
+
+
+  Both plots show how the optimization error $e_o$ varies with the scaling factor $s$. The curve can be divided in three segments with different characteristics:
+  For small values $s$, the error is constant. A minimal number of lamps are turned on and their brightness increases in a linear fashion. 
+  If we increase $s$, the optimizer turns on more lamps and the error rises continuously. 
+  For large values we can observe a shift in the color of the result. Some color channels have reached their maximum intensity and our system is no longer able to reproduce ambient light with the desired brightness..
+ 
+

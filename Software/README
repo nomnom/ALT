@@ -1,0 +1,77 @@
+A.L.T command line options
+--------------------------
+ the program is configured using a list of options groups, where each group consists of 
+    - a long options (--)
+    - followed by multiple short options (-) with a numeric value (#) string ($) or multiple numeric values inside a string ("# # #")
+
+
+ Debug:
+	--debug		enable debug output
+	--verbose	enable verbose debug output 
+
+ Hardware:
+------------------
+
+	--sticks		configure our lighting system
+		-n #		number of sticks to use (default: 8)
+                -l #		length of the sticks in LEDs (default: 120)
+		-s #		segment size (default: 30)
+                -d $		serial device (default: /dev/ttyACM0)
+ 		-f #		fade speed (default 1/30)
+
+	--probe			configure our light probe
+		-l $		load light probe config file
+		-c "# # #"	circle position in input image as "x y r"
+		-d #		distance between camera and sphere center
+		-r #		radius of sphere
+		-h #		sampling range: lowest allowed angle below horizon in degree
+		-a "# # #"	rotation of camera in degree (x,y,z)
+		-t #		probe type (1=sphere 2=debevec)
+		-o $		path to response curve (.m format)
+		-m #		path to mask file (pgm file)
+		-w "# # #"	white point in radiometric space, will be mapped to (1,1,1)
+	
+	--x11source		input source for probe: grab from desktop
+		-x $		X11 display (default: ":0")
+		-a "# # # #"	rectangle on screen: (x,y,w,h)
+		-r #		refresh rate in Hz
+	
+	--imagesource		input source for probe: load single image / image directory
+		-i $		path to .ppm image or directory path. the latter requires image 
+				files to be named img_0.ppm img_1.ppm and so forth.
+
+ Set lamp values
+-------------------------
+	
+	--setlamps
+		-s "# #"	set brightness of individual lamp: "ID value"
+		-u "# # #"	set uniform lighting (all lamps to same value): "r g b"
+		-i $		set lamp values from .lamps file
+
+
+ Ambient Light Transfer
+-------------------------
+
+	--transfer		start ambient light transfer
+		-i $		path to room calibration images
+		-r #		refresh rate
+		-s $		target scale s
+		-u DUMMY	use uniform lighting
+		-y		enable dynamic fading (uses last frame duration as new fadespeed)
+		-e 		execute gphoto2 capture command for canon camera after each iteration
+		-c #		max number of iterations, terminates program
+		-n #		repetitions of optimization and sampling for averaged run times
+		-o $		output directory for creating results (SLOW) 
+
+
+ Use transfer with one of two sampling modes:
+
+	--sample_file		load sampling directions from file (vectors as three column plaintext)
+		-n #		how many directions to load 
+		
+	--sample_all		use all available pixels as sampling directions
+			
+
+
+ NOTE: room calibration is done with the script "./tools/capture_impacts.sh"
+ 

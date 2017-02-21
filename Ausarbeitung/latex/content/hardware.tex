@@ -1,0 +1,147 @@
+
+\chapter{Hardware}
+\label{chap:hardware}
+
+Our method required the construction of two devices: A light probe for capturing ambient light and a computer controlled lighting system for recreating it.
+This chapter describes their construction and implementation and explains the challenges we faced.
+
+
+\section{Lighting System}
+\label{sec:lightsystem}
+
+We designed and constructed a lighting system that is capable of illuminating a medium-sized room omnidirectional in full-color.
+We evaluated several LED products and came to the conclusion that low-power LEDs provide more light per cost than high-power LED lamps.
+
+ \begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\linewidth]{../../resources/strip_closeup.png}
+  \caption[LED-strips with WS2812-LEDs]{Two strips of WS2812-LEDs and the power wires, mounted on an L-shpaed aluminum rail.}
+  \label{fig:stripcloseup}
+  \end{figure}
+
+We used WS2812 RGB-LEDs from Worldsemi \cite{WS2812} which have an interesting property: they are digital.
+Each single device has a built-in chip that adjusts the light output of the three color channels linearly with an 8 bit pulse-width modulation.
+They communicate over a very simple timing-based protocol that allows them to be arranged in a \emph{daisy-chain} configuration.
+Hundreds of LEDs can be connected in a linear chain and addressed individually with just one input:
+The data for all LEDs is shifted in on the input, the first LED takes three bytes and forwards the rest to its successor which then does the same.
+After the data has propagated, all LEDs latch and start displaying the new light color simultaneously.
+They were originally designed to be used in large LED displays, which is also the reason for their wide beam angle of 120 degree and the low price per piece.
+They are available as pre-assembled strips with 30 or 60 LEDs / meter.
+
+ \begin{figure}
+  \subfloat[]{\includegraphics[height=0.6\linewidth]{../../resources/segments_closeup.png}}
+  \hfill
+  \subfloat[]{\includegraphics[height=0.6\linewidth]{../../resources/sticks_setup.png}}
+  \caption[Our Lighting System]{LED-strips mounted on a gibbet-shaped construction made of aluminum (a). Eight sticks are set up in a room (b) and illuminate the walls and ceiling. A light probe is placed in the center of the room for the calibration step. }
+  \label{fig:plabsetup}
+ \end{figure}
+  
+We decided to use large amounts of these LED strips to build a lighting system.
+We constructed eight gibbet-shaped sticks, two meters tall, to carry the LEDs and distribute them throughout a room.
+The sticks are arranged in circular fashion so the fronts face the wall and their tops face the ceiling.
+Each stick is lined with four meters of LED-Strip (240 LEDs), arranged in two parallel columns for increased light output.
+We supply both strips with the same data. This gives us 120 controllable lamps per stick, and 960 lamps on all eight sticks.
+
+The lighting system was powered by four 30A 5V power supplies and consumed about 460 watts on full power. 
+The LED's low voltage of 5V turned out to be impractical because our spacious setup required the transport of high currents over a distance of several meters.
+We had to use heavy 6mm$^2$ copper wires between the power supply and the sticks to keep the voltage drop to a minimum.
+We used L-shaped aluminum rails, 30x30mm wide and 3mm thick, as construction material for the sticks because it is light, sturdy and can also act as a heatsink for the LEDs.
+Aluminum is a good electrical conductor too, so we used it as part of the wiring and replaced nearly half of all copper wires with it.
+
+The lighting system cost less than 1200 Euro and took about 45 hours to build.
+The mechanical drawings and the bill of material can be found in the appendix \ref{app:lightsystem}.
+
+The WS2812 LEDs can be controlled with an Arduino, a cheap microcontroller platform.
+We used a Teensy 3.0 \cite{TEENSY} which is special third-party Arduino board that has a faster CPU and a better USB controller than the original Arduino hardware.
+It also comes with many specialized libraries. One of them is the OctoWS2811 library \cite{OCTO} which can be used to communicate with the WS2812 LEDs.
+We used it to quickly write our own firmware and turn the Teensy into an USB interface for our lighting system.
+We can control our sticks reliably with refresh rates up to 40 Hz.
+
+The wide beam angle causes two successive LEDs on the strip to produce nearly the exact same illumination pattern in the room.
+For this reason we decided to reduce the vertical resolution by dividing the strips into equal sized segments and combine multiple LEDs into virtual lamps.
+Clustering several LEDs together is also beneficial in that it averages manufacturing-related variations of the light output.
+It also makes it possible to select the number of lamps without changing the setup itself.
+After evaluating configurations with different segment sizes (see \ref{eval:segsize}) we found that we can choose fairly large segments and still produce good results.
+
+\subsection{Limitations}
+\label{sec:ledlimitations}
+
+The LEDs did not behave as linearly as we originally thought. 
+Although the response of each single color channel was perfectly linear in the input, they showed an interdependency.
+The red channel was especially affected and its light output dropped measurably when the output on the green and blue channel was increased.
+We suspect that this effect is either caused by an insufficient interconnection inside the LED which limits the available peak power, or a poor choice of decoupling capacitors by the manufacturer of the strips.
+
+The influence of the temperature was also measurable. The light output decreased with increased temperature, which is typical for LEDs.
+Even though our aluminum construction provided a large surface area for heat dissipation, it reached up to 55 $^{\circ}$ C after thirty minutes on full power.
+Again, the red channel was affected the most.
+This is effect is very hard to compensate for because it is always present, even with low temperatures.
+It would require either a constant temperature or an active compensation inside the LED to achieve a stable light output.
+
+
+\section{Light Probe} 
+ \label{sec:probe}
+ 
+ Our method utilizes a simple light probe to capture the incident radiance in a scene that we want to reproduce. 
+ Furthermore, it is used in the calibration step \ref{sec:calibration} to record the light distribution of each individual lamp.
+  
+ 
+ \begin{figure}[H]
+  \centering
+  \includegraphics[width=0.4\linewidth]{../../resources/webcamprobe.png} 
+  \captionof{figure}[Mobile webcam-based light probe]{Our mobile light probe consists of a consumer-grade HD webcam mounted above a mirrored sphere.}
+  \label{fig:webcamprobe}
+  \end{figure}
+ 
+ We based our light probes on reflection mapping as explained in section \ref{sec:lightprobe}.
+ Our method does not require high resolution light probe images or precise incident directions. 
+ We thus assume a perfect, distortion-free pinhole camera with an infinitely small hole. 
+ The sphere is assumed to be perfectly shaped and 100\% reflective.
+ We correct any color tint by performing a white balance and scaling the color-channels linearly.
+
+ 
+ \subsection{Model}
+  \label{sec:probemodel}
+ 
+ Every pixel of our light probe camera captures light that originates from a different direction.
+ These directions can be calculated from the pixel positions with a simple geometric model.
+ For this, we first need to know the position of the sphere in the image by letting the user select three points that define the circular area.
+ We also need several geometric parameters of the probe setup: The sphere diameter, the distance between sphere center and camera pinhole,
+  the cameras rotation around the sphere center and the rotation of the probe with respect to the room. 
+ We assume that the sphere's center is aligned with the optical axis of the camera.
+ 
+ \begin{figure}[h]
+  \centering
+  \includegraphics[width=0.4\linewidth]{../../resources/sphere_geo.svg} 
+  \captionof{figure}[Geometric light probe model]{Simple geometric model for calculating the direction of the light reflected by a mirrored sphere. The camera $I$ records the light coming from direction $r$.}
+  \label{fig:sphere_geo}
+  \end{figure}
+ 
+ Our geometric model is shown in figure \ref{fig:sphere_geo}.
+ We place the virtual image plane (red) through the points where the marked circle touches the sphere. 
+ Note that the image plane not lie at the origin of the sphere but is shifted towards the camera by a distance $h$. 
+ This distance is given by the y-coordinate of the contact point $P$ between sphere and the tangent $t$.
+ To calculate the reflected direction, we cast a ray $i$ from the pinhole $I$ through each pixel on the image plane, intersect it with the sphere and determine the surface normal $n$ at the intersection point $P$. 
+ On a sphere, the surface normal at a point $P$ is the vector from the center $C$ of the sphere to $P$. If $C$ is placed at the origin, $P$ can be directly interpreted as the normal.
+ We then reflect the the ray on the surface using the normal, normalize it and rotate the resulting direction according to the rotation of the camera.
+ 
+ We mask out all obstructed light directions in image space and constrain the sampling range to the upper hemisphere.
+ We precalculate all available directions and save them together with their corresponding pixel positions in a list $D$ for the sampling step explained in section \ref{sec:sampling}.
+ 
+ \subsection{Probe Implementations}
+  \label{sec:probeimplementation}
+ 
+ We constructed two devices: The \emph{Webcam Probe} is a mobile light probe based on a consumer webcam.
+  The second device, the \emph{Canon Probe}, uses a more sophisticated DLSR camera.
+ 
+ The Webcam Probe consisted of a simple consumer grade HD webcam, mounted above a Christmas ornament. The probe object was 8 cm in diameter and had a yellow color tint.
+ This light probe was very portable and had almost no obstructed light directions but the camera had a color-depth of only 8 bit and limited exposure capabilities.
+ It was also impossible to capture raw images because of the unknown preprocessing steps that happen inside the device.
+ 
+ For this reason, we decided to set up the Canon Probe, consisting of a Canon 5D MarkII and the same glass sphere. 
+ We placed the camera on a tripod above the sphere, looking down.
+ This setup was much more inflexible and the tripod obstructed more light directions, but it gave us 14 bit of high resolution raw images and full control over the exposure.
+ In order to convert the raw data into relative radiance, we performed a radiometric calibration and recovered the response curve with the method from Robertson et al. \cite{robertson1999dynamic}, \
+  which is conveniently available in the open source package \emph{pfshdrcalibrate} \cite{PFS}.
+
+ We used the canon probe for most of our experiments and the webcam probe only for the recording of dynamic environment maps.  
+ 

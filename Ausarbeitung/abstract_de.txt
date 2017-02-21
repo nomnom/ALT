@@ -1,0 +1,12 @@
+In der folgenden Arbeit stellen wir ein System vor mit dem man das Umgebungslicht an einem Ort aufnehmen und in einen Raum mithilfe computergesteuerter Lampen nachstellen kann. 
+Wir verwenden eine einfache Light Probe, bestehend aus einer Kamera und einer verspiegelten Kugel um das Licht das in einem Punkt einer Szene eingeht aufzunehmen.
+Dies liefert uns eine Environment Map welche dann in einem Raum durch das Ansteuern von LED-Lampen approximiert wird.
+Dazu messen wir zuerst die Lichtverteilung jeder einzelnen Lampen im Raum mit einer Light Probe und nehmen ein Bild pro Lampe auf.
+Durch eine Linearkombination können wir neue Environment Maps erzeugen, welche wir dann im Raum durch Einstellen der Lampenhelligkeit darstellen können.
+Wir verwenden Quadratic Programming um eine Linearkombination zu finden, welche die zu übertragende Environment Map am besten approximiert.
+Wir beschleunigen den Optimierungsprozess indem wir die Environment Maps abtasten und somit die Größe des Problems reduzieren.
+Unsere Methode eignet sich für das Übertragen von Umgebungslicht in Echtzeit und funktioniert mit jeder linear steuerbaren Lichtquelle.
+Für die Evaluierung haben wir neben einer mobilen Light Probe auch ein Beleuchtungssystem entworfen und aufgebaut. 
+Es handelt sich um eine mobile Konstruktion mit der ein Raum omnidirektional und farbig ausgeleuchtet werden kann.
+Wir untersuchen zuerst unterschiedliche Konfigurationen unseres Beleuchtungssystems, des Abtastprozesses und der Optimierung.
+Anschließend demonstrieren wird die Fähigkeiten unseres Systems in dem wir statische und dynamische Umgebungsbeleuchtungen aufnehmen und in einem Raum wiedergeben.

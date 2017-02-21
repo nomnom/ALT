@@ -1,0 +1,167 @@
+Ambient Light Transfer - structure and content
+
+               
+------
+
+1 Introduction
+> short (0.5p) paragraph about the idea
+ - Idea: capture 'light mood' at place A and reproduce it in an artificially lighted environment B in near-realtime
+ - cameras + displays ommit a lot of information
+ - possibilities of modern LED technology
+ - ambient light and mood
+ - enhanced teleconferences
+
+ 
+2 Motivations
+>(0.5-1p) why do we do this
+ 1 cameras+displays ommit a lot of information, esp. ambient light
+ 2 availability and future use of full-color RGB LEDs as room-lighting
+
+
+3 Related Work
+>(0.5-1p)
+ 1 FOV-Extention, Immersive Environments: 
+	-Ambilight [R], Illumiroom [R], Bit-Dome [R], 
+    -Lighting from virtual Envs. [R]
+ 2 Algo & Probe:
+    - Relighting: Bayesian relighting [R]
+    - Freeform Lightstage [R]
+    - Image based relighting [R]
+
+Ambient light and mood
+> how are they related and how do they impact us
+ - how does light impact mood, perception (esp. visual)
+ - fov extension and user immersion
+ - influence of color and brightness on mood
+ - SAD and dynamic lighting in office rooms
+
+
+LED based full color Room Lighting
+> what is possible, benefits and how to do it
+ 1 state of LED technology
+ 2 scaling upwards
+  - few Highpower LEDs vs. many lowpower
+  - power and heat distribution
+ 3 future of LED lighting
+
+-----
+
+Flow Outline 
+> overview over the workflow; introduction of all parts of the system [I]
+ 1 location A: capture
+   - capture probe 
+   - optional: video source
+   - streaming hardware
+ 2 transfer
+   - streaming of both videos via network / internet
+ 3 location B: reproduce
+   - led system and controller
+   - receiving hardware: PC with our software
+   - optional: video display
+   - calibration probe
+
+   
+Our LED setup
+> description of our setup (not extremely detailed, refer to appendix)
+ 1 room walls as low resolution display
+ 2 our Sticks and placement
+ 3 WS2812 LEDs, controller, serial interface
+ 4 interpolation in time-domain (fading)
+ 5 room considerations: big colored objects, specular highlights and gamut
+ 
+Lightprobe
+> how to capture light impact
+ - mapping of sphere, parabolic or fisheye-lense
+ - diffuse vs. specular (sphere considerations)
+ - cheap webcams and their problems
+ - our probe
+ - probe calibration 
+
+-----
+
+Measuring Light Impact (room calibration)
+> how to calibrate the room
+ - choosing best light directions
+ - nearest neighbor sampling on sphere
+ - hdr probes
+ - calibration routine
+ - handling specular highlights
+
+
+Realtime Transfer
+ 1 directly via streaming
+  - bandwidth and framerate limits
+  - compression artefacts
+  - synchronous transmission of two video streams
+  - optimization: sample at the source and transmit only light impact
+
+ 2 using Skype 
+  - resolution limitations
+  - dual-sphere lightprobe
+  - possible calibration methods for uncontrollable cams
+  -- single-image-only calibration [R]
+  -- automatic parameters in webcams (Exp., Whitbalance, Gamma)
+
+Reproducing Light Impact
+> how to solve the inverse problem
+ - energyterm over light directions
+ - optimization algorithm
+ - implementation details
+ - complexity and speed optimizations
+
+
+-----
+
+Evaluation and Results
+ - 
+ - transfer of moving lightprobe (with scene cam)
+ - realtime transfer via broadband or mobile network
+ - enhanced telco: realtime transfer via skype
+ - replay of timelapse recording (with szene cam) -> user survey?
+ - reproducing appearance of an object (w/ pics)
+
+
+Conclusion
+ 1 limitations
+  - needs high input framerate
+  - exposure and dark scenes
+  - accuracy of webcams
+  - gamut of LED system
+  - low gamut optimization: weighting color lower than saturation
+ 
+ 2 enhancements
+  - algo optimizations?
+  - combine with audio for better ambience
+ 
+ 3 future
+  > short overview where this could lead if: 
+    - we would get ubiquitous room lighting: panels, wallpaper etc
+    - and the sensor would be embedded in mobile phones / cams
+  
+
+-----
+
+Appendix
+
+1 sticks
+ - BOM
+ - sketches
+ - specs
+ - ws2812 specs
+
+2 controller
+ - schematic
+ - firmware
+ - serial protocol
+ 
+3 lightprobe
+ - values of final calibration
+
+4 ALT software
+ - code listing 
+ - doxygen doc
+ - parameter doc
+ 
+5 results
+ - probe videos
+ - calibration data

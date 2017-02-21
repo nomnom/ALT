@@ -1,0 +1,180 @@
+\hypertarget{classX11Source}{\subsection{\-X11\-Source \-Class \-Reference}
+\label{classX11Source}\index{\-X11\-Source@{\-X11\-Source}}
+}
+
+
+\-X11 desktop grabber.  
+
+
+
+
+{\ttfamily \#include $<$x11source.\-h$>$}
+
+\-Inheritance diagram for \-X11\-Source\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classX11Source}
+\end{center}
+\end{figure}
+\subsubsection*{\-Data \-Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structX11Source_1_1params}{params}
+\begin{DoxyCompactList}\small\item\em \-Configuration of \hyperlink{classX11Source}{\-X11\-Source}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classX11Source_a78acc272509b4489ba63e31708f15679}{\-X11\-Source} (\hyperlink{structX11Source_1_1params}{params} c)
+\item 
+\hyperlink{classX11Source_ac84c868de1b1ad71165dda3426cd03b3}{\-X11\-Source} (string \hyperlink{classX11Source_aca767875225424e06a91240ce66878fd}{display}, \hyperlink{structrect}{rect} area, double rate)
+\item 
+\hyperlink{classX11Source_a40ce038f2f6099f2ade3a07ebbfa1ddf}{$\sim$\-X11\-Source} ()
+\item 
+\hyperlink{structX11Source_1_1params}{params} \hyperlink{classX11Source_a7463cf93c1a347420ea423c993fb3db0}{get\-Config} ()
+\item 
+void \hyperlink{classX11Source_a1f1e97d8c02bfe6d5d84fb06a06125ba}{acquire} ()
+\item 
+bool \hyperlink{classX11Source_aa9b91f2a4a6db72b9391bc43d8f73944}{has\-New\-Data} ()
+\item 
+char $\ast$ \hyperlink{classX11Source_a224081f6ba7b80a1f4606cad8887e190}{get\-Image\-Raw} ()
+\item 
+const \hyperlink{structrect}{rect} \hyperlink{classX11Source_afcec9428c2cc28dca81f6839d079ca0f}{x11\-Select\-Area\-On\-Desktop} (string \hyperlink{classX11Source_aca767875225424e06a91240ce66878fd}{display})
+\item 
+const \hyperlink{structpoint}{point} \hyperlink{classX11Source_a8664f8ad4c33f46437cc2f02a5b76e49}{x11\-Select\-Point\-On\-Desktop} (\-Display $\ast$disp)
+\end{DoxyCompactItemize}
+\subsubsection*{\-Private \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classX11Source_a44750861c3d995fae7436aff4940f372}{init} ()
+\end{DoxyCompactItemize}
+\subsubsection*{\-Private \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structX11Source_1_1params}{params} \hyperlink{classX11Source_a0bb66f8a67eaf9fd1a9c7cd457744e6a}{config}
+\item 
+string \hyperlink{classX11Source_aca767875225424e06a91240ce66878fd}{display}
+\item 
+\-Display $\ast$ \hyperlink{classX11Source_ab29ca4f07bd4d6e512d900268b9ae6e4}{dpy}
+\item 
+\-X\-Shm\-Segment\-Info \hyperlink{classX11Source_a77384d75a89d1fdd0cb3f20f61453f46}{shminfo}
+\item 
+\-X\-Image $\ast$ \hyperlink{classX11Source_a88bec28d12299ca93f4516a1e6ce7cff}{x\-Image}
+\end{DoxyCompactItemize}
+
+
+\subsubsection{\-Detailed \-Description}
+\-X11 desktop grabber. 
+
+\begin{DoxyAuthor}{\-Author}
+\-Manuel \-Jerger $<$\href{mailto:nom@nomnom.de}{\tt nom@nomnom.\-de}$>$
+\end{DoxyAuthor}
+\-Specialization of the source class that grabs images from the \-X11 desktop. 
+
+\subsubsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{classX11Source_a78acc272509b4489ba63e31708f15679}{\index{\-X11\-Source@{\-X11\-Source}!\-X11\-Source@{\-X11\-Source}}
+\index{\-X11\-Source@{\-X11\-Source}!X11Source@{\-X11\-Source}}
+\paragraph[{\-X11\-Source}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-X11\-Source\-::\-X11\-Source} (
+\begin{DoxyParamCaption}
+\item[{{\bf params}}]{c}
+\end{DoxyParamCaption}
+)}}\label{classX11Source_a78acc272509b4489ba63e31708f15679}
+\hypertarget{classX11Source_ac84c868de1b1ad71165dda3426cd03b3}{\index{\-X11\-Source@{\-X11\-Source}!\-X11\-Source@{\-X11\-Source}}
+\index{\-X11\-Source@{\-X11\-Source}!X11Source@{\-X11\-Source}}
+\paragraph[{\-X11\-Source}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-X11\-Source\-::\-X11\-Source} (
+\begin{DoxyParamCaption}
+\item[{string}]{display, }
+\item[{{\bf rect}}]{area, }
+\item[{double}]{rate}
+\end{DoxyParamCaption}
+)}}\label{classX11Source_ac84c868de1b1ad71165dda3426cd03b3}
+\hypertarget{classX11Source_a40ce038f2f6099f2ade3a07ebbfa1ddf}{\index{\-X11\-Source@{\-X11\-Source}!$\sim$\-X11\-Source@{$\sim$\-X11\-Source}}
+\index{$\sim$\-X11\-Source@{$\sim$\-X11\-Source}!X11Source@{\-X11\-Source}}
+\paragraph[{$\sim$\-X11\-Source}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-X11\-Source\-::$\sim$\-X11\-Source} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classX11Source_a40ce038f2f6099f2ade3a07ebbfa1ddf}
+
+
+\subsubsection{\-Member \-Function \-Documentation}
+\hypertarget{classX11Source_a1f1e97d8c02bfe6d5d84fb06a06125ba}{\index{\-X11\-Source@{\-X11\-Source}!acquire@{acquire}}
+\index{acquire@{acquire}!X11Source@{\-X11\-Source}}
+\paragraph[{acquire}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-X11\-Source\-::acquire} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}\label{classX11Source_a1f1e97d8c02bfe6d5d84fb06a06125ba}
+\-Grabs one image from desktop 
+
+\-Implements \hyperlink{classSource_a22e791e3c667fe6d65fa79b30ddc44da}{\-Source}.
+
+\hypertarget{classX11Source_a7463cf93c1a347420ea423c993fb3db0}{\index{\-X11\-Source@{\-X11\-Source}!get\-Config@{get\-Config}}
+\index{get\-Config@{get\-Config}!X11Source@{\-X11\-Source}}
+\paragraph[{get\-Config}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-X11\-Source\-::params} {\bf \-X11\-Source\-::get\-Config} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classX11Source_a7463cf93c1a347420ea423c993fb3db0}
+\hypertarget{classX11Source_a224081f6ba7b80a1f4606cad8887e190}{\index{\-X11\-Source@{\-X11\-Source}!get\-Image\-Raw@{get\-Image\-Raw}}
+\index{get\-Image\-Raw@{get\-Image\-Raw}!X11Source@{\-X11\-Source}}
+\paragraph[{get\-Image\-Raw}]{\setlength{\rightskip}{0pt plus 5cm}char $\ast$ {\bf \-X11\-Source\-::get\-Image\-Raw} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classX11Source_a224081f6ba7b80a1f4606cad8887e190}
+\-Returns image data straight from \-X11 shared memory. \hypertarget{classX11Source_aa9b91f2a4a6db72b9391bc43d8f73944}{\index{\-X11\-Source@{\-X11\-Source}!has\-New\-Data@{has\-New\-Data}}
+\index{has\-New\-Data@{has\-New\-Data}!X11Source@{\-X11\-Source}}
+\paragraph[{has\-New\-Data}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-X11\-Source\-::has\-New\-Data} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}\label{classX11Source_aa9b91f2a4a6db72b9391bc43d8f73944}
+
+
+\-Implements \hyperlink{classSource_acc6f90436f56986b5d261c2408bc1196}{\-Source}.
+
+\hypertarget{classX11Source_a44750861c3d995fae7436aff4940f372}{\index{\-X11\-Source@{\-X11\-Source}!init@{init}}
+\index{init@{init}!X11Source@{\-X11\-Source}}
+\paragraph[{init}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-X11\-Source\-::init} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classX11Source_a44750861c3d995fae7436aff4940f372}
+\-Initialize \-X11 image grabbing. \hypertarget{classX11Source_afcec9428c2cc28dca81f6839d079ca0f}{\index{\-X11\-Source@{\-X11\-Source}!x11\-Select\-Area\-On\-Desktop@{x11\-Select\-Area\-On\-Desktop}}
+\index{x11\-Select\-Area\-On\-Desktop@{x11\-Select\-Area\-On\-Desktop}!X11Source@{\-X11\-Source}}
+\paragraph[{x11\-Select\-Area\-On\-Desktop}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf rect} {\bf \-X11\-Source\-::x11\-Select\-Area\-On\-Desktop} (
+\begin{DoxyParamCaption}
+\item[{string}]{display}
+\end{DoxyParamCaption}
+)}}\label{classX11Source_afcec9428c2cc28dca81f6839d079ca0f}
+\-Asks the user to select two points on the desktop that define the top left and bottom right corner of the image area to grab. \hypertarget{classX11Source_a8664f8ad4c33f46437cc2f02a5b76e49}{\index{\-X11\-Source@{\-X11\-Source}!x11\-Select\-Point\-On\-Desktop@{x11\-Select\-Point\-On\-Desktop}}
+\index{x11\-Select\-Point\-On\-Desktop@{x11\-Select\-Point\-On\-Desktop}!X11Source@{\-X11\-Source}}
+\paragraph[{x11\-Select\-Point\-On\-Desktop}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf point} {\bf \-X11\-Source\-::x11\-Select\-Point\-On\-Desktop} (
+\begin{DoxyParamCaption}
+\item[{\-Display $\ast$}]{disp}
+\end{DoxyParamCaption}
+)}}\label{classX11Source_a8664f8ad4c33f46437cc2f02a5b76e49}
+\-Asks the user to select a points on the desktop. \-Uses \-X11 functions for displaying a cursor and reacting to the click. 
+
+\subsubsection{\-Field \-Documentation}
+\hypertarget{classX11Source_a0bb66f8a67eaf9fd1a9c7cd457744e6a}{\index{\-X11\-Source@{\-X11\-Source}!config@{config}}
+\index{config@{config}!X11Source@{\-X11\-Source}}
+\paragraph[{config}]{\setlength{\rightskip}{0pt plus 5cm}{\bf params} {\bf \-X11\-Source\-::config}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classX11Source_a0bb66f8a67eaf9fd1a9c7cd457744e6a}
+\hypertarget{classX11Source_aca767875225424e06a91240ce66878fd}{\index{\-X11\-Source@{\-X11\-Source}!display@{display}}
+\index{display@{display}!X11Source@{\-X11\-Source}}
+\paragraph[{display}]{\setlength{\rightskip}{0pt plus 5cm}string {\bf \-X11\-Source\-::display}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classX11Source_aca767875225424e06a91240ce66878fd}
+\hypertarget{classX11Source_ab29ca4f07bd4d6e512d900268b9ae6e4}{\index{\-X11\-Source@{\-X11\-Source}!dpy@{dpy}}
+\index{dpy@{dpy}!X11Source@{\-X11\-Source}}
+\paragraph[{dpy}]{\setlength{\rightskip}{0pt plus 5cm}\-Display$\ast$ {\bf \-X11\-Source\-::dpy}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classX11Source_ab29ca4f07bd4d6e512d900268b9ae6e4}
+\hypertarget{classX11Source_a77384d75a89d1fdd0cb3f20f61453f46}{\index{\-X11\-Source@{\-X11\-Source}!shminfo@{shminfo}}
+\index{shminfo@{shminfo}!X11Source@{\-X11\-Source}}
+\paragraph[{shminfo}]{\setlength{\rightskip}{0pt plus 5cm}\-X\-Shm\-Segment\-Info {\bf \-X11\-Source\-::shminfo}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classX11Source_a77384d75a89d1fdd0cb3f20f61453f46}
+\hypertarget{classX11Source_a88bec28d12299ca93f4516a1e6ce7cff}{\index{\-X11\-Source@{\-X11\-Source}!x\-Image@{x\-Image}}
+\index{x\-Image@{x\-Image}!X11Source@{\-X11\-Source}}
+\paragraph[{x\-Image}]{\setlength{\rightskip}{0pt plus 5cm}\-X\-Image$\ast$ {\bf \-X11\-Source\-::x\-Image}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classX11Source_a88bec28d12299ca93f4516a1e6ce7cff}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+src/\hyperlink{x11source_8h}{x11source.\-h}\item 
+src/\hyperlink{x11source_8cpp}{x11source.\-cpp}\end{DoxyCompactItemize}

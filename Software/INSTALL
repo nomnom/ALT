@@ -1,0 +1,30 @@
+external libs needed for ALT package
+
+ libs to download
+  glfw-2.7.8  
+    1) download from http://sourceforge.net/projects/glfw/
+    2) make x11
+    3) copy glfw-2.7.8/include/GL  to  inc/
+    4) copy glfw-2.7.8/lib/x11/libglfw.*  to lib/  or change location in makefile
+
+  
+  Ceres-solver 1.6.0
+    1) download http://ceres-solver.googlecode.com/files/ceres-solver-1.6.0.tar.gz
+    2) compile and install on system
+    3) copy headers to inc/ceres or change location in makefile
+
+  CVXOPT 1.1.5
+    Fedora: install from repo: python-cvxopt.x86_64    
+
+other libs from repos
+ Ubuntu:
+  libx11-dev
+  libxext-dev
+  libxfixes-dev
+  mesa-libGLU-devel
+ 
+ Fedora 
+  libx11-dev
+  libxext-dev
+  libxfixes-dev
+  libglu1-mesa-dev

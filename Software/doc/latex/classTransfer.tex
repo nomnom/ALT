@@ -1,0 +1,371 @@
+\hypertarget{classTransfer}{\subsection{\-Transfer \-Class \-Reference}
+\label{classTransfer}\index{\-Transfer@{\-Transfer}}
+}
+
+
+\-The \-Ambient \-Light \hyperlink{classTransfer}{\-Transfer} loop.  
+
+
+
+
+{\ttfamily \#include $<$transfer.\-h$>$}
+
+\subsubsection*{\-Data \-Structures}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classTransfer_1_1CostSimple}{\-Cost\-Simple}
+\begin{DoxyCompactList}\small\item\em \-Faster \-Cost\-Function for ceres. \end{DoxyCompactList}\item 
+struct \hyperlink{structTransfer_1_1params}{params}
+\begin{DoxyCompactList}\small\item\em \-Configuration. \end{DoxyCompactList}\item 
+struct \hyperlink{structTransfer_1_1Residual}{\-Residual}
+\begin{DoxyCompactList}\small\item\em \-Cost\-Function for ceres. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classTransfer_a5cbc38107da382c825951777aa55051c}{\-Transfer} (\hyperlink{classLightprobe}{\-Lightprobe} $\ast$p, \hyperlink{classLamps}{\-Lamps} $\ast$l, \hyperlink{structTransfer_1_1params}{params} c)
+\item 
+\hyperlink{classTransfer_a13481dd70d04bbe779459f85ad8afa9c}{$\sim$\-Transfer} ()
+\item 
+\hyperlink{structTransfer_1_1params}{params} \hyperlink{classTransfer_acddbd3dd2f407cd9da07c2427d1882ed}{get\-Config} ()
+\item 
+void \hyperlink{classTransfer_aa98f154d6de395921b9d9c7c04288f7d}{run} ()
+\item 
+void \hyperlink{classTransfer_ace9b65159cff9a2935400a03e5ffd4de}{repaint} ()
+\item 
+void \hyperlink{classTransfer_a6be79ed07466c21d17f543bc515b8263}{exp\-\_\-plot\-\_\-kernel} (vector$<$ \hyperlink{structdirCone}{dir\-Cone} $>$ cones)
+\end{DoxyCompactItemize}
+\subsubsection*{\-Private \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classTransfer_a34f1f7a9798fa745146e78479b272466}{create\-Results} (int)
+\item 
+bool \hyperlink{classTransfer_afc4d713370e82897d51c7e457e4e1a27}{load\-Impact\-Data} ()
+\item 
+void \hyperlink{classTransfer_acf5b4e91e2709e7d3cad23bb9afed9f0}{prepare\-Data\-Ceres} ()
+\item 
+void \hyperlink{classTransfer_a1748cd66a053bd5d224c229609abe696}{run\-Ceres} ()
+\item 
+void \hyperlink{classTransfer_a523f1a6b3ea20746cda7204901ec1762}{prepare\-Data\-C\-V\-X\-O\-P\-T} ()
+\item 
+void \hyperlink{classTransfer_a2c6905f83dcd836be8635d7141392351}{run\-C\-V\-X\-O\-P\-T} ()
+\item 
+bool \hyperlink{classTransfer_a54775d04e460f94fb6d32ceac5dd4260}{toggle\-By\-Key} (bool var, int key)
+\end{DoxyCompactItemize}
+\subsubsection*{\-Private \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structTransfer_1_1params}{params} \hyperlink{classTransfer_a9a0f847440cf53c645b3d50559b485a8}{config}
+\item 
+\hyperlink{classLightprobe}{\-Lightprobe} $\ast$ \hyperlink{classTransfer_ad9ab5c7f95100f377362665d6bd3f103}{probe}
+\item 
+\hyperlink{classLightprobe}{\-Lightprobe} $\ast$ \hyperlink{classTransfer_a937a2a3065786c52eab75b378eb6e78d}{cali\-Probe}
+\item 
+\hyperlink{classLamps}{\-Lamps} $\ast$ \hyperlink{classTransfer_a0d396e5e74398e0f2b5e2bc4d89fc4a3}{lamps}
+\item 
+\hyperlink{classGui}{\-Gui} $\ast$ \hyperlink{classTransfer_a6a8196c2aa253624abc70424e943be1e}{gui}
+\item 
+int \hyperlink{classTransfer_a597d5f57239ced3ef7e4d8047eb1f94b}{num\-Lamps}
+\item 
+int \hyperlink{classTransfer_ae923e88292d589470b46c7d954148b12}{num\-Dirs}
+\item 
+int \hyperlink{classTransfer_a0101f5fe150a942d46136a85043b409b}{num\-Samples}
+\item 
+int \hyperlink{classTransfer_a3f5735e8e7dd83dd4947472f68dea2a3}{width}
+\item 
+int \hyperlink{classTransfer_a568f5b62be7951c9190526388f182255}{height}
+\item 
+int \hyperlink{classTransfer_ad0a21f131888045697ccbbe5ff2d127e}{width\-\_\-cali}
+\item 
+int \hyperlink{classTransfer_aaca098b491eb58acbdcae29848e62929}{height\-\_\-cali}
+\item 
+vector$<$ imglib\-::\-Image$<$ float $>$ $>$ \hyperlink{classTransfer_a28cd758cc5e3199a5db8f33bfcf13a2e}{impact\-Images}
+\item 
+vector$<$ \hyperlink{structrgb}{rgb} $>$ \hyperlink{classTransfer_a6be0abe305f0b461bf746eaa0ff452c9}{maximum\-Impacts}
+\item 
+vector$<$ vector$<$ \hyperlink{structrgb}{rgb} $>$ $>$ \hyperlink{classTransfer_ae567a873c8ea4685cfa1beeae2790ded}{light\-Impacts}
+\item 
+vector$<$ int $>$ \hyperlink{classTransfer_a1ea5a5523f5524962454d80a6c4c0a91}{sampling\-Directions\-Nearest\-Pixel}
+\item 
+double \hyperlink{classTransfer_a702cfe11b9ad9c7e0791babc21621245}{average\-Brightness}
+\item 
+imglib\-::\-Image$<$ float $>$ \hyperlink{classTransfer_a40b116d506ca8adf83b876a93f51eecc}{target\-Image}
+\item 
+vector$<$ \hyperlink{structrgb}{rgb} $>$ \hyperlink{classTransfer_ae36f78db5d40178eeb44d8d7147a253d}{target\-Impact}
+\item 
+bool \hyperlink{classTransfer_a85eeffaeab6bb9faa6315668d80ded1d}{scale\-Impact}
+\item 
+bool \hyperlink{classTransfer_a05d5140c8e56e40260d1170befc4fe32}{low\-Precision}
+\item 
+bool \hyperlink{classTransfer_a46b335fbbf977c6a8fc099e82fc8c8e8}{reset\-Weights}
+\item 
+double \hyperlink{classTransfer_ad07e0da48d24d6e13edf49a1b0aa42fb}{target\-Scale}
+\item 
+double $\ast$ \hyperlink{classTransfer_a6dde3d7a1918d18582bfd4e803187926}{weights}
+\item 
+double $\ast$ \hyperlink{classTransfer_ae7ff8bee691d2ffccfe2612fda8682d7}{target\-Data}
+\item 
+double $\ast$ \hyperlink{classTransfer_ab624db027ae5eeb4abc07b92fde760ab}{impact\-Data}
+\item 
+\-Py\-Object $\ast$ \hyperlink{classTransfer_aa863bc68b5b179fa64bee909fff1ebea}{qpsolver}
+\item 
+\-Py\-Object $\ast$ \hyperlink{classTransfer_a3de4ac3dd16f20a0f45909cafeeb3cda}{qpsolver\-Args}
+\item 
+\-Py\-Object $\ast$ \hyperlink{classTransfer_a8af2cc1ef014b8966e087528d323427c}{qp\-\_\-c}
+\item 
+\-Py\-Object $\ast$ \hyperlink{classTransfer_a09e2f76e2c47845ed59befd3615b7f20}{qp\-\_\-\-Q}
+\item 
+\-Py\-Object $\ast$ \hyperlink{classTransfer_a4d911da022865f47433fad766221ddc4}{qp\-\_\-\-A}
+\item 
+\-Py\-Object $\ast$ \hyperlink{classTransfer_a8baee9baa7d14b8139a666843c1cccee}{qp\-\_\-b}
+\item 
+bool \hyperlink{classTransfer_ab9c16a7ccd122f1e8ecb4afe73691013}{draw\-Target}
+\item 
+int \hyperlink{classTransfer_abe401aaa059449aaba2ecfc0ac630e19}{draw\-Sampling\-Cones}
+\item 
+bool \hyperlink{classTransfer_a9db40e99a69366e98ad8a40cd58a9af2}{draw\-Pseudo\-Result}
+\item 
+bool \hyperlink{classTransfer_a2bcd8af85816bfc3144438166f611257}{draw\-Pseudo\-Result\-Cones}
+\item 
+bool \hyperlink{classTransfer_a5fb22494a6010b45546ba4921454c90d}{draw\-Difference}
+\item 
+bool \hyperlink{classTransfer_ac654359f3c128d4283e276918b7ef4a8}{do\-Auto\-Adjust}
+\item 
+double \hyperlink{classTransfer_a271981a76dcfd0ce141413afef275c87}{draw\-Scaling\-Factor}
+\item 
+int \hyperlink{classTransfer_a47c627c055bbb8f170a9d59163522f21}{key\-Press\-Flag}
+\end{DoxyCompactItemize}
+
+
+\subsubsection{\-Detailed \-Description}
+\-The \-Ambient \-Light \hyperlink{classTransfer}{\-Transfer} loop. 
+
+\subsubsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{classTransfer_a5cbc38107da382c825951777aa55051c}{\index{\-Transfer@{\-Transfer}!\-Transfer@{\-Transfer}}
+\index{\-Transfer@{\-Transfer}!Transfer@{\-Transfer}}
+\paragraph[{\-Transfer}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Transfer\-::\-Transfer} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Lightprobe} $\ast$}]{p, }
+\item[{{\bf \-Lamps} $\ast$}]{l, }
+\item[{{\bf params}}]{c}
+\end{DoxyParamCaption}
+)}}\label{classTransfer_a5cbc38107da382c825951777aa55051c}
+\begin{DoxyAuthor}{\-Author}
+\-Manuel \-Jerger $<$\href{mailto:nom@nomnom.de}{\tt nom@nomnom.\-de}$>$
+\end{DoxyAuthor}
+\-Implements the \-Ambient \-Light \hyperlink{classTransfer}{\-Transfer} loop. \hypertarget{classTransfer_a13481dd70d04bbe779459f85ad8afa9c}{\index{\-Transfer@{\-Transfer}!$\sim$\-Transfer@{$\sim$\-Transfer}}
+\index{$\sim$\-Transfer@{$\sim$\-Transfer}!Transfer@{\-Transfer}}
+\paragraph[{$\sim$\-Transfer}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Transfer\-::$\sim$\-Transfer} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classTransfer_a13481dd70d04bbe779459f85ad8afa9c}
+
+
+\subsubsection{\-Member \-Function \-Documentation}
+\hypertarget{classTransfer_a34f1f7a9798fa745146e78479b272466}{\index{\-Transfer@{\-Transfer}!create\-Results@{create\-Results}}
+\index{create\-Results@{create\-Results}!Transfer@{\-Transfer}}
+\paragraph[{create\-Results}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Transfer\-::create\-Results} (
+\begin{DoxyParamCaption}
+\item[{int}]{iter}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classTransfer_a34f1f7a9798fa745146e78479b272466}
+\-Dump image results if config.\-output specifies a directory/prefix \hypertarget{classTransfer_a6be79ed07466c21d17f543bc515b8263}{\index{\-Transfer@{\-Transfer}!exp\-\_\-plot\-\_\-kernel@{exp\-\_\-plot\-\_\-kernel}}
+\index{exp\-\_\-plot\-\_\-kernel@{exp\-\_\-plot\-\_\-kernel}!Transfer@{\-Transfer}}
+\paragraph[{exp\-\_\-plot\-\_\-kernel}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Transfer\-::exp\-\_\-plot\-\_\-kernel} (
+\begin{DoxyParamCaption}
+\item[{vector$<$ {\bf dir\-Cone} $>$}]{cones}
+\end{DoxyParamCaption}
+)}}\label{classTransfer_a6be79ed07466c21d17f543bc515b8263}
+\-Experimental\-: was used to analyze the reconstruction quality of the \-Gaussian sampling. \-Reconstructs a white image using the \-Sampling datastructure and dumps the image as well as values of horizontal slices. \hypertarget{classTransfer_acddbd3dd2f407cd9da07c2427d1882ed}{\index{\-Transfer@{\-Transfer}!get\-Config@{get\-Config}}
+\index{get\-Config@{get\-Config}!Transfer@{\-Transfer}}
+\paragraph[{get\-Config}]{\setlength{\rightskip}{0pt plus 5cm}{\bf params} {\bf \-Transfer\-::get\-Config} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classTransfer_acddbd3dd2f407cd9da07c2427d1882ed}
+\hypertarget{classTransfer_afc4d713370e82897d51c7e457e4e1a27}{\index{\-Transfer@{\-Transfer}!load\-Impact\-Data@{load\-Impact\-Data}}
+\index{load\-Impact\-Data@{load\-Impact\-Data}!Transfer@{\-Transfer}}
+\paragraph[{load\-Impact\-Data}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Transfer\-::load\-Impact\-Data} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classTransfer_afc4d713370e82897d51c7e457e4e1a27}
+\-Loads the calibration data from config.\-data\-Dir and performs the sampling. \hypertarget{classTransfer_acf5b4e91e2709e7d3cad23bb9afed9f0}{\index{\-Transfer@{\-Transfer}!prepare\-Data\-Ceres@{prepare\-Data\-Ceres}}
+\index{prepare\-Data\-Ceres@{prepare\-Data\-Ceres}!Transfer@{\-Transfer}}
+\paragraph[{prepare\-Data\-Ceres}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Transfer\-::prepare\-Data\-Ceres} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classTransfer_acf5b4e91e2709e7d3cad23bb9afed9f0}
+\-Sets up \-Ceres as optimizer. \hypertarget{classTransfer_a523f1a6b3ea20746cda7204901ec1762}{\index{\-Transfer@{\-Transfer}!prepare\-Data\-C\-V\-X\-O\-P\-T@{prepare\-Data\-C\-V\-X\-O\-P\-T}}
+\index{prepare\-Data\-C\-V\-X\-O\-P\-T@{prepare\-Data\-C\-V\-X\-O\-P\-T}!Transfer@{\-Transfer}}
+\paragraph[{prepare\-Data\-C\-V\-X\-O\-P\-T}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Transfer\-::prepare\-Data\-C\-V\-X\-O\-P\-T} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classTransfer_a523f1a6b3ea20746cda7204901ec1762}
+\-Prepares the \-C\-V\-X\-O\-P\-T optimizer. \-Creates all matrices and vectors. \hypertarget{classTransfer_ace9b65159cff9a2935400a03e5ffd4de}{\index{\-Transfer@{\-Transfer}!repaint@{repaint}}
+\index{repaint@{repaint}!Transfer@{\-Transfer}}
+\paragraph[{repaint}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Transfer\-::repaint} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classTransfer_ace9b65159cff9a2935400a03e5ffd4de}
+\-Repaints the \-G\-U\-I. \hypertarget{classTransfer_aa98f154d6de395921b9d9c7c04288f7d}{\index{\-Transfer@{\-Transfer}!run@{run}}
+\index{run@{run}!Transfer@{\-Transfer}}
+\paragraph[{run}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Transfer\-::run} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classTransfer_aa98f154d6de395921b9d9c7c04288f7d}
+\-Starts the \-Ambient \-Light \hyperlink{classTransfer}{\-Transfer} \hypertarget{classTransfer_a1748cd66a053bd5d224c229609abe696}{\index{\-Transfer@{\-Transfer}!run\-Ceres@{run\-Ceres}}
+\index{run\-Ceres@{run\-Ceres}!Transfer@{\-Transfer}}
+\paragraph[{run\-Ceres}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Transfer\-::run\-Ceres} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classTransfer_a1748cd66a053bd5d224c229609abe696}
+\-Starts the optimization. \hypertarget{classTransfer_a2c6905f83dcd836be8635d7141392351}{\index{\-Transfer@{\-Transfer}!run\-C\-V\-X\-O\-P\-T@{run\-C\-V\-X\-O\-P\-T}}
+\index{run\-C\-V\-X\-O\-P\-T@{run\-C\-V\-X\-O\-P\-T}!Transfer@{\-Transfer}}
+\paragraph[{run\-C\-V\-X\-O\-P\-T}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Transfer\-::run\-C\-V\-X\-O\-P\-T} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classTransfer_a2c6905f83dcd836be8635d7141392351}
+\-Starts the optimization \hypertarget{classTransfer_a54775d04e460f94fb6d32ceac5dd4260}{\index{\-Transfer@{\-Transfer}!toggle\-By\-Key@{toggle\-By\-Key}}
+\index{toggle\-By\-Key@{toggle\-By\-Key}!Transfer@{\-Transfer}}
+\paragraph[{toggle\-By\-Key}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Transfer\-::toggle\-By\-Key} (
+\begin{DoxyParamCaption}
+\item[{bool}]{var, }
+\item[{int}]{key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classTransfer_a54775d04e460f94fb6d32ceac5dd4260}
+\-Returns the inverted value of a boolean iff a key is pressed 
+
+\subsubsection{\-Field \-Documentation}
+\hypertarget{classTransfer_a702cfe11b9ad9c7e0791babc21621245}{\index{\-Transfer@{\-Transfer}!average\-Brightness@{average\-Brightness}}
+\index{average\-Brightness@{average\-Brightness}!Transfer@{\-Transfer}}
+\paragraph[{average\-Brightness}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf \-Transfer\-::average\-Brightness}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classTransfer_a702cfe11b9ad9c7e0791babc21621245}
+\hypertarget{classTransfer_a937a2a3065786c52eab75b378eb6e78d}{\index{\-Transfer@{\-Transfer}!cali\-Probe@{cali\-Probe}}
+\index{cali\-Probe@{cali\-Probe}!Transfer@{\-Transfer}}
+\paragraph[{cali\-Probe}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Lightprobe}$\ast$ {\bf \-Transfer\-::cali\-Probe}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classTransfer_a937a2a3065786c52eab75b378eb6e78d}
+\hypertarget{classTransfer_a9a0f847440cf53c645b3d50559b485a8}{\index{\-Transfer@{\-Transfer}!config@{config}}
+\index{config@{config}!Transfer@{\-Transfer}}
+\paragraph[{config}]{\setlength{\rightskip}{0pt plus 5cm}{\bf params} {\bf \-Transfer\-::config}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classTransfer_a9a0f847440cf53c645b3d50559b485a8}
+\hypertarget{classTransfer_ac654359f3c128d4283e276918b7ef4a8}{\index{\-Transfer@{\-Transfer}!do\-Auto\-Adjust@{do\-Auto\-Adjust}}
+\index{do\-Auto\-Adjust@{do\-Auto\-Adjust}!Transfer@{\-Transfer}}
+\paragraph[{do\-Auto\-Adjust}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Transfer\-::do\-Auto\-Adjust}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classTransfer_ac654359f3c128d4283e276918b7ef4a8}
+\hypertarget{classTransfer_a5fb22494a6010b45546ba4921454c90d}{\index{\-Transfer@{\-Transfer}!draw\-Difference@{draw\-Difference}}
+\index{draw\-Difference@{draw\-Difference}!Transfer@{\-Transfer}}
+\paragraph[{draw\-Difference}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Transfer\-::draw\-Difference}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classTransfer_a5fb22494a6010b45546ba4921454c90d}
+\hypertarget{classTransfer_a9db40e99a69366e98ad8a40cd58a9af2}{\index{\-Transfer@{\-Transfer}!draw\-Pseudo\-Result@{draw\-Pseudo\-Result}}
+\index{draw\-Pseudo\-Result@{draw\-Pseudo\-Result}!Transfer@{\-Transfer}}
+\paragraph[{draw\-Pseudo\-Result}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Transfer\-::draw\-Pseudo\-Result}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classTransfer_a9db40e99a69366e98ad8a40cd58a9af2}
+\hypertarget{classTransfer_a2bcd8af85816bfc3144438166f611257}{\index{\-Transfer@{\-Transfer}!draw\-Pseudo\-Result\-Cones@{draw\-Pseudo\-Result\-Cones}}
+\index{draw\-Pseudo\-Result\-Cones@{draw\-Pseudo\-Result\-Cones}!Transfer@{\-Transfer}}
+\paragraph[{draw\-Pseudo\-Result\-Cones}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Transfer\-::draw\-Pseudo\-Result\-Cones}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classTransfer_a2bcd8af85816bfc3144438166f611257}
+\hypertarget{classTransfer_abe401aaa059449aaba2ecfc0ac630e19}{\index{\-Transfer@{\-Transfer}!draw\-Sampling\-Cones@{draw\-Sampling\-Cones}}
+\index{draw\-Sampling\-Cones@{draw\-Sampling\-Cones}!Transfer@{\-Transfer}}
+\paragraph[{draw\-Sampling\-Cones}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf \-Transfer\-::draw\-Sampling\-Cones}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classTransfer_abe401aaa059449aaba2ecfc0ac630e19}
+\hypertarget{classTransfer_a271981a76dcfd0ce141413afef275c87}{\index{\-Transfer@{\-Transfer}!draw\-Scaling\-Factor@{draw\-Scaling\-Factor}}
+\index{draw\-Scaling\-Factor@{draw\-Scaling\-Factor}!Transfer@{\-Transfer}}
+\paragraph[{draw\-Scaling\-Factor}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf \-Transfer\-::draw\-Scaling\-Factor}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classTransfer_a271981a76dcfd0ce141413afef275c87}
+\hypertarget{classTransfer_ab9c16a7ccd122f1e8ecb4afe73691013}{\index{\-Transfer@{\-Transfer}!draw\-Target@{draw\-Target}}
+\index{draw\-Target@{draw\-Target}!Transfer@{\-Transfer}}
+\paragraph[{draw\-Target}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Transfer\-::draw\-Target}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classTransfer_ab9c16a7ccd122f1e8ecb4afe73691013}
+\hypertarget{classTransfer_a6a8196c2aa253624abc70424e943be1e}{\index{\-Transfer@{\-Transfer}!gui@{gui}}
+\index{gui@{gui}!Transfer@{\-Transfer}}
+\paragraph[{gui}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Gui}$\ast$ {\bf \-Transfer\-::gui}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classTransfer_a6a8196c2aa253624abc70424e943be1e}
+\hypertarget{classTransfer_a568f5b62be7951c9190526388f182255}{\index{\-Transfer@{\-Transfer}!height@{height}}
+\index{height@{height}!Transfer@{\-Transfer}}
+\paragraph[{height}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf \-Transfer\-::height}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classTransfer_a568f5b62be7951c9190526388f182255}
+\hypertarget{classTransfer_aaca098b491eb58acbdcae29848e62929}{\index{\-Transfer@{\-Transfer}!height\-\_\-cali@{height\-\_\-cali}}
+\index{height\-\_\-cali@{height\-\_\-cali}!Transfer@{\-Transfer}}
+\paragraph[{height\-\_\-cali}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf \-Transfer\-::height\-\_\-cali}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classTransfer_aaca098b491eb58acbdcae29848e62929}
+\hypertarget{classTransfer_ab624db027ae5eeb4abc07b92fde760ab}{\index{\-Transfer@{\-Transfer}!impact\-Data@{impact\-Data}}
+\index{impact\-Data@{impact\-Data}!Transfer@{\-Transfer}}
+\paragraph[{impact\-Data}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$ {\bf \-Transfer\-::impact\-Data}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classTransfer_ab624db027ae5eeb4abc07b92fde760ab}
+\hypertarget{classTransfer_a28cd758cc5e3199a5db8f33bfcf13a2e}{\index{\-Transfer@{\-Transfer}!impact\-Images@{impact\-Images}}
+\index{impact\-Images@{impact\-Images}!Transfer@{\-Transfer}}
+\paragraph[{impact\-Images}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$imglib\-::\-Image$<$float$>$ $>$ {\bf \-Transfer\-::impact\-Images}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classTransfer_a28cd758cc5e3199a5db8f33bfcf13a2e}
+\hypertarget{classTransfer_a47c627c055bbb8f170a9d59163522f21}{\index{\-Transfer@{\-Transfer}!key\-Press\-Flag@{key\-Press\-Flag}}
+\index{key\-Press\-Flag@{key\-Press\-Flag}!Transfer@{\-Transfer}}
+\paragraph[{key\-Press\-Flag}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf \-Transfer\-::key\-Press\-Flag}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classTransfer_a47c627c055bbb8f170a9d59163522f21}
+\hypertarget{classTransfer_a0d396e5e74398e0f2b5e2bc4d89fc4a3}{\index{\-Transfer@{\-Transfer}!lamps@{lamps}}
+\index{lamps@{lamps}!Transfer@{\-Transfer}}
+\paragraph[{lamps}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Lamps}$\ast$ {\bf \-Transfer\-::lamps}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classTransfer_a0d396e5e74398e0f2b5e2bc4d89fc4a3}
+\hypertarget{classTransfer_ae567a873c8ea4685cfa1beeae2790ded}{\index{\-Transfer@{\-Transfer}!light\-Impacts@{light\-Impacts}}
+\index{light\-Impacts@{light\-Impacts}!Transfer@{\-Transfer}}
+\paragraph[{light\-Impacts}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$vector$<${\bf rgb}$>$ $>$ {\bf \-Transfer\-::light\-Impacts}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classTransfer_ae567a873c8ea4685cfa1beeae2790ded}
+\hypertarget{classTransfer_a05d5140c8e56e40260d1170befc4fe32}{\index{\-Transfer@{\-Transfer}!low\-Precision@{low\-Precision}}
+\index{low\-Precision@{low\-Precision}!Transfer@{\-Transfer}}
+\paragraph[{low\-Precision}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Transfer\-::low\-Precision}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classTransfer_a05d5140c8e56e40260d1170befc4fe32}
+\hypertarget{classTransfer_a6be0abe305f0b461bf746eaa0ff452c9}{\index{\-Transfer@{\-Transfer}!maximum\-Impacts@{maximum\-Impacts}}
+\index{maximum\-Impacts@{maximum\-Impacts}!Transfer@{\-Transfer}}
+\paragraph[{maximum\-Impacts}]{\setlength{\rightskip}{0pt plus 5cm}vector$<${\bf rgb}$>$ {\bf \-Transfer\-::maximum\-Impacts}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classTransfer_a6be0abe305f0b461bf746eaa0ff452c9}
+\hypertarget{classTransfer_ae923e88292d589470b46c7d954148b12}{\index{\-Transfer@{\-Transfer}!num\-Dirs@{num\-Dirs}}
+\index{num\-Dirs@{num\-Dirs}!Transfer@{\-Transfer}}
+\paragraph[{num\-Dirs}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf \-Transfer\-::num\-Dirs}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classTransfer_ae923e88292d589470b46c7d954148b12}
+\hypertarget{classTransfer_a597d5f57239ced3ef7e4d8047eb1f94b}{\index{\-Transfer@{\-Transfer}!num\-Lamps@{num\-Lamps}}
+\index{num\-Lamps@{num\-Lamps}!Transfer@{\-Transfer}}
+\paragraph[{num\-Lamps}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf \-Transfer\-::num\-Lamps}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classTransfer_a597d5f57239ced3ef7e4d8047eb1f94b}
+\hypertarget{classTransfer_a0101f5fe150a942d46136a85043b409b}{\index{\-Transfer@{\-Transfer}!num\-Samples@{num\-Samples}}
+\index{num\-Samples@{num\-Samples}!Transfer@{\-Transfer}}
+\paragraph[{num\-Samples}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf \-Transfer\-::num\-Samples}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classTransfer_a0101f5fe150a942d46136a85043b409b}
+\hypertarget{classTransfer_ad9ab5c7f95100f377362665d6bd3f103}{\index{\-Transfer@{\-Transfer}!probe@{probe}}
+\index{probe@{probe}!Transfer@{\-Transfer}}
+\paragraph[{probe}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Lightprobe}$\ast$ {\bf \-Transfer\-::probe}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classTransfer_ad9ab5c7f95100f377362665d6bd3f103}
+\hypertarget{classTransfer_a4d911da022865f47433fad766221ddc4}{\index{\-Transfer@{\-Transfer}!qp\-\_\-\-A@{qp\-\_\-\-A}}
+\index{qp\-\_\-\-A@{qp\-\_\-\-A}!Transfer@{\-Transfer}}
+\paragraph[{qp\-\_\-\-A}]{\setlength{\rightskip}{0pt plus 5cm}\-Py\-Object$\ast$ {\bf \-Transfer\-::qp\-\_\-\-A}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classTransfer_a4d911da022865f47433fad766221ddc4}
+\hypertarget{classTransfer_a8baee9baa7d14b8139a666843c1cccee}{\index{\-Transfer@{\-Transfer}!qp\-\_\-b@{qp\-\_\-b}}
+\index{qp\-\_\-b@{qp\-\_\-b}!Transfer@{\-Transfer}}
+\paragraph[{qp\-\_\-b}]{\setlength{\rightskip}{0pt plus 5cm}\-Py\-Object$\ast$ {\bf \-Transfer\-::qp\-\_\-b}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classTransfer_a8baee9baa7d14b8139a666843c1cccee}
+\hypertarget{classTransfer_a8af2cc1ef014b8966e087528d323427c}{\index{\-Transfer@{\-Transfer}!qp\-\_\-c@{qp\-\_\-c}}
+\index{qp\-\_\-c@{qp\-\_\-c}!Transfer@{\-Transfer}}
+\paragraph[{qp\-\_\-c}]{\setlength{\rightskip}{0pt plus 5cm}\-Py\-Object$\ast$ {\bf \-Transfer\-::qp\-\_\-c}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classTransfer_a8af2cc1ef014b8966e087528d323427c}
+\hypertarget{classTransfer_a09e2f76e2c47845ed59befd3615b7f20}{\index{\-Transfer@{\-Transfer}!qp\-\_\-\-Q@{qp\-\_\-\-Q}}
+\index{qp\-\_\-\-Q@{qp\-\_\-\-Q}!Transfer@{\-Transfer}}
+\paragraph[{qp\-\_\-\-Q}]{\setlength{\rightskip}{0pt plus 5cm}\-Py\-Object$\ast$ {\bf \-Transfer\-::qp\-\_\-\-Q}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classTransfer_a09e2f76e2c47845ed59befd3615b7f20}
+\hypertarget{classTransfer_aa863bc68b5b179fa64bee909fff1ebea}{\index{\-Transfer@{\-Transfer}!qpsolver@{qpsolver}}
+\index{qpsolver@{qpsolver}!Transfer@{\-Transfer}}
+\paragraph[{qpsolver}]{\setlength{\rightskip}{0pt plus 5cm}\-Py\-Object$\ast$ {\bf \-Transfer\-::qpsolver}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classTransfer_aa863bc68b5b179fa64bee909fff1ebea}
+\hypertarget{classTransfer_a3de4ac3dd16f20a0f45909cafeeb3cda}{\index{\-Transfer@{\-Transfer}!qpsolver\-Args@{qpsolver\-Args}}
+\index{qpsolver\-Args@{qpsolver\-Args}!Transfer@{\-Transfer}}
+\paragraph[{qpsolver\-Args}]{\setlength{\rightskip}{0pt plus 5cm}\-Py\-Object$\ast$ {\bf \-Transfer\-::qpsolver\-Args}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classTransfer_a3de4ac3dd16f20a0f45909cafeeb3cda}
+\hypertarget{classTransfer_a46b335fbbf977c6a8fc099e82fc8c8e8}{\index{\-Transfer@{\-Transfer}!reset\-Weights@{reset\-Weights}}
+\index{reset\-Weights@{reset\-Weights}!Transfer@{\-Transfer}}
+\paragraph[{reset\-Weights}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Transfer\-::reset\-Weights}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classTransfer_a46b335fbbf977c6a8fc099e82fc8c8e8}
+\hypertarget{classTransfer_a1ea5a5523f5524962454d80a6c4c0a91}{\index{\-Transfer@{\-Transfer}!sampling\-Directions\-Nearest\-Pixel@{sampling\-Directions\-Nearest\-Pixel}}
+\index{sampling\-Directions\-Nearest\-Pixel@{sampling\-Directions\-Nearest\-Pixel}!Transfer@{\-Transfer}}
+\paragraph[{sampling\-Directions\-Nearest\-Pixel}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$int$>$ {\bf \-Transfer\-::sampling\-Directions\-Nearest\-Pixel}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classTransfer_a1ea5a5523f5524962454d80a6c4c0a91}
+\hypertarget{classTransfer_a85eeffaeab6bb9faa6315668d80ded1d}{\index{\-Transfer@{\-Transfer}!scale\-Impact@{scale\-Impact}}
+\index{scale\-Impact@{scale\-Impact}!Transfer@{\-Transfer}}
+\paragraph[{scale\-Impact}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Transfer\-::scale\-Impact}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classTransfer_a85eeffaeab6bb9faa6315668d80ded1d}
+\hypertarget{classTransfer_ae7ff8bee691d2ffccfe2612fda8682d7}{\index{\-Transfer@{\-Transfer}!target\-Data@{target\-Data}}
+\index{target\-Data@{target\-Data}!Transfer@{\-Transfer}}
+\paragraph[{target\-Data}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$ {\bf \-Transfer\-::target\-Data}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classTransfer_ae7ff8bee691d2ffccfe2612fda8682d7}
+\hypertarget{classTransfer_a40b116d506ca8adf83b876a93f51eecc}{\index{\-Transfer@{\-Transfer}!target\-Image@{target\-Image}}
+\index{target\-Image@{target\-Image}!Transfer@{\-Transfer}}
+\paragraph[{target\-Image}]{\setlength{\rightskip}{0pt plus 5cm}imglib\-::\-Image$<$float$>$ {\bf \-Transfer\-::target\-Image}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classTransfer_a40b116d506ca8adf83b876a93f51eecc}
+\hypertarget{classTransfer_ae36f78db5d40178eeb44d8d7147a253d}{\index{\-Transfer@{\-Transfer}!target\-Impact@{target\-Impact}}
+\index{target\-Impact@{target\-Impact}!Transfer@{\-Transfer}}
+\paragraph[{target\-Impact}]{\setlength{\rightskip}{0pt plus 5cm}vector$<${\bf rgb}$>$ {\bf \-Transfer\-::target\-Impact}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classTransfer_ae36f78db5d40178eeb44d8d7147a253d}
+\hypertarget{classTransfer_ad07e0da48d24d6e13edf49a1b0aa42fb}{\index{\-Transfer@{\-Transfer}!target\-Scale@{target\-Scale}}
+\index{target\-Scale@{target\-Scale}!Transfer@{\-Transfer}}
+\paragraph[{target\-Scale}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf \-Transfer\-::target\-Scale}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classTransfer_ad07e0da48d24d6e13edf49a1b0aa42fb}
+\hypertarget{classTransfer_a6dde3d7a1918d18582bfd4e803187926}{\index{\-Transfer@{\-Transfer}!weights@{weights}}
+\index{weights@{weights}!Transfer@{\-Transfer}}
+\paragraph[{weights}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$ {\bf \-Transfer\-::weights}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classTransfer_a6dde3d7a1918d18582bfd4e803187926}
+\hypertarget{classTransfer_a3f5735e8e7dd83dd4947472f68dea2a3}{\index{\-Transfer@{\-Transfer}!width@{width}}
+\index{width@{width}!Transfer@{\-Transfer}}
+\paragraph[{width}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf \-Transfer\-::width}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classTransfer_a3f5735e8e7dd83dd4947472f68dea2a3}
+\hypertarget{classTransfer_ad0a21f131888045697ccbbe5ff2d127e}{\index{\-Transfer@{\-Transfer}!width\-\_\-cali@{width\-\_\-cali}}
+\index{width\-\_\-cali@{width\-\_\-cali}!Transfer@{\-Transfer}}
+\paragraph[{width\-\_\-cali}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf \-Transfer\-::width\-\_\-cali}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classTransfer_ad0a21f131888045697ccbbe5ff2d127e}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+src/\hyperlink{transfer_8h}{transfer.\-h}\item 
+src/\hyperlink{transfer_8cpp}{transfer.\-cpp}\end{DoxyCompactItemize}

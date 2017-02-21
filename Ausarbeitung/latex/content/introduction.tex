@@ -1,0 +1,44 @@
+\newcommand{\vect}[1]{\boldsymbol{#1}}
+%\newcommand{\vect}[1]{\vect{#1}}
+
+\chapter{Introduction}
+%% motivate and show how the problem is interesting to solve
+
+
+Photography has always been very intriguing because it enables us to store, recreate and share visual impressions with others. 
+Since the first grainy black-and-white images the techniques have been greatly improved. 
+Today, photography is mostly digital. Digital cameras and displays have become almost omnipresent in our society and can be found in every household. 
+Many people even carry them around at all times in form of a smartphone.
+
+Digital photography makes it easy to share visual impressions and the Internet has revolutionized the way we share.
+
+However cameras and displays have a severe limitation: They cover only a small field-of-view (FOV) compared to the human eye.
+We can increase the FOV of a camera with wide-angle lenses or by applying panorama techniques but we cannot do the same with displays.
+
+The size of a display is often constrained by requirements like portability and cost.
+Most screens, especially in mobile devices, deliver only a very small image to the retina of our eyes.
+This is perfectly acceptable for displaying high resolution content because only a small region in the center of the retina is capable of perceiving fine details.
+It does however matter if the user should be immersed in a scene, for example while watching a movie or viewing vacation photos.
+The so-called \emph{peripheral vision}, which lies in the outer region of the retina, plays a strong role in how we experience our environment.
+It has a much lower resolution and cannot image fine details, but it perceives the ambient light.
+
+To maximize the user immersion the impression over the whole retina should be consistent.
+There are several ways to achieve this: 
+\emph{Movie theaters} for example shut out all ambient light and use large screens to diminish false impressions in the peripheral vision. 
+\emph{Head-mounted displays} place small high-resolution screens very close to the eyes.
+\emph{Immersive spaces} on the other hand completely enclose the user in a box made of screens and achieve a complete immersion \cite{gross2003blue}.
+These methods are either very expensive, too big, or do not allow for a simultaneous experience by multiple users.
+
+There is however a simpler and cheaper solution: Control the ambient light so it matches the displayed scene.
+Modern LED technology has finally become affordable and powerful enough to be used as room lighting and provides us with digitally controlled full-color illuminants.
+A room equipped with multiple lamps allows not only for an uniform ambient illumination but also for a spatial one.
+
+In this work we propose a method that recreates approximate lighting conditions in real-time using digital room lighting. 
+
+We designed and implemented an omnidirectional RGB lighting system using full-color RGB-LEDs.
+Our system captures an environment map in a real world scene with a light probe and recreates an approximation in a room by controlling the lamps.
+We begin with a calibration step and measure the illumination of our lighting system by capturing one light probe image per lamp.
+The linear combination of these images produces a new environment map, which we can recreate in the room by setting the intensities of the lamps.
+Our method employs Quadratic Programming (QP) to find the linear combination that approximates a given environment map best. 
+We will show that our system is fast enough to transfer ambient light in real-time from one place to another.
+

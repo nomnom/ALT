@@ -1,0 +1,79 @@
+
+
+\chapter{Related Work}
+
+ 
+ Digitally controlled full-color lighting can be used to extend the FOV of displays by illuminating the space around the screen with light that matches the displayed scene.
+% It aids the perception and increases the user immersion, for example in a movie theater or a living room.
+ We can also apply this idea to a whole room: A spatially illuminated room can supply meaningful information to the peripheral vision of the viewer and 
+ can increase the feeling of immersion \cite{ghosh2005real}.
+ 
+ The method we present in this paper is based on the Inverse Relighting problem. 
+ Our solution is thus closely related to Implicit Relighting and Lighting Design.
+    
+\section{Relighting and Lighting Design}
+ 
+ There are several Implicit Relighting methods \cite{matusik2004progressively} \cite{fuchs2005bayesian} that use probe objects in order to do relighting with low-frequency illuminations.
+ They could be directly applied to our problem by \emph{relighting the room} using the lamps.
+ The rendering-part can be omitted as we are only interested in the image weights, which correspond to the brightness of the lamps.
+ However, those techniques are designed to render \emph{good} images and are not suited for real-time applications.    
+ They also do not use constrained weights which are required in our application, because real lamps have a maximum brightness.
+ 
+ The Inverse Relighting problem is also addressed in Image-Based Lighting Design \cite{anrys2004image} by Anrys et al.:
+ They use a light stage to illuminate an object with RGB point-sources and capture the effect of each lamp on the object with a camera from a fixed view-point. 
+ The user can then specify the desired illumination of the object by drawing on it in image-space. 
+ This serves as a target for the minimization algorithm which finds the weights for the lamps that reproduce the desired illumination. 
+ They employ Sequential Quadratic Programming (SQP) to minimize the least squares equation (\ref{eq:minproblem}).
+ Analytical representations of the Hessian and Jacobin matrices are employed for an additional speedup.
+  
+ Our method is closely related to the work of Anrys et al: 
+ Instead of illuminating an object, we illuminate the walls of a room and capture omnidirectional images with a light probe.
+ This is basically the concept of a light stage turned inside out.
+ Instead of SQP, we apply Quadratic Programming (QP) to solve the same constrained least squares problem,
+ and reduce the problem size beforehand by performing a downsampling on the light probe data. 
+
+\section{Extending Displays}
+    
+ Movie and home theaters benefit from dim ambient light and large screens because this setup increases the immersion of the viewer. 
+ The screen produces a large image on the viewers retina and the absence of ambient light diminishes false impressions in the peripheral vision.
+ Rather than shutting down the ambient light, one can also actively control it to match the brightness and color of the displayed images. 
+ 
+ 
+ \begin{figure}[H]
+  \subfloat[Ambilight\label{fig:ambilight}]{\includegraphics[height=0.25\linewidth]{../../resources/ambilight.png}}
+  \hfill
+  \subfloat[Illumiroom\label{fig:illumiroom}]{ \includegraphics[height=0.25\linewidth]{../../resources/illumiroom.png} }
+  \caption[Ambilight and Illumiroom]{Extending the apparent size of a display by augmenting the surrounding space with light. Philips Ambilight (a) uses LEDs and Microsoft's Illumiroom uses a projector (b).}
+ \end{figure}
+  
+ 
+ Philips created their Ambilight TVs around this idea: Lines of RGB-LEDs are placed on the edges of a screen and illuminate the wall behind it. 
+ The LEDs are controlled to match the average color in the border regions of the image and thus extend the screen onto the wall.
+ This gives the impression of a larger television screen and also supplies the room with ambient light of an appropriate hue.
+ A study showed that their implementation is well received by the user and greatly improves the feeling of immersion \cite{ambistudy}.
+ The Illumiroom concept \cite{jones2013illumiroom} follows a similar idea: A projector is used instead of LEDs to augment the the area around a screen with content of lower resolution.
+ 
+ Just recently Philips introduced wireless controlled LED-based full-color lamps to the consumer market \cite{HUE}. 
+ The Philips hue bulbs are shaped like traditional lamps and fit in standard sockets. 
+ They can be individually controlled via a wireless station and a smartphone which gives the user full control over hue and brightness.
+ More interestingly, they can be linked to the Philips Ambilight TVs so all of the ambient illumination in a room is under control of the television.
+ The user can define the approximate location of the lamps and the display in the room.
+ The Ambilight TV uses this information to extract appropriate lamp colors from the video stream.
+ How exactly this is done has not been published.
+ 
+
+\section{Real Illumination from Virtual Environments}
+  
+ Gosh et al. addresses the same problem we do in their work \emph{Real Illumination from Virtual Environments} \cite{ghosh2005real}.
+ They too illuminate a room with multiple RGB lamps to reproduce an illumination given by an environment map. 
+ However, their work is focused on the effects of ambient light on the user. 
+ Their solution is not general and requires an optimal room and lighting setup.
+ 
+ The proposed method works like this: First, they switch the lamps to white one at a time and capture the light spots on the walls with a light probe. 
+ They fit a Gaussian to each spot: The center is placed at the the brightest point and the standard deviation is adjusted until the error is minimal.
+ They then calculate the color for the lamps by sampling the environment map with the fitted Gaussian kernel.
+ This technique only works with calibrated RGB Lamps with a known white point.
+ Gosh et al. link the color channels of the LEDs to the color channels of the display, which prohibits the use of white LEDs or other broad-spectrum illuminants.
+ There are also cases where a Gauss kernel cannot be fitted with a small error, for example if a lamp causes multiple light spots.
+ 
+ %Our method aims for a more general solution that considers the \emph{global effect} of the lamps and takes all reflected light into account.
